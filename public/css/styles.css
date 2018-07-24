@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'hansiefregular';
+    src: url('hansief-webfont.woff2') format('woff2'),
+         url('hansief-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{
+	background:#b9f6ff;
+}
+
+.inline-block{
+	display: inline-block;
+}
+
+.logo{
+	max-width: 75%;
+}
+
+.navbar{
+	background-color: white;
+	padding: 20px;
+}
+
+.navbar a{
+	color: #1b6d81;
+	font-weight: 600;
+}
+
+.no-padding{
+	padding: 0;
+}
+
+.navbar a:hover{
+	text-decoration: none;
+}
+
+.navbar .reglement a{
+	background: url("../img/icon-sifflet.png")no-repeat;
+	height: 60px;
+    padding: 60px 10px 0 10px;
+    display: inline-block;
+}
+
+.navbar .reglement a:hover{
+	background: url("../img/icon-sifflet-survol.png")no-repeat;
+}
+
+.navbar .classement, .navbar .vestiaire{
+	display: inline-block;
+}
+
+.navbar .classement a{
+	background: url("../img/icon-classement.png")no-repeat;
+	height: 60px;
+    padding: 60px 10px 0 6px;
+    display: inline-block;
+}
+
+.navbar .classement a:hover{
+	background: url("../img/icon-classement-survol.png")no-repeat;
+}
+
+.navbar .vestiaire a{
+	background: url("../img/icon-compte.png")no-repeat;
+	height: 60px;
+    padding: 60px 10px 0 14px;
+    display: inline-block;
+
+}
+
+.navbar .vestiaire a:hover{
+	background: url("../img/icon-compte-survol.png")no-repeat;
+}
+
+
+/******RESULTATS******/
+
+.resultats p{
+	text-align: center;
+}
+
+.tableau-res {
+	background-color:white;
+	margin-bottom: 20px;
+}
+
+.tableau-res h2{
+	text-align: center;
+	font-family: 'hansiefregular';
+	text-transform: uppercase;
+	font-size: 12px;
+	vertical-align: middle;
+}
+
+.tableau-res .logo-equipe, .tableau-res .nom-equipe{
+	
+}
+
+.tableau-res .logo-equipe img{
+	max-width: 80%;
+	padding: 20px;
+}
+
+.tableau-res .essai-point{
+	text-align: center;
+}
+
+
+
+
+
+
+
+@media (min-width: 576px) {
+
+ }
+
+@media (min-width: 768px) { }
+
+@media (min-width: 992px) { 
+
+	.logo{
+		max-width: 100%;
+	}
+
+
+}
+@media (min-width: 1200px) { }
