@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'hansiefregular';
-    src: url('hansief-webfont.woff2') format('woff2'),
-         url('hansief-webfont.woff') format('woff');
+    src: url('../fonts/hansief-webfont.woff2') format('woff2'),
+         url('../fonts/hansief-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -9,11 +9,39 @@
 
 body{
 	background:#b9f6ff;
+	font-family: 'hansiefregular';
 }
 
 .inline-block{
 	display: inline-block;
 }
+
+.cta{
+	padding: 12px 20px;
+	border:none;
+	color: white;
+    font-size: 1.6rem;
+}
+
+.bg-orange{
+	background-color: #ffb400;
+}
+
+.padding-top{
+	padding-top: 15px;
+}
+
+.debug{
+	background-color: white;
+	padding: 20px;
+}
+
+
+.container{
+	background: url('../img/background.png') #b9f6ff no-repeat center bottom;
+	background-size: contain;
+}
+
 
 .logo{
 	max-width: 75%;
@@ -83,15 +111,26 @@ body{
 }
 
 .tableau-res {
-	background-color:white;
+	position: relative;
 	margin-bottom: 20px;
+}
+
+.tableau-res .nom-equipe{
+	min-height: 60px;
+	display: flex; /* contexte sur le parent */
+	flex-direction: column; /* direction d'affichage verticale */
+  	justify-content: center; /* alignement vertical */
+}
+
+.tableau-res .nom-equipe > div{
+	margin-top: 10px;
 }
 
 .tableau-res h2{
 	text-align: center;
 	font-family: 'hansiefregular';
 	text-transform: uppercase;
-	font-size: 12px;
+	font-size: 1rem;
 	vertical-align: middle;
 }
 
@@ -99,31 +138,105 @@ body{
 	
 }
 
+.tableau-res .score-equipe-1::after{
+    content: "-";
+    position: absolute;
+    top: 31%;
+    right: -4px;
+    font-family: "hansiefregular";
+    font-size: 24px;
+}
+
+.tableau-res .logo-equipe{
+
+}
+
 .tableau-res .logo-equipe img{
 	max-width: 80%;
-	padding: 20px;
+	display: block;
+    margin: 14px auto 10px auto;
 }
 
 .tableau-res .essai-point{
 	text-align: center;
 }
 
+.tableau-res .form-group{
+	height: 100%;
+}
+
+.tableau-res input{
+	height: 100%;
+	background-color:#e0e0e0;
+	border:none;
+	color: white;
+	font-size: 4rem;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 0px;
+}
+
+.tableau-res .essai-point{
+	font-size: 0.8rem;
+	font-weight: 600;
+	padding: 10px 0;
+    background-color: #e0e0e0;
+    margin-top: 15px;
+}
+
+.tableau-res .essai-point span{
+	text-transform: uppercase;
+	font-size: 1em;
+}
 
 
+@media (min-width: 576px) {}
 
-
-
-
-@media (min-width: 576px) {
-
- }
-
-@media (min-width: 768px) { }
+@media (min-width: 768px) {}
 
 @media (min-width: 992px) { 
 
 	.logo{
 		max-width: 100%;
+	}
+
+	.padding-left{
+		padding-left: 90px;
+	}
+
+	.padding-right{
+		padding-right: 90px;
+	}
+
+	.tableau-res .logo-equipe img{
+		margin-top: 10px;
+	}
+
+	.tableau-res h2{
+		font-size: 2em;
+	}
+
+	.tableau-res .point{
+		position: absolute;
+		width: 80px;
+		height: 80px;
+		right: -40px;
+		top: 21px;
+		border-radius:50%;
+		background-color: green;
+		color: white;
+	}
+
+	.tableau-res .point p{
+		text-align: center;
+		padding-top: 31%;
+		font-size: 1.5em;
+		font-weight: 600;
+	}
+
+	.tableau-res .point p span{
+		font-size: 3.6rem;
+		line-height: 0;
 	}
 
 
