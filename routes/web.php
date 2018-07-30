@@ -23,3 +23,8 @@ Route::get('/resultats', 'Resultats@index');
 Route::post('/resultats', 'Resultats@index');
 
 Route::get('/classement', 'ClassementController@index');
+
+Route::prefix('admin')->group(function () {
+    
+
+});
