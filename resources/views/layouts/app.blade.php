@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             
             <div class="logo text-center d-block d-md-none">
-                <a class="nav-link" href="#"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
+                <a class="nav-link" href="{{url('/')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
             </div>
     
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,18 +37,18 @@
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 col-12">
                           <li class="nav-item active col-12 col-md-2">
                             <div class="reglement">
-                                <a class="nav-link" href="#">Reglement</a>
+                                <a class="nav-link" href="{{url('/reglement')}}">Reglement</a>
                             </div>
                           </li>
                           <li class="nav-item col-md-8 d-none d-md-block">
                             <div class="logo text-center">
-                                <a class="nav-link" href="#"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
+                                <a class="nav-link" href="{{url('/')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
                             </div>
                             
                           </li>
                           <li class="nav-item text-right col-12 col-md-2">
-                            <div class="classement"><a href="#">Classement</a></div>
-                            <div class="vestiaire"><a href="#">Vestiaire</a></div>
+                            <div class="classement"><a href="{{url('/classement')}}">Classement</a></div>
+                            <div class="vestiaire"><a href="{{url('/vestiaire')}}">Vestiaire</a></div>
                           </li>
                         </ul>
                     </div>
@@ -57,94 +57,7 @@
         </nav>
     </div>
 
-
-    
-
-   
-    <!--<div class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <header>   
-
-            <div class="col-2 col-md-2 reglement"><a href="#">Reglement</a></div>
-            <div class="col-8 col-md-8 logo text-center">
-                <a href="#"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
-            </div>
-            <div class="col-2 col-md-2 text-right">
-            <div class="classement"><a href="#">Classement</a></div>
-            <div class="vestiaire"><a href="#">Vestiaire</a></div>
-            </div>
-
-    </header>
-      </div>
-
-     </div>
-
-     </nav>
-
-
-        <!--<nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-
-                <div class="navbar-header">
-
-                     Collapsed Hamburger 
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-
-
-                     Branding Image 
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                     Left Side Of Navbar 
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    Right Side Of Navbar 
-                    <ul class="nav navbar-nav navbar-right">
-                         Authentication Links 
-                        @if (Auth::guest())
-                            
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div> -->
-            </div>
-        </nav>
+  </div>
 
         @yield('content')
     </div>

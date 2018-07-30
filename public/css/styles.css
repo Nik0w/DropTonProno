@@ -7,9 +7,13 @@
 
 }
 
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
 body{
 	background:#b9f6ff;
 	font-family: 'hansiefregular';
+	background: url('../img/background.png') #b9f6ff no-repeat center bottom;
+	background-size: contain;
 }
 
 .inline-block{
@@ -36,10 +40,12 @@ body{
 	padding: 20px;
 }
 
+.lato{
+	font-family: 'Lato', sans-serif;
+}
 
 .container{
-	background: url('../img/background.png') #b9f6ff no-repeat center bottom;
-	background-size: contain;
+	
 }
 
 
