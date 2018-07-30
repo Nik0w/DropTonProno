@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/resultats', 'Resultats@index');
 Route::post('/resultats', 'Resultats@index');
+
+Route::get('/classement', 'ClassementController@index');

@@ -8,6 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
@@ -19,48 +23,18 @@
 
    <div id="app">
 
-    <div class="container-fluid no-padding">
+     @yield('content')
 
-        <nav class="navbar navbar-expand-lg navbar-light">
-            
-            <div class="logo text-center d-block d-md-none">
-                <a class="nav-link" href="{{url('/')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
-            </div>
-    
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+     <div class="container-fluid footer text-center">
+        <div class="socials">
+          <a href="https://www.facebook.com/droptonprono/" target="blank"><img src="img/fb.png" alt=""></a>
+          <a href="https://www.instagram.com/droptonprono/" target="blank"><img src="img/insta.png" alt=""></a>
+          <a href="https://twitter.com/Droptonprono" target="blank"><img src="img/twitter.png" alt=""></a>
+        </div>
 
-              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <div class="container-fluid">
-                    <div class="row">
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 col-12">
-                          <li class="nav-item active col-12 col-md-2">
-                            <div class="reglement">
-                                <a class="nav-link" href="{{url('/reglement')}}">Reglement</a>
-                            </div>
-                          </li>
-                          <li class="nav-item col-md-8 d-none d-md-block">
-                            <div class="logo text-center">
-                                <a class="nav-link" href="{{url('/')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
-                            </div>
-                            
-                          </li>
-                          <li class="nav-item text-right col-12 col-md-2">
-                            <div class="classement"><a href="{{url('/classement')}}">Classement</a></div>
-                            <div class="vestiaire"><a href="{{url('/vestiaire')}}">Vestiaire</a></div>
-                          </li>
-                        </ul>
-                    </div>
-                </div>
-              </div>
-        </nav>
-    </div>
-
-  </div>
-
-        @yield('content')
-    </div>
+        <p>&copy; Drop Ton Prono 2018</p>
+     </div>
+   </div>
 
     <!-- Scripts -->
      <script src="{{ asset('js/app.js') }}"></script>
