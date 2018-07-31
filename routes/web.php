@@ -28,4 +28,6 @@ Route::prefix('admin')->group(function () {
     
     Route::get('/home', 'Admin\AdminHomeController@index');
 
+    Route::get('/championnats','Admin\AdminChampionnatsController@index');
+
 });

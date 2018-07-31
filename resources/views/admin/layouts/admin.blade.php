@@ -48,15 +48,29 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                    Drop Ton Prono
                 </a>
             </div>
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="{{url('/admin/home')}}">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('/admin/users')}}">
+                        <i class="pe-7s-user"></i>
+                        <p>Users List</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('/admin/championnats')}}">
+                        <i class="pe-7s-drawer"></i>
+                        <p>Championnats</p>
                     </a>
                 </li>
 
@@ -140,14 +154,8 @@
     <!--  Notifications Plugin    -->
     <script src="{{asset('/admin/')}}/js/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="{{asset('/admin/')}}/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="{{asset('/admin/')}}/js/demo.js"></script>
 
 
 </html>
