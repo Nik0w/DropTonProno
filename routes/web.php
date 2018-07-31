@@ -26,5 +26,6 @@ Route::get('/classement', 'ClassementController@index');
 
 Route::prefix('admin')->group(function () {
     
+    Route::get('/home', 'Admin\AdminHomeController@index');
 
 });
