@@ -29,5 +29,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/home', 'Admin\AdminHomeController@index');
 
     Route::resource('/championnats','Admin\AdminChampionnatsController');
+    Route::resource('/journees','Admin\AdminJourneeController');
 
 });
