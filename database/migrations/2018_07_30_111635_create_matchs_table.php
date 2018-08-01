@@ -18,9 +18,9 @@ class CreateMatchsTable extends Migration
             $table->integer('id_equipe1');
             $table->integer('id_equipe2');
             $table->integer('id_journee');
-            $table->smallInteger('score_equipe1');
-            $table->smallInteger('score_equipe2');
-            $table->smallInteger('nb_essai_match');
+            $table->smallInteger('score_equipe1')->nullable();
+            $table->smallInteger('score_equipe2')->nullable();
+            $table->smallInteger('nb_essai_match')->nullable();
             $table->dateTime('date_debut_match');
             $table->dateTime('date_fin_match');
         });

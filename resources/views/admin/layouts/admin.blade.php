@@ -82,6 +82,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{url('/admin/matchs')}}">
+                        <i class="pe-7s-speaker"></i>
+                        <p>Matchs</p>
+                    </a>
+                </li>
+
             </ul>
     	</div>
     </div>

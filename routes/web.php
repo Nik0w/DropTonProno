@@ -30,5 +30,6 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/championnats','Admin\AdminChampionnatsController');
     Route::resource('/journees','Admin\AdminJourneeController');
+    Route::resource('/matchs','Admin\AdminMatchsController');
 
 });
