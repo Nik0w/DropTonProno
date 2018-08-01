@@ -37,9 +37,9 @@ class AdminChampionnatsController extends Controller
         $this->validate($request,[
             'nom_championnat' => 'required|max:255',
             'date_debut' => 'required',
-            'heure_debut' => 'required',
+            'time_debut' => 'required',
             'date_fin' => 'required',
-            'heure_fin' => 'required'
+            'time_fin' => 'required'
         ]);
 
         $nom_championnat = $request->input('nom_championnat');
