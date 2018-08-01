@@ -27,6 +27,7 @@
     <!--  Light Bootstrap Table core CSS    -->
     <link href="{{asset('/admin')}}/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
+    <link href="{{asset('/admin')}}/css/demo.css" rel="stylesheet"/>
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
@@ -69,8 +70,15 @@
 
                 <li>
                     <a href="{{url('/admin/championnats')}}">
-                        <i class="pe-7s-drawer"></i>
+                        <i class="pe-7s-cup"></i>
                         <p>Championnats</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{url('/admin/journees')}}">
+                        <i class="pe-7s-flag"></i>
+                        <p>Journées</p>
                     </a>
                 </li>
 

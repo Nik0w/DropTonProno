@@ -59,4 +59,31 @@ class AdminChampionnatsController extends Controller
 
         return back();
     }
+
+    public function destroy($id){
+    	DB::table('championnats')->where('id', '=', $id)->delete();
+    	return back();
+    }
+
+    public function update($id, Request $request){
+
+    	$nom_championnat = $request->input('nom_championnat');
+        $date_debut = $request->input('date_debut');
+        $heure_debut = $request->input('time_debut');
+        $date_fin = $request->input('date_fin');
+        $heure_fin = $request->input('time_fin');
+
+        $dateTime_debut = $date_debut.' '.$heure_debut.':00';
+        $dateTime_fin = $date_fin.' '.$heure_fin.':00';
+
+    	DB::table('championnats')
+            ->where('id', $id)
+            ->update([
+            	'nom' => $nom_championnat,
+            	'date_debut' => $dateTime_debut,
+            	'date_fin' => $dateTime_fin
+            ]);
+
+        return back();
+    }
 }

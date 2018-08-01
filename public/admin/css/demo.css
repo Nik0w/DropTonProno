@@ -65,3 +65,7 @@
         position: initial;
     }
 }
+
+.inline-block{
+    display: inline-block;
+}
