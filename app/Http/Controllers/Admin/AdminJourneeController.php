@@ -26,11 +26,11 @@ class AdminJourneeController extends Controller
     public function index(){
 
         $journees = DB::table('journees')
-                        ->join('championnats', 'journees.id_championnat', '=', 'championnats.id')
+                        ->join('championnats', 'journees.id_championnat', '=', 'championnats.id_championnat')
                         ->get();
         $championnats = DB::table('championnats')->get();
 
-        dd($journees);
+        //dd($journees);
 
         return view('admin.journees',[
             'journees' => $journees,
@@ -61,9 +61,9 @@ class AdminJourneeController extends Controller
         $id_championnat = $request->input('id_championnat');
 
         DB::table('journees')->insert([
-            'nom' => $nom_journee,
-            'date_debut' => $dateTime_debut,
-            'date_fin' => $dateTime_fin,
+            'nom_journee' => $nom_journee,
+            'date_debut_journee' => $dateTime_debut,
+            'date_fin_journee' => $dateTime_fin,
             'id_championnat' => $id_championnat
         ]);
 
@@ -71,7 +71,7 @@ class AdminJourneeController extends Controller
     }
 
     public function destroy($id){
-    	DB::table('journees')->where('id', '=', $id)->delete();
+    	DB::table('journees')->where('id_journee', '=', $id)->delete();
     	return back();
     }
 
@@ -86,12 +86,15 @@ class AdminJourneeController extends Controller
         $dateTime_debut = $date_debut.' '.$heure_debut.':00';
         $dateTime_fin = $date_fin.' '.$heure_fin.':00';
 
+        $id_championnat = $request->input('id_championnat');
+
     	DB::table('journees')
-            ->where('id', $id)
+            ->where('id_journee', $id)
             ->update([
-            	'nom' => $nom_journee,
-            	'date_debut' => $dateTime_debut,
-            	'date_fin' => $dateTime_fin
+            	'nom_journee' => $nom_journee,
+            	'date_debut_journee' => $dateTime_debut,
+            	'date_fin_journee' => $dateTime_fin,
+                'id_championnat_journee' => $id_championnat
             ]);
 
         return back();

@@ -52,16 +52,16 @@ class AdminChampionnatsController extends Controller
         $dateTime_fin = $date_fin.' '.$heure_fin.':00';
 
         DB::table('championnats')->insert([
-            'nom' => $nom_championnat,
-            'date_debut' => $dateTime_debut,
-            'date_fin' => $dateTime_fin
+            'nom_championnat' => $nom_championnat,
+            'date_debut_championnat' => $dateTime_debut,
+            'date_fin_championnat' => $dateTime_fin
         ]);
 
         return back();
     }
 
     public function destroy($id){
-    	DB::table('championnats')->where('id', '=', $id)->delete();
+    	DB::table('championnats')->where('id_championnat', '=', $id)->delete();
     	return back();
     }
 
@@ -77,11 +77,11 @@ class AdminChampionnatsController extends Controller
         $dateTime_fin = $date_fin.' '.$heure_fin.':00';
 
     	DB::table('championnats')
-            ->where('id', $id)
+            ->where('id_championnat', $id)
             ->update([
-            	'nom' => $nom_championnat,
-            	'date_debut' => $dateTime_debut,
-            	'date_fin' => $dateTime_fin
+            	'nom_championnat' => $nom_championnat,
+            	'date_debut_championnat' => $dateTime_debut,
+            	'date_fin_championnat' => $dateTime_fin
             ]);
 
         return back();

@@ -14,10 +14,10 @@ class CreateChampionnatsTable extends Migration
     public function up()
     {
         Schema::create('championnats', function (Blueprint $table) {
-            $table->increments('id');
-            $table->char('nom',100);
-            $table->dateTime('date_debut');
-            $table->dateTime('date_fin');
+            $table->increments('id_championnat');
+            $table->char('nom_championnat',100);
+            $table->dateTime('date_debut_championnat');
+            $table->dateTime('date_fin_championnat');
         });
     }
 

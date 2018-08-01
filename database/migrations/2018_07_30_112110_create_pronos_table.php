@@ -14,11 +14,11 @@ class CreatePronosTable extends Migration
     public function up()
     {
         Schema::create('pronos', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_prono');
             $table->integer('id_match');
             $table->smallInteger('points_equipe1');
             $table->smallInteger('points_equipe2');
-            $table->smallInteger('nb_essai');
+            $table->smallInteger('nb_essai_prono');
             $table->boolean('is_active');
         });
     }

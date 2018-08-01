@@ -83,37 +83,37 @@
                     @foreach($championnats as $championnat)
 
                     <tr>
-                        <td>{{$championnat->id}}</td>
-                        <td>{{$championnat->nom}}</td>
-                        <td>{{$championnat->date_debut}}</td>
-                        <td>{{$championnat->date_fin}}</td>
+                        <td>{{$championnat->id_championnat}}</td>
+                        <td>{{$championnat->nom_championnat}}</td>
+                        <td>{{$championnat->date_debut_championnat}}</td>
+                        <td>{{$championnat->date_fin_championnat}}</td>
                         <td>
-                            <form class="inline-block" action="{{url()->current().'/'.$championnat->id}}" method="POST">
+                            <form class="inline-block" action="{{url()->current().'/'.$championnat->id_championnat}}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button class="btn" type="submit"><i class="pe-7s-close"></i>Supprimer</button>
                             </form>
 
-                            <button class="btn" type="button" data-toggle="collapse" data-target="#{{'editChampCollapse'.$championnat->id}}" aria-expanded="false" aria-controls="{{'editChampCollapse'.$championnat->id}}">
+                            <button class="btn" type="button" data-toggle="collapse" data-target="#{{'editChampCollapse'.$championnat->id_championnat}}" aria-expanded="false" aria-controls="{{'editChampCollapse'.$championnat->id_championnat}}">
                             <i class="pe-7s-edit"></i>
                             Modifier
                           </button>
                         </td>
 
-                        <div class="collapse" id="{{'editChampCollapse'.$championnat->id}}">
+                        <div class="collapse" id="{{'editChampCollapse'.$championnat->id_championnat}}">
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title">Modifier le championnat</h4>
                                 </div>
                                 <div class="content">
-                                    <form action="{{url()->current().'/'.$championnat->id}}" method="POST">
+                                    <form action="{{url()->current().'/'.$championnat->id_championnat}}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('PUT') }}
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Nom du championnat :</label>
-                                                    <input type="text" class="form-control" placeholder="nom :" name="nom_championnat" value="{{$championnat->nom}}">
+                                                    <input type="text" class="form-control" placeholder="nom :" name="nom_championnat" value="{{$championnat->nom_championnat}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -122,13 +122,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Date de début :</label>
-                                                    <input type="date" name="date_debut" class="form-control" value="{{date_format(new DateTime($championnat->date_debut), 'Y-m-d')}}">
+                                                    <input type="date" name="date_debut" class="form-control" value="{{date_format(new DateTime($championnat->date_debut_championnat), 'Y-m-d')}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Heure de début :</label>
-                                                    <input type="time" name="time_debut" class="form-control" value="{{date_format(new DateTime($championnat->date_debut), 'H:i')}}">
+                                                    <input type="time" name="time_debut" class="form-control" value="{{date_format(new DateTime($championnat->date_debut_championnat), 'H:i')}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -137,13 +137,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Date de fin :</label>
-                                                    <input type="date" name="date_fin" class="form-control" value="{{date_format(new DateTime($championnat->date_fin), 'Y-m-d')}}">
+                                                    <input type="date" name="date_fin" class="form-control" value="{{date_format(new DateTime($championnat->date_fin_championnat), 'Y-m-d')}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Heure de fin :</label>
-                                                    <input type="time" name="time_fin" class="form-control" value="{{date_format(new DateTime($championnat->date_fin), 'H:i')}}">
+                                                    <input type="time" name="time_fin" class="form-control" value="{{date_format(new DateTime($championnat->date_fin_championnat), 'H:i')}}">
                                                 </div>
                                             </div>
                                         </div>

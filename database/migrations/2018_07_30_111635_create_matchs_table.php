@@ -14,14 +14,15 @@ class CreateMatchsTable extends Migration
     public function up()
     {
         Schema::create('matchs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_match');
             $table->integer('id_equipe1');
             $table->integer('id_equipe2');
             $table->integer('id_journee');
-            $table->smallInteger('score');
-            $table->smallInteger('nb_essai');
-            $table->dateTime('date_debut');
-            $table->dateTime('date_fin');
+            $table->smallInteger('score_equipe1');
+            $table->smallInteger('score_equipe2');
+            $table->smallInteger('nb_essai_match');
+            $table->dateTime('date_debut_match');
+            $table->dateTime('date_fin_match');
         });
     }
 
