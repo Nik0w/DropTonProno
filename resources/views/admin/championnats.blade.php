@@ -76,6 +76,7 @@
                     <th>Nom</th>
                     <th>Date début</th>
                     <th>Date fin</th>
+                    <th>Actions</th>
                 </thead>
                 <tbody>
                     @foreach($championnats as $championnat)
@@ -85,6 +86,10 @@
                         <td>{{$championnat->nom}}</td>
                         <td>{{$championnat->date_debut}}</td>
                         <td>{{$championnat->date_fin}}</td>
+                        <td>
+                            <a href="#">Delete</a>
+                            <a href="#">Modify</a>
+                        </td>
                     </tr>
 
                     @endforeach
