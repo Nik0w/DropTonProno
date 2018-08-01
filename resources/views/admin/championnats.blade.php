@@ -14,7 +14,8 @@
             <h4 class="title">Créer un championnat</h4>
         </div>
         <div class="content">
-            <form>
+            <form action="" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -25,24 +26,36 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Date de début :</label>
                             <input type="date" name="date_debut" class="form-control">
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Heure de début :</label>
+                            <input type="time" name="time_debut" class="form-control">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Date de fin :</label>
                             <input type="date" name="date_fin" class="form-control">
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Heure de fin :</label>
+                            <input type="time" name="time_fin" class="form-control">
+                        </div>
+                    </div>
                 </div>
 
-                <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                <button type="submit" class="btn btn-info btn-fill pull-right">Créer</button>
                 <div class="clearfix"></div>
             </form>
         </div>
@@ -53,7 +66,7 @@
  <div class="col-md-12">
     <div class="card">
         <div class="header">
-            <h4 class="title">Striped Table with Hover</h4>
+            <h4 class="title">Liste des Championnats</h4>
             <p class="category">Here is a subtitle for this table</p>
         </div>
         <div class="content table-responsive table-full-width">
@@ -65,12 +78,16 @@
                     <th>Date fin</th>
                 </thead>
                 <tbody>
+                    @foreach($championnats as $championnat)
+
                     <tr>
-                        <td>1</td>
-                        <td>Dakota Rice</td>
-                        <td>$36,738</td>
-                        <td>Niger</td>
+                        <td>{{$championnat->id}}</td>
+                        <td>{{$championnat->nom}}</td>
+                        <td>{{$championnat->date_debut}}</td>
+                        <td>{{$championnat->date_fin}}</td>
                     </tr>
+
+                    @endforeach
                 </tbody>
             </table>
 
