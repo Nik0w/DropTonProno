@@ -94,7 +94,7 @@ class AdminJourneeController extends Controller
             	'nom_journee' => $nom_journee,
             	'date_debut_journee' => $dateTime_debut,
             	'date_fin_journee' => $dateTime_fin,
-                'id_championnat_journee' => $id_championnat
+                'id_championnat' => $id_championnat
             ]);
 
         return back();

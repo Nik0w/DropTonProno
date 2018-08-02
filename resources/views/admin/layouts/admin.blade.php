@@ -89,6 +89,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{url('/admin/equipes')}}">
+                        <i class="pe-7s-speaker"></i>
+                        <p>Equipes</p>
+                    </a>
+                </li>
+
             </ul>
     	</div>
     </div>
@@ -129,6 +136,15 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     @yield('content')
                 </div>
             </div>

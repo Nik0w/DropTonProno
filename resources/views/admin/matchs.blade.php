@@ -21,13 +21,23 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Equipe 1 :</label>
-                            <input type="text" class="form-control" placeholder="nom :" name="" value="">
+                            <select class="form-control" name="id_championnat">
+                                <option selected>Choose...</option>
+                                @foreach($equipes as $equipe)
+                                    <option value="{{$equipe->id_journee}}">{{$equipe->nom_journee}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Equipe 2 :</label>
-                            <input type="text" class="form-control" placeholder="nom :" name="nom_journee" value="">
+                            <select class="form-control" name="id_championnat">
+                                <option selected>Choose...</option>
+                                @foreach($equipes as $equipe)
+                                    <option value="{{$equipe->id_journee}}">{{$equipe->nom_journee}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>

@@ -131,7 +131,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Nom du journee :</label>
-                                                    <input type="text" class="form-control" placeholder="nom :" name="nom_championnat" value="{{$journee->nom_journee}}">
+                                                    <input type="text" class="form-control" placeholder="nom :" name="nom_journee" value="{{$journee->nom_journee}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -171,9 +171,12 @@
                                                 <div class="form-group">
                                                     <label>Championnat :</label>
                                                    <select class="form-control" name="id_championnat">
-                                                    <option selected>Choose...</option>
                                                     @foreach($championnats as $championnat)
-                                                        <option value="{{$championnat->id_championnat}}">{{$championnat->nom_championnat}}</option>
+                                                        @if($championnat->id_championnat == $journee->id_championnat)
+                                                            <option selected value="{{$championnat->id_championnat}}">{{$championnat->nom_championnat}}</option>
+                                                        @else
+                                                            <option value="{{$championnat->id_championnat}}">{{$championnat->nom_championnat}}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                                 </div>

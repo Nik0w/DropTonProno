@@ -29,13 +29,15 @@ class AdminMatchsController extends Controller
                         ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
                         ->get();
 
+        $equipes = DB::table('equipes')->get();
         $journees = DB::table('journees')->get();
 
         //dd($journees);
 
         return view('admin.matchs',[
             'matchs' => $matchs,
-            'journees' => $journees
+            'journees' => $journees,
+            'equipes' => $equipes
         ]);
     }
 
