@@ -30,6 +30,14 @@ body{
     font-size: 1.6rem;
 }
 
+.grey-bg{
+	background-color: #e0e0e0 !important;
+}
+
+.small-txt{
+	font-size: 12px !important;
+}
+
 a.cta{
 	transition: opacity ease .3s;
 	text-decoration: none;
@@ -214,6 +222,10 @@ a.cta:hover{
 .tableau-res .essai-point span{
 	text-transform: uppercase;
 	font-size: 1em;
+}
+
+.tableau-res:last-child{
+	margin-bottom: 450px;
 }
 
 /******ACCUEIL******/

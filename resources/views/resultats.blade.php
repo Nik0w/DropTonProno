@@ -38,7 +38,7 @@
             <div class="tableau-res">
                 <form action="" method="POST">
                     {{csrf_field()}}
-                    <input type="hidden" name="match" value="1">
+                    <input type="hidden" name="match" value="{{$match->id_match}}">
                     <div class="bg-white padding-top">
                         <div class="row">
                             <div class="col-6">
@@ -46,14 +46,18 @@
                                     <div class="col-12 col-md-10">
                                         <div class="row">
                                             <div class="col-6 logo-equipe padding-left">
-                                                <img src="{{ asset('img/logo-ubb.png') }}">
+                                                <img src="{{ asset('img/equipes/'.$match->logo_equipe1) }}">
                                             </div>
-                                            <div class="col-6 nom-equipe"><div><h2>{{$match->id_equipe1}}</h2></div></div>
+                                            <div class="col-6 nom-equipe"><div><h2>{{$match->nom_equipe1}}</h2></div></div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 score-equipe-1">
                                         <div class="form-group">
+                                            @if($match->date_debut_match > date("Y-m-d H:i:s"))
                                             <input type="text" class="form-control" id="score_equipe1" name="score_equipe1" aria-describedby="score equipe 1" placeholder="0">
+                                            @else
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{$match->score_equipe1}}">
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -62,15 +66,19 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-10 col-sm-push-2">
                                         <div class="row">
-                                            <div class="col-6 nom-equipe"><div><h2>{{$match->id_equipe2}}</h2></div></div>
+                                            <div class="col-6 nom-equipe"><div><h2>{{$match->nom_equipe2}}</h2></div></div>
                                             <div class="col-6 logo-equipe text-right padding-right">
-                                                <img src="{{ asset('img/logo-toulouse.png') }}">
+                                                <img src="{{ asset('img/equipes/'.$match->logo_equipe2) }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-2 col-sm-pull-10">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="score_equipe2" name="score_equipe2" aria-describedby="score equipe 2" placeholder="0">
+                                             @if($match->date_debut_match > date("Y-m-d H:i:s"))
+                                            <input type="text" class="form-control" id="score_equipe2" name="score_equipe2" aria-describedby="score equipe 1" placeholder="0">
+                                            @else
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{$match->score_equipe2}}">
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -84,13 +92,16 @@
                                 <div class="col-4 col-md-12 d-lg-none d-block"><span>Points</span> __</div>
                             </div>
                         </div>
-
-                        <div class="point d-none d-lg-block">
-                            <p>
-                                <span>__</span>
-                                <br />POINTS
-                            </p>
+                        @if($match->date_debut_match > date("Y-m-d H:i:s"))
+                        <div class="point d-none d-lg-block grey-bg">
+                            <p><span class="small-txt">Match pas encore joué</span></p>
                         </div>
+                        @else
+                        <div class="point d-none d-lg-block">
+                            <p><span>__</span><br />POINTS</p>
+                        </div>
+                        @endif
+                        
 
                     </div>
 

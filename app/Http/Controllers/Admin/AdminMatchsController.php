@@ -25,18 +25,12 @@ class AdminMatchsController extends Controller
     */
     public function index(){
 
-       /** $matchs = DB::table('matchs')
-                        ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
-                        ->join('equipes', 'equipes.id_equipe', '=', 'matchs.id_equipe1')
-                        ->join('equipes', 'equipes.id_equipe', '=', 'matchs.id_equipe2')
-                        ->get();
-    **/
         $matchs = DB::table('matchs')
-        ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
-        ->join('equipes as eq1', 'matchs.id_equipe1', '=', 'eq1.id_equipe')
-        ->join('equipes as eq2', 'matchs.id_equipe2', '=', 'eq2.id_equipe')
-        ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','eq1.nom_equipe as nom_equipe1','eq2.nom_equipe as nom_equipe2','journees.nom_journee'])
-        ->get();
+                    ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
+                    ->join('equipes as eq1', 'matchs.id_equipe1', '=', 'eq1.id_equipe')
+                    ->join('equipes as eq2', 'matchs.id_equipe2', '=', 'eq2.id_equipe')
+                    ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','eq1.nom_equipe as nom_equipe1','eq2.nom_equipe as nom_equipe2','journees.nom_journee'])
+                    ->get();
 
         $equipes = DB::table('equipes')->get();
         $journees = DB::table('journees')->get();
@@ -64,6 +58,8 @@ class AdminMatchsController extends Controller
 
         $id_equipe1 = $request->input('id_equipe1');
         $id_equipe2 = $request->input('id_equipe2');
+        $score_equipe1 = $request->input('score_equipe1');
+        $score_equipe2 = $request->input('score_equipe2');
         $date_debut = $request->input('date_debut');
         $heure_debut = $request->input('time_debut');
         $date_fin = $request->input('date_fin');
@@ -78,6 +74,8 @@ class AdminMatchsController extends Controller
             'id_equipe1' => $id_equipe1,
             'id_equipe2' => $id_equipe2,
             'id_journee' => $id_journee,
+            'score_equipe1' => $score_equipe1,
+            'score_equipe2' => $score_equipe2,
             'date_debut_match' => $dateTime_debut,
             'date_fin_match' => $dateTime_fin
         ]);
