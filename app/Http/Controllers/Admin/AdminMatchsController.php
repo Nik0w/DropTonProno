@@ -25,9 +25,18 @@ class AdminMatchsController extends Controller
     */
     public function index(){
 
-        $matchs = DB::table('matchs')
+       /** $matchs = DB::table('matchs')
                         ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
+                        ->join('equipes', 'equipes.id_equipe', '=', 'matchs.id_equipe1')
+                        ->join('equipes', 'equipes.id_equipe', '=', 'matchs.id_equipe2')
                         ->get();
+    **/
+        $matchs = DB::table('matchs')
+        ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
+        ->join('equipes as eq1', 'matchs.id_equipe1', '=', 'eq1.id_equipe')
+        ->join('equipes as eq2', 'matchs.id_equipe2', '=', 'eq2.id_equipe')
+        ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','eq1.nom_equipe as nom_equipe1','eq2.nom_equipe as nom_equipe2','journees.nom_journee'])
+        ->get();
 
         $equipes = DB::table('equipes')->get();
         $journees = DB::table('journees')->get();
@@ -44,15 +53,17 @@ class AdminMatchsController extends Controller
     public function store(Request $request){
 
         $this->validate($request,[
-            'nom_journee' => 'required|max:255',
+            'id_equipe1' => 'required',
+            'id_equipe2' => 'required',
             'date_debut' => 'required',
             'time_debut' => 'required',
             'date_fin' => 'required',
             'time_fin' => 'required',
-            'id_championnat' => 'required'
+            'id_journee' => 'required'
         ]);
 
-        $nom_journee = $request->input('nom_journee');
+        $id_equipe1 = $request->input('id_equipe1');
+        $id_equipe2 = $request->input('id_equipe2');
         $date_debut = $request->input('date_debut');
         $heure_debut = $request->input('time_debut');
         $date_fin = $request->input('date_fin');
@@ -61,20 +72,21 @@ class AdminMatchsController extends Controller
         $dateTime_debut = $date_debut.' '.$heure_debut.':00';
         $dateTime_fin = $date_fin.' '.$heure_fin.':00';
 
-        $id_championnat = $request->input('id_championnat');
+        $id_journee = $request->input('id_journee');
 
-        DB::table('journees')->insert([
-            'nom_journee' => $nom_journee,
-            'date_debut_journee' => $dateTime_debut,
-            'date_fin_journee' => $dateTime_fin,
-            'id_championnat' => $id_championnat
+        DB::table('matchs')->insert([
+            'id_equipe1' => $id_equipe1,
+            'id_equipe2' => $id_equipe2,
+            'id_journee' => $id_journee,
+            'date_debut_match' => $dateTime_debut,
+            'date_fin_match' => $dateTime_fin
         ]);
 
         return back();
     }
 
     public function destroy($id){
-    	DB::table('journees')->where('id_journee', '=', $id)->delete();
+    	DB::table('matchs')->where('id_match', '=', $id)->delete();
     	return back();
     }
 
