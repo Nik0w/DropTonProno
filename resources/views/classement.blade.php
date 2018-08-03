@@ -13,14 +13,7 @@
 
 
     <div class="container">
-        <div class="row debug">
-            <div class="col-12">DEBUG :<hr></div>
-            <div class="col-12">POST : 
-                {{var_dump($_POST)}}
-                <hr></div>
-            <div class="col-12">GET :
-                {{var_dump($_GET)}}</div>
-        </div>
+
         <div class="row resultats">
             <div class=".d-none .d-sm-block col-md-8 encartPub"></div>
 

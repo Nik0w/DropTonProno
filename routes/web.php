@@ -16,11 +16,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
 Route::get('/resultats', 'Resultats@index');
-Route::post('/resultats', 'Resultats@index');
+Route::post('/resultats', 'Resultats@createProno');
 
 Route::get('/classement', 'ClassementController@index');
 

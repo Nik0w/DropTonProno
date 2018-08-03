@@ -14,14 +14,7 @@
 
 
     <div class="container">
-        <div class="row debug">
-            <div class="col-12">DEBUG :<hr></div>
-            <div class="col-12">POST : 
-                {{var_dump($_POST)}}
-                <hr></div>
-            <div class="col-12">GET :
-                {{var_dump($_GET)}}</div>
-        </div>
+        
         <div class="row resultats">
             <div class=".d-none .d-sm-block col-md-8 encartPub"></div>
 
@@ -48,15 +41,20 @@
                                             <div class="col-6 logo-equipe padding-left">
                                                 <img src="{{ asset('img/equipes/'.$match->logo_equipe1) }}">
                                             </div>
-                                            <div class="col-6 nom-equipe"><div><h2>{{$match->nom_equipe1}}</h2></div></div>
+                                            <div class="col-6 nom-equipe">
+                                                <div>
+                                                    <h2>{{$match->nom_equipe1}}</h2>
+                                                    <input type="hidden" name="id_equipe1" value="{{$match->id_equipe1}}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-2 score-equipe-1">
                                         <div class="form-group">
                                             @if($match->date_debut_match > date("Y-m-d H:i:s"))
-                                            <input type="text" class="form-control" id="score_equipe1" name="score_equipe1" aria-describedby="score equipe 1" placeholder="0">
+                                                <input type="text" class="form-control" id="score_equipe1" name="score_equipe1" aria-describedby="score equipe 1" @if($match->points_equipe1 != null) placeholder="{{$match->points_equipe1}}"@else placeholder="--" @endif>
                                             @else
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{$match->score_equipe1}}">
+                                                <input type="text" readonly class="form-control-plaintext" id="staticEmail" @if($match->points_equipe1 != null) placeholder="{{$match->points_equipe1}}"@else placeholder="--" @endif>
                                             @endif
                                         </div>
                                     </div>
@@ -66,7 +64,7 @@
                                 <div class="row">
                                     <div class="col-12 col-sm-10 col-sm-push-2">
                                         <div class="row">
-                                            <div class="col-6 nom-equipe"><div><h2>{{$match->nom_equipe2}}</h2></div></div>
+                                            <div class="col-6 nom-equipe"><div><h2>{{$match->nom_equipe2}}</h2><input type="hidden" name="id_equipe2" value="{{$match->id_equipe2}}"></div></div>
                                             <div class="col-6 logo-equipe text-right padding-right">
                                                 <img src="{{ asset('img/equipes/'.$match->logo_equipe2) }}">
                                             </div>
@@ -75,9 +73,9 @@
                                     <div class="col-12 col-sm-2 col-sm-pull-10">
                                         <div class="form-group">
                                              @if($match->date_debut_match > date("Y-m-d H:i:s"))
-                                            <input type="text" class="form-control" id="score_equipe2" name="score_equipe2" aria-describedby="score equipe 1" placeholder="0">
+                                            <input type="text" class="form-control" id="score_equipe2" name="score_equipe2" aria-describedby="score equipe 1" @if($match->points_equipe2 != null) placeholder="{{$match->points_equipe2}}"@else placeholder="--" @endif>
                                             @else
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{$match->score_equipe2}}">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" @if($match->points_equipe2 != null) placeholder="{{$match->points_equipe2}}"@else placeholder="--" @endif>
                                             @endif
                                         </div>
                                     </div>
@@ -108,7 +106,7 @@
                     <div class="valid-prono">
                         <div class="row">
                             <div class="col-12 col-md-3 col-md-offset-9 text-right">
-                                <button class="cta bg-orange" type="submit">Je valide mon prono !</button>
+                                <button class="cta bg-orange" type="submit">Je valide mon prono ></button>
                             </div>
                         </div>
                     </div>
