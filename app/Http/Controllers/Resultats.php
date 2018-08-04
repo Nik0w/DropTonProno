@@ -35,27 +35,44 @@ class Resultats extends Controller
     public function createProno(Request $request){
 
     	$this->validate($request,[
-            'id_equipe1' => 'required',
-            'id_equipe2' => 'required',
+            'score_equipe1' => 'required',
+            'score_equipe2' => 'required',
             'match' => 'required',
         ]);
 
-     	$id_equipe1 = $request->input('id_equipe1');
+        $id_equipe1 = $request->input('id_equipe1');
         $id_equipe2 = $request->input('id_equipe2');
         $id_match = $request->input('match');
         $score_equipe1 = $request->input('score_equipe1');
         $score_equipe2 = $request->input('score_equipe2');
 		$id_user = Auth::id();
-    	
-    	DB::table('pronos')->insert([
-    		'id_match' => $id_match,
-            'points_equipe1' => $score_equipe1,
-            'points_equipe2' => $score_equipe2,
-            'id_user' => $id_user,
-            'nb_essai_prono' => 0,
-            'is_active' => 1
-        ]);
 
+        $prono = DB::table('pronos')
+                    ->join('users', 'pronos.id_user', '=', 'users.id')
+                    ->where('pronos.id_match','=',$request->input('match'))
+                    ->first();
+
+        //dd($prono);
+        if(count($prono) > 0){
+        	// UN PRONO A DEJA ETAIT FAIT
+        	DB::table('pronos')
+            ->where('id_prono','=', $prono->id_prono)
+            ->update([
+            	'points_equipe1' => $score_equipe1,
+	            'points_equipe2' => $score_equipe2,
+	            'nb_essai_prono' => 0
+            ]);
+        }else{
+        	// PAS DE PRONO SUR CE MATCH
+	    	DB::table('pronos')->insert([
+	    		'id_match' => $id_match,
+	            'points_equipe1' => $score_equipe1,
+	            'points_equipe2' => $score_equipe2,
+	            'id_user' => $id_user,
+	            'nb_essai_prono' => 0,
+	            'is_active' => 1
+	        ]);
+        }
         return back();
     }
 }
