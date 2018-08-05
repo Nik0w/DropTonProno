@@ -1,6 +1,6 @@
     <div class="container-fluid no-padding">
 
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light nav-sticky">
             
             <div class="logo text-center d-block d-md-none">
                 <a class="nav-link" href="{{url('/')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
