@@ -96,7 +96,7 @@
                         </div>
                         @else
                         <div class="point d-none d-lg-block">
-                            <p><span>__</span><br />POINTS</p>
+                            <p><span>{{$match->nb_points}}</span><br />POINTS</p>
                         </div>
                         @endif
                         
