@@ -19,8 +19,8 @@
         </div>
 
         <div class="col-12 text-center zone-cta">
-            <a class="cta bg-orange" href="{{ url('/login') }}">Je me connecte ></a>
-            <a class="cta bg-bleu" href="{{ url('/register') }}">Je m'inscris ></a>
+            <a class="cta bg-orange" href="{{ url('/register') }}">Je m'inscris ></a>
+            <a class="cta bg-bleu" href="{{ url('/login') }}">Je me connecte ></a>
         </div>
 
     </div>

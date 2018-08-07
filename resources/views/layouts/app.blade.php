@@ -22,24 +22,7 @@
 <body>
 
    <div id="app">
-      <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="row debug">
-                  <div class="col-12">DEBUG :<hr></div>
-                  <div class="col-12">POST : 
-                      {{var_dump($_POST)}}
-                      <hr></div>
-                  <div class="col-12">GET :
-                      {{var_dump($_GET)}}
-                  </div>
-                  <div class="col-12">USER :
-                      {{Auth::user()}}
-                  </div>
-              </div>
-            </div>
-          </div>
-</div>
+    
      @yield('content')
 
      <div class="container-fluid footer text-center">
@@ -60,5 +43,6 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
 </body>
 </html>

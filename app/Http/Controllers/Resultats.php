@@ -21,7 +21,10 @@ class Resultats extends Controller
                     ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
                     ->join('equipes as eq1', 'matchs.id_equipe1', '=', 'eq1.id_equipe')
                     ->join('equipes as eq2', 'matchs.id_equipe2', '=', 'eq2.id_equipe')
-                    ->leftJoin('pronos', 'matchs.id_match', '=', 'pronos.id_match')
+                    ->leftJoin('pronos', function($join){
+					        $join->on('pronos.id_match', '=', 'matchs.id_match')
+					        ->where('pronos.id_user', '=', Auth::id());
+					})
                     ->leftJoin('points', 'points.id_point', '=', 'pronos.id_point')
                     ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','matchs.score_equipe1','matchs.score_equipe2','eq1.nom_equipe as nom_equipe1','eq1.logo_equipe as logo_equipe1','eq2.nom_equipe as nom_equipe2','eq2.logo_equipe as logo_equipe2','journees.nom_journee','pronos.points_equipe1','pronos.points_equipe2','pronos.nb_essai_prono','points.nb_points'])
                     ->orderBy('matchs.date_debut_match', 'asc')
@@ -32,7 +35,6 @@ class Resultats extends Controller
         return view('resultats',[
             'matchs' => $matchs,
         ]);
-        return view('resultats');
     }
 
     public function checkPoints(){
@@ -96,6 +98,7 @@ class Resultats extends Controller
         $prono = DB::table('pronos')
                     ->join('users', 'pronos.id_user', '=', 'users.id')
                     ->where('pronos.id_match','=',$request->input('match'))
+                    ->where('pronos.id_user','=',$id_user)
                     ->first();
 
         //dd($prono);
@@ -119,6 +122,6 @@ class Resultats extends Controller
 	            'is_active' => 1
 	        ]);
         }
-        return back();
+        return back()->with('success',['Le pronostic a bien était crée/édité']);
     }
 }

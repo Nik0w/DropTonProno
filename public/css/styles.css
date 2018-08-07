@@ -62,6 +62,10 @@ a.cta:hover{
 	background-color: #b9f6ff;
 }
 
+.color-orange{
+	color:#ffb400;
+}
+
 .padding-top{
 	padding-top: 15px;
 }
@@ -75,27 +79,77 @@ a.cta:hover{
 	font-family: 'Lato', sans-serif;
 }
 
-.container{
-	
-}
-
-
 .logo{
 	max-width: 75%;
 }
+
+.no-padding{
+	padding: 0;
+}
+
+/****NOTIFS****/
+
+#notificationsZone{
+	
+}
+
+/****NUAGES***/
+
+@keyframes translateNuages {
+  100% {
+    transform: translateX(1920px);
+  }
+}
+
+.nuages{
+	position: absolute;
+	overflow: hidden;
+	width:100%;
+	height: 100%;
+}
+.nuages img{
+	position: absolute;
+	transform: translateX(-350px);
+}
+.nuages img:nth-child(1){
+	animation: translateNuages 21s linear infinite;
+}
+.nuages img:nth-child(2){
+	animation: translateNuages 26s linear 4s infinite;
+	top:120px;
+}
+.nuages img:nth-child(3){
+	animation: translateNuages 31s linear 2s infinite;
+	top:200px;
+}
+
+
+/****MENU*****/
 
 .navbar{
 	background-color: white;
 	padding: 20px;
 }
 
+.navbar ul{
+	display: inline-block;
+}
+
+#navbar.sticky{
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	transition: all ease .4s;
+	transform: translateY(0);
+}
+
+#navbar.sticky .navbar{
+	box-shadow: 0px 5px 5px 0px rgba(0,0,0,.2);
+}
+
 .navbar a{
 	color: #1b6d81;
 	font-weight: 600;
-}
-
-.no-padding{
-	padding: 0;
 }
 
 .navbar a:hover{
@@ -143,13 +197,57 @@ a.cta:hover{
 
 /******RESULTATS******/
 
+.carousel-inner{
+    max-width: 80%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.carousel-inner .carousel-item .row div{
+	text-align: center;
+}
+
+.carousel-inner .carousel-item .row div a{
+	display: block;
+    border: 2px solid #146d82;
+    padding: 8px;
+    font-size: 14px;
+    color: #146d82;
+    text-decoration: none;
+}
+
+.carousel-inner .carousel-item .row div a:hover{
+    border: 2px solid #489aad;
+    color: #489aad;
+}
+
+.carousel-inner .carousel-item .row div a.active-journee{
+	display: block;
+    border: 2px solid #ffb400;
+    padding: 8px;
+    font-size: 14px;
+    color: #ffb400;
+}
+
+.carousel-control-next, .carousel-control-prev {
+	width: 8%;
+}
+
 .resultats p{
 	text-align: center;
 }
 
+.resultats .text-resultats{
+	font-size: 22px;
+    line-height: 34px;
+    letter-spacing: 1px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .tableau-res {
 	position: relative;
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 }
 
 .tableau-res .nom-equipe{
@@ -230,6 +328,32 @@ a.cta:hover{
 	margin-bottom: 450px;
 }
 
+.tableau-res .score-input-disabled{
+	background-color: white;
+}
+
+.tableau-res .info-prono{
+	font-size: 12px;
+    padding: 8px 0;
+    color: lightgrey;
+}
+
+@keyframes animCta {
+  100% {
+    transform: translateX(6px);
+  }
+}
+
+.valid-prono button div{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.valid-prono button:hover div{
+	transform: translateX(0px);
+	animation: animCta .3s ease alternate infinite;
+}
+
 /******ACCUEIL******/
 
 .header-welcome a{
@@ -242,6 +366,12 @@ a.cta:hover{
 	top: 12px;
 	margin: 30px 0 0 0;
     display: inline-block;
+}
+
+.welcome .zone-cta a{
+	text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 20px 30px;
 }
 
 .welcome .zone-cta a:nth-child(1){
@@ -302,13 +432,13 @@ a.cta:hover{
 
 @media (min-width: 576px) {}
 
-@media (min-width: 768px) {}
-
-@media (min-width: 992px) { 
-
+@media (min-width: 768px) {
 	.logo{
 		max-width: 100%;
 	}
+}
+
+@media (min-width: 992px) { 
 
 	.padding-left{
 		padding-left: 90px;
@@ -331,7 +461,7 @@ a.cta:hover{
 		width: 80px;
 		height: 80px;
 		right: -40px;
-		top: 21px;
+		top: 51px;
 		border-radius:50%;
 		background-color: green;
 		color: white;
@@ -347,6 +477,7 @@ a.cta:hover{
 	.tableau-res .point p span{
 		font-size: 3.6rem;
 		line-height: 0;
+	    padding-left: 7px;
 	}
 
 
