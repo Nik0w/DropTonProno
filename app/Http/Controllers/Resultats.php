@@ -17,6 +17,9 @@ class Resultats extends Controller
     //
     public function index()
     {
+
+    	$this->checkPoints();
+
         $matchs = DB::table('matchs')
                     ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
                     ->join('equipes as eq1', 'matchs.id_equipe1', '=', 'eq1.id_equipe')
@@ -31,7 +34,6 @@ class Resultats extends Controller
                     ->get();
         
         //dd($matchs);
-        $this->checkPoints();
         return view('resultats',[
             'matchs' => $matchs,
         ]);
@@ -49,33 +51,44 @@ class Resultats extends Controller
                     ->get();
 
         foreach ($pronosTermines as $prono) {
-        	if($prono->points_equipe1 > $prono->points_equipe2 
-        		&& $prono->score_equipe1 > $prono->score_equipe2){
-    			$score+=5;
-        	}
-        	if($prono->points_equipe1 == $prono->score_equipe1){
-        		$score+=20;
-        	}
-        	if($prono->points_equipe2 == $prono->score_equipe2){
-        		$score+=20;
-        	}
-        	if($prono->points_equipe1 == $prono->score_equipe1 && $prono->points_equipe2 == $prono->score_equipe2 && $prono->points_equipe1 == $prono->score_equipe1){
-        		$score+=30;
-        	}
+        	//si equipe 1 gagne et prono equipe 1 gagnante
+        	if($prono->score_equipe1 != NULL && $prono->score_equipe2 != NULL){
 
-        	$pointsInsertID = DB::table('points')->insertGetId([
-	    		'nb_points' => $score,
-	        ]);
+	        	if($prono->points_equipe1 > $prono->points_equipe2 
+	        		&& $prono->score_equipe1 > $prono->score_equipe2){
+	    			$score+=5;
+	        	}
+	        	//si equipe 2 gagne et prono equipe 2 gagnante
+	        	if($prono->points_equipe2 > $prono->points_equipe1 
+	        		&& $prono->score_equipe2 > $prono->score_equipe1){
+	    			$score+=5;
+	        	}
+	        	//si score exact equipe 1
+	        	if($prono->points_equipe1 == $prono->score_equipe1){
+	        		$score+=20;
+	        	}
+	        	//si score exact equipe 2
+	        	if($prono->points_equipe2 == $prono->score_equipe2){
+	        		$score+=20;
+	        	}
+	        	//si match nul et proo match nul
+	        	if($prono->points_equipe1 == $prono->score_equipe1 && $prono->points_equipe2 == $prono->score_equipe2 && $prono->points_equipe1 == $prono->score_equipe1){
+	        		$score+=30;
+	        	}
 
-	        DB::table('pronos')
-	            ->where('id_prono','=', $prono->id_prono)
-	            ->update([
-	            	'id_point' => $pointsInsertID,
-		            'is_active' => '0'
-	            ]);
+	        	$pointsInsertID = DB::table('points')->insertGetId([
+		    		'nb_points' => $score,
+		        ]);
 
-	        $score = 0;
+		        DB::table('pronos')
+		            ->where('id_prono','=', $prono->id_prono)
+		            ->update([
+		            	'id_point' => $pointsInsertID,
+			            'is_active' => '0'
+		            ]);
 
+		        $score = 0;
+	    	}
         }
 
     }
@@ -122,6 +135,6 @@ class Resultats extends Controller
 	            'is_active' => 1
 	        ]);
         }
-        return back()->with('success',['Le pronostic a bien était crée/édité']);
+        return redirect()->back()->with('success','Le pronostic a bien était crée/édité');
     }
 }

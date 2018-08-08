@@ -14,6 +14,19 @@
 
 
     <div class="container">
+
+        <div class="row" id="notificationsZone">
+            @if(session()->has('success'))
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible show" role="alert">
+                  <strong>Félicitation !</strong>{{\Session::get('success')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </div>
+            @endif
+        </div>
         
         <div class="row resultats">
             <div class=".d-none .d-sm-block col-md-8 encartPub"></div>
@@ -24,20 +37,6 @@
                 Monte au classement pour gagner des >cadeaux</p>
             </div>
 
-        </div>
-
-        <div class="row" id="notificationsZone">
-            {{var_dump(session()->get('success'))}}
-            @if(isset($success))
-            <div class="col-12">
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <strong>Félicitation !</strong>{{\Session::get('success')}}
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-            </div>
-            @endif
         </div>
 
         <div class="row journeesCarousel">
@@ -161,6 +160,10 @@
                                     <div class="point d-block d-lg-none grey-bg">
                                         <p><span class="small-txt">Match pas encore joué</span></p>
                                     </div>
+                                    @elseif($match->date_debut_match <= date("Y-m-d H:i:s") && $match->date_fin_match >= date("Y-m-d H:i:s"))
+                                    <div class="point d-block d-lg-none">
+                                        <p><span>Match en cours</p>
+                                    </div>
                                     @else
                                     <div class="point d-block d-lg-none">
                                         <p><span>{{$match->nb_points}}</span>POINTS</p>
@@ -172,6 +175,10 @@
                         @if($match->date_debut_match > date("Y-m-d H:i:s"))
                         <div class="point d-none d-lg-block grey-bg">
                             <p><span class="small-txt">Match pas encore joué</span></p>
+                        </div>
+                        @elseif($match->date_debut_match <= date("Y-m-d H:i:s") && $match->date_fin_match >= date("Y-m-d H:i:s"))
+                        <div class="point d-none d-lg-block grey-bg">
+                            <p><span class="small-txt">Match en cours</span></p>
                         </div>
                         @else
                         <div class="point d-none d-lg-block">
