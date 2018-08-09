@@ -6,6 +6,8 @@
 
     @include('includes.menu')
 
+    @include('includes.reglement')
+
     <div class="nuages">
             <img class="nuage" src="{{asset('/img/nuages1.png')}}" alt="">
             <img class="nuage" src="{{asset('/img/nuages2.png')}}" alt="">
@@ -34,7 +36,7 @@
             <div class="col-12 text-resultats color-blue">
                 <p>Bienvenue à toi l'ami<br />
                 Viens faire tes pronos ! Victoire de l'UBB ? Défaite de Clermont ?<br />
-                Monte au classement pour gagner des >cadeaux</p>
+                Monte au classement pour <button class="small-cta bg-orange">gagner des cadeaux</button></p>
             </div>
 
         </div>
@@ -74,11 +76,15 @@
                 <div class="tableau-res">
                     <div class="row justify-content-center">
                         <div class="col-4 col-md-2 text-center bg-white info-prono">
-                            @if($match->date_debut_match < date("Y-m-d H:i:s"))
-                                Match fini
-                            @else
+
+                            @if($match->date_debut_match > date("Y-m-d H:i:s"))
                                 <span class="color-orange">Match à venir</span>
+                            @elseif($match->date_debut_match <= date("Y-m-d H:i:s") && $match->date_fin_match >= date("Y-m-d H:i:s"))
+                            Match en cours
+                            @else
+                                Match fini
                             @endif
+
                         </div>
                     </div>
                     <form action="" method="POST">
@@ -135,7 +141,7 @@
                                 </div>
                             </div>
 
-                            <div class="essai-point">
+                            <div class="essai-point lato">
                                 <div class="row">
                                     <div class="col-4 col-md-12"><span>Resultat : </span>
                                         @if($match->date_debut_match < date("Y-m-d H:i:s"))
@@ -172,7 +178,7 @@
                                 <p><span class="small-txt">Match en cours</span></p>
                             </div>
                             @else
-                            <div class="point d-none d-lg-block">
+                            <div class="point d-none d-lg-block bg-orange">
                                 <p><span>
                                     @if($match->nb_points != NULL)
                                         {{$match->nb_points}}

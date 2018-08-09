@@ -15,18 +15,20 @@
                 <div class="container-fluid">
                     <div class="row">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 col-12">
-                          <li class="nav-item active col-4 col-md-2">
+                          <li class="nav-item col-12 col-md-3">
                             <div class="reglement">
-                                <a class="nav-link" href="{{url('/reglement')}}">Reglement</a>
+                                <a class="nav-link" href="" data-toggle="modal" data-target="#reglementModal">Reglement</a>
+                            </div>
+                            <div class="pronostics">
+                                <a class="nav-link" href="{{url('/resultats/1')}}">Pronoctics</a>
                             </div>
                           </li>
-                          <li class="nav-item col-md-7 col-lg-8 d-none d-md-block">
+                          <li class="nav-item col-md-6 d-none d-md-block">
                             <div class="logo text-center">
                                 <a class="nav-link" href="{{url('/')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
                             </div>
-                            
                           </li>
-                          <li class="nav-item text-right col-8 col-md-3 col-lg-2">
+                          <li class="nav-item col-12 col-md-3 text-right">
                             <div class="classement"><a href="{{url('/classement')}}">Classement</a></div>
                             <div class="vestiaire"><a href="{{url('/vestiaire')}}">Vestiaire</a></div>
                           </li>

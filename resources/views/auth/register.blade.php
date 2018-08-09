@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="container-form">
-                    <div class="text-center"> <img src="{{asset('img/title_inscription.png')}}"></div>
+                    <div class="text-center"> <img class="img-fluid" src="{{asset('img/title_inscription.png')}}"></div>
 
                     <div class="panel-body lato">
                         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -73,11 +73,15 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-6 offset-md-4">
+                                <div class="col-md-6 offset-md-4 text-right">
                                     <button type="submit" class="cta bg-orange">
                                         Créer mon compte
                                     </button>
                                 </div>
+                                <div class="col-md-6 offset-md-4 text-right">
+                                    <a class="btn btn-link" href="{{ route('login') }}">J'ai déjà un compte</a>
+                                </div>
+                                
                             </div>
                         </form>
                     </div>
