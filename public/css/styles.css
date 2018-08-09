@@ -32,10 +32,6 @@ body{
     font-size: 1.6rem;
 }
 
-.grey-bg{
-	background-color: #e0e0e0 !important;
-}
-
 .small-txt{
 	font-size: 12px !important;
 }
@@ -48,6 +44,10 @@ a.cta{
 a.cta:hover{
 	color: white;
 	opacity: .8;
+}
+
+.grey-bg{
+	background-color: #e0e0e0 !important;
 }
 
 .bg-orange{
@@ -64,6 +64,10 @@ a.cta:hover{
 
 .color-orange{
 	color:#ffb400;
+}
+
+.color-blue{
+    color: #146d82;
 }
 
 .padding-top{
@@ -194,6 +198,16 @@ a.cta:hover{
 	background: url("../img/icon-compte-survol.png")no-repeat;
 }
 
+/*****REGISTER*****/
+
+.register .container-form{
+	margin: 40px 0 190px 0;
+    background-color: white;
+}
+
+.register .container-form img{
+	padding: 40px 0 20px 0;
+}
 
 /******RESULTATS******/
 
@@ -278,7 +292,7 @@ a.cta:hover{
 	text-align: center;
 	font-family: 'hansiefregular';
 	text-transform: uppercase;
-	font-size: 1rem;
+	font-size: 1.2rem;
 	vertical-align: middle;
 }
 
@@ -338,7 +352,7 @@ a.cta:hover{
 }
 
 .tableau-res:last-child{
-	margin-bottom: 450px;
+	margin-bottom: 150px;
 }
 
 .tableau-res .score-input-disabled{
@@ -360,6 +374,14 @@ a.cta:hover{
 .valid-prono button div{
 	display: inline-block;
 	margin-left: 10px;
+}
+
+.valid-prono button{
+	transition: background-color .3s ease;
+}
+
+.valid-prono button:hover{
+	background-color: #ffc231;
 }
 
 .valid-prono button:hover div{
@@ -443,7 +465,17 @@ a.cta:hover{
 	opacity: .6;
 }
 
-@media (min-width: 576px) {}
+@media (min-width: 576px) {
+	.tableau-res:last-child{
+		margin-bottom: 250px;
+	}
+	.tableau-res h2{
+		font-size: 2em;
+	}
+	.register .container-form {
+	    margin: 40px 0 250px 0;
+	}
+}
 
 @media (min-width: 768px) {
 	.logo{
@@ -452,7 +484,12 @@ a.cta:hover{
 	.noMatches{
 	    min-height: 500px;
 	}
-
+	.tableau-res:last-child{
+		margin-bottom: 350px;
+	}
+	.register .container-form {
+	    margin: 40px 0 350px 0;
+	}
 }
 
 @media (min-width: 992px) { 
@@ -469,10 +506,6 @@ a.cta:hover{
 		margin-top: 10px;
 	}
 
-	.tableau-res h2{
-		font-size: 2em;
-	}
-
 	.tableau-res .point{
 		position: absolute;
 		width: 80px;
@@ -480,7 +513,6 @@ a.cta:hover{
 		right: -40px;
 		top: 51px;
 		border-radius:50%;
-		background-color: green;
 		color: white;
 	}
 
@@ -491,17 +523,37 @@ a.cta:hover{
 		font-weight: 600;
 	}
 
+	.tableau-res .point.point-noPoints p{
+		padding-top: 20%;
+	}
+
 	.tableau-res .point p span{
 		font-size: 3.6rem;
 		line-height: 0;
 	    padding-left: 7px;
 	}
 
+	.tableau-res .point.point-noPoints p span{
+		padding-left: 0;
+	}
+
+	.tableau-res:last-child{
+		margin-bottom: 450px;
+	}
+	.register .container-form {
+	    margin: 40px 0 450px 0;
+	}
 
 }
 @media (min-width: 1200px) {
 	.noMatches{
 	    min-height: 650px;
+	}
+	.tableau-res:last-child{
+		margin-bottom: 550px;
+	}
+	.register .container-form {
+	    margin: 40px 0 550px 0;
 	}
 
 }
