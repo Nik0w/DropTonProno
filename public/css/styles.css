@@ -197,6 +197,19 @@ a.cta:hover{
 
 /******RESULTATS******/
 
+.noMatches{
+	text-align: center;
+    font-size: 18px;
+    min-height: 380px;
+    margin-top: 20px;
+}
+
+.noMatches p{
+    display: inline-block;
+    background-color: rgba(255,255,255,.6);
+    padding: 30px 50px;
+}
+
 .carousel-inner{
     max-width: 80%;
     margin: 0 auto;
@@ -436,6 +449,10 @@ a.cta:hover{
 	.logo{
 		max-width: 100%;
 	}
+	.noMatches{
+	    min-height: 500px;
+	}
+
 }
 
 @media (min-width: 992px) { 
@@ -482,4 +499,16 @@ a.cta:hover{
 
 
 }
-@media (min-width: 1200px) { }
+@media (min-width: 1200px) {
+	.noMatches{
+	    min-height: 650px;
+	}
+
+}
+
+@media (min-width: 1600px) {
+	.noMatches{
+	    min-height: 800px;
+	}
+
+}

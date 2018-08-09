@@ -19,12 +19,15 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
 Route::get('/resultats', 'Resultats@index');
+Route::get('/resultats/{id}','Resultats@index')->where('id', '[0-9]+')->name('resultats' );
+
 Route::post('/resultats', 'Resultats@createProno');
 
 Route::get('/classement', 'ClassementController@index');
 
 Route::prefix('admin')->group(function () {
-    
+
+    Route::get('/', 'Admin\AdminHomeController@index');
     Route::get('/home', 'Admin\AdminHomeController@index');
 
     Route::resource('/championnats','Admin\AdminChampionnatsController');

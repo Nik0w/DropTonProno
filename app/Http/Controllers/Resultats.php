@@ -15,7 +15,7 @@ class Resultats extends Controller
         $this->middleware('auth');
     }
     //
-    public function index()
+    public function index($id)
     {
 
     	$this->checkPoints();
@@ -29,13 +29,18 @@ class Resultats extends Controller
 					        ->where('pronos.id_user', '=', Auth::id());
 					})
                     ->leftJoin('points', 'points.id_point', '=', 'pronos.id_point')
+                    ->where('matchs.id_journee','=',$id)
                     ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','matchs.score_equipe1','matchs.score_equipe2','eq1.nom_equipe as nom_equipe1','eq1.logo_equipe as logo_equipe1','eq2.nom_equipe as nom_equipe2','eq2.logo_equipe as logo_equipe2','journees.nom_journee','pronos.points_equipe1','pronos.points_equipe2','pronos.nb_essai_prono','points.nb_points'])
                     ->orderBy('matchs.date_debut_match', 'asc')
+                    ->get();
+
+        $journees = DB::table('journees')
                     ->get();
         
         //dd($matchs);
         return view('resultats',[
             'matchs' => $matchs,
+            'journees' => $journees
         ]);
     }
 
