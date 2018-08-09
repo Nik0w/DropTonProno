@@ -28,6 +28,16 @@
                 </div>
             </div>
             @endif
+            @if(session()->has('error'))
+            <div class="col-12">
+                <div class="alert alert-alert alert-dismissible show" role="alert">
+                  <strong>Erreur !</strong>{{\Session::get('error')}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </div>
+            @endif
         </div>
         
         <div class="row resultats">

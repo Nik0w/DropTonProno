@@ -113,33 +113,43 @@ class Resultats extends Controller
         $score_equipe2 = $request->input('score_equipe2');
 		$id_user = Auth::id();
 
-        $prono = DB::table('pronos')
-                    ->join('users', 'pronos.id_user', '=', 'users.id')
-                    ->where('pronos.id_match','=',$request->input('match'))
-                    ->where('pronos.id_user','=',$id_user)
+        $match = DB::table('matchs')
+                    ->where('matchs.id_match','=',$id_match)
                     ->first();
 
-        //dd($prono);
-        if($prono != NULL){
-        	// UN PRONO A DEJA ETAIT FAIT
-        	DB::table('pronos')
-            ->where('id_prono','=', $prono->id_prono)
-            ->update([
-            	'points_equipe1' => $score_equipe1,
-	            'points_equipe2' => $score_equipe2,
-	            'nb_essai_prono' => 0
-            ]);
+        if($match->date_fin_match < date("Y-m-d H:i:s")){
+            return redirect()->back()->with('error','Ce match est déjà fini !');
         }else{
-        	// PAS DE PRONO SUR CE MATCH
-	    	DB::table('pronos')->insert([
-	    		'id_match' => $id_match,
-	            'points_equipe1' => $score_equipe1,
-	            'points_equipe2' => $score_equipe2,
-	            'id_user' => $id_user,
-	            'nb_essai_prono' => 0,
-	            'is_active' => 1
-	        ]);
+
+            $prono = DB::table('pronos')
+                        ->join('users', 'pronos.id_user', '=', 'users.id')
+                        ->where('pronos.id_match','=',$request->input('match'))
+                        ->where('pronos.id_user','=',$id_user)
+                        ->first();
+
+            //dd($prono);
+            if($prono != NULL){
+            	// UN PRONO A DEJA ETAIT FAIT
+            	DB::table('pronos')
+                ->where('id_prono','=', $prono->id_prono)
+                ->update([
+                	'points_equipe1' => $score_equipe1,
+    	            'points_equipe2' => $score_equipe2,
+    	            'nb_essai_prono' => 0
+                ]);
+            }else{
+            	// PAS DE PRONO SUR CE MATCH
+    	    	DB::table('pronos')->insert([
+    	    		'id_match' => $id_match,
+    	            'points_equipe1' => $score_equipe1,
+    	            'points_equipe2' => $score_equipe2,
+    	            'id_user' => $id_user,
+    	            'nb_essai_prono' => 0,
+    	            'is_active' => 1
+    	        ]);
+            }
+            return redirect()->back()->with('success','Le pronostic a bien était crée/édité');
+
         }
-        return redirect()->back()->with('success','Le pronostic a bien était crée/édité');
     }
 }

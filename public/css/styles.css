@@ -108,7 +108,22 @@ h1{
 /****NOTIFS****/
 
 #notificationsZone{
+    position: absolute;
+    right: 0;
+}
 
+#notificationsZone .alert-success{
+	color: #59823e;
+    background-color: #bcef9b;
+    border-color: #c3e6cb;
+    font-size: 1.4rem;
+}
+
+#notificationsZone .alert-alert{
+    color: #713224;
+    background-color: #cc5e45;
+    border-color: #9e4834;
+    font-size: 1.4rem;
 }
 
 /****NUAGES***/
