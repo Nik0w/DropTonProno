@@ -98,7 +98,7 @@ class Resultats extends Controller
 
     }
 
-    public function createProno(Request $request){
+    public function createProno(Request $request, $id){
 
     	$this->validate($request,[
             'score_equipe1' => 'required',
@@ -120,7 +120,7 @@ class Resultats extends Controller
                     ->first();
 
         //dd($prono);
-        if(count($prono) > 0){
+        if($prono != NULL){
         	// UN PRONO A DEJA ETAIT FAIT
         	DB::table('pronos')
             ->where('id_prono','=', $prono->id_prono)

@@ -18,10 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
-Route::get('/resultats', 'Resultats@index');
-Route::get('/resultats/{id}','Resultats@index')->where('id', '[0-9]+')->name('resultats' );
+Route::get('/resultats/{id}','Resultats@index')->where('id', '[0-9]+')->name('resultats');
 
-Route::post('/resultats', 'Resultats@createProno');
+Route::post('/resultats/{id}', 'Resultats@createProno')->where('id', '[0-9]+')->name('resultats');;
 
 Route::get('/classement', 'ClassementController@index');
 
