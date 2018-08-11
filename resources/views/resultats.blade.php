@@ -149,6 +149,12 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-12 text-center nb-essai">
+                                    Nombre d'essai dans le match :
+                                    <input type="text">
+                                </div>
+
                             </div>
 
                             <div class="essai-point lato">

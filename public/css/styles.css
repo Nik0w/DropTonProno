@@ -208,8 +208,9 @@ h1{
 .navbar .pronostics a{
 	background: url("../img/icon-prono.png")no-repeat;
 	height: 60px;
-    padding: 60px 10px 0 14px;
+    padding: 50px 10px 0 6px;
     display: inline-block;
+    margin-left: 19px;
 }
 
 .navbar .pronostics a:hover{
@@ -399,6 +400,10 @@ h1{
 	font-weight: bold;
 	text-align: center;
 	border-radius: 0px;
+}
+
+.tableau-res .nb-essai input{
+	width: 50px;
 }
 
 .tableau-res .essai-point{
