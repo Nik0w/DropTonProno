@@ -33,15 +33,18 @@
                 <div class="col-5">
                   <div class="nameUser">{{$user->name}}</div>
                 </div>
-                <div class="col-offset-1"></div>
+                <div class="offset-1"></div>
                 <div class="col-2 text-center">
-                  <div>Bons pronos</div>
+                  <div class="lato">Bons pronos</div>
+                  <div class="value-classement">32</div>
                 </div>
                 <div class="col-2 text-center">
-                  <div>Score exacts</div>
+                  <div class="lato">Score exacts</div>
+                  <div class="value-classement">15</div>
                 </div>
                 <div class="col-2 text-center">
-                  <div>Points</div>
+                  <div class="lato">Points</div>
+                  <div class="value-classement">32</div>
                 </div>
               </div>
             </div>

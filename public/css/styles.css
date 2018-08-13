@@ -507,7 +507,7 @@ h1{
 }
 
 .classement table tr td{
-	
+
 }
 
 .classement .top1{
@@ -527,7 +527,11 @@ h1{
 }
 
 .classement .classement-user>div{
-	padding: 30px 20px;
+	padding: 15px 20px;
+}
+
+.classement .classement-user .value-classement{
+	font-size: 40px;
 }
 
 /******FOOTER******/
