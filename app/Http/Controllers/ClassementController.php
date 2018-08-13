@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+use Auth;
 
 class ClassementController extends Controller
 {
@@ -23,6 +27,14 @@ class ClassementController extends Controller
      */
     public function index()
     {
-        return view('classement');
+        $users = DB::table('users')->get();
+        $user = DB::table('users')
+                ->where('users.id','=',Auth::id())
+                ->first();
+
+        return view('classement',[
+            'users' => $users,
+            'user' => $user
+        ]);
     }
 }

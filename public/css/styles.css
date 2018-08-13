@@ -491,21 +491,43 @@ h1{
 
 .classement thead{
 	color: white;
-	text-transform: uppercase;
 }
 
 .classement table{
-	margin-bottom: 30px;
+	margin-bottom: 150px;
+	z-index: 9;
+}
+
+.classement table tr td, .classement table tr th{
+	text-align:center;
+}
+
+.classement table tr{
+    font-size: 12px;
+}
+
+.classement table tr td{
+	
 }
 
 .classement .top1{
-	background-color: #68d480 !important;
+	background-color: #63de83 !important;
 }
 .classement .top2{
-	background-color: #88ea9e !important;
+	background-color: #7ce697 !important;
 }
 .classement .top3{
-	background-color: #baffca !important;
+	background-color: #a5f8ba !important;
+}
+
+.classement .classement-user{
+	margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.classement .classement-user>div{
+	padding: 30px 20px;
 }
 
 /******FOOTER******/
@@ -543,6 +565,9 @@ h1{
 	.container-home{
 		padding-bottom: 250px;
 	}
+	.classement table{
+		margin-bottom: 270px;
+	}
 	
 }
 
@@ -567,6 +592,9 @@ h1{
 	}
 	.container-home .row div:nth-child(2){
 		margin: 0;
+	}
+	.classement table{
+		margin-bottom: 350px;
 	}
 }
 
@@ -624,6 +652,9 @@ h1{
 	.container-home{
 		padding-bottom: 450px;
 	}
+	.classement table{
+		margin-bottom: 500px;
+	}
 
 }
 @media (min-width: 1200px) {
@@ -638,6 +669,9 @@ h1{
 	}
 	.container-home{
 		padding-bottom: 550px;
+	}
+	.classement table{
+		margin-bottom: 650px;
 	}
 }
 
