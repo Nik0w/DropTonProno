@@ -249,6 +249,14 @@ h1{
 	background: url("../img/icon-compte-survol.png")no-repeat;
 }
 
+/******PROFIL*****/
+
+.containerProfil{
+	background-color: white;
+	padding: 20px;
+	margin:30px 0 150px 0;
+}
+
 /*****REGISTER*****/
 
 .register .container-form{

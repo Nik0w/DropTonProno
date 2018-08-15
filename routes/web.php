@@ -24,6 +24,9 @@ Route::post('/resultats/{id}', 'Resultats@createProno')->where('id', '[0-9]+')->
 
 Route::get('/classement', 'ClassementController@index');
 
+Route::get('/vestiaire', 'profilController@index');
+
+
 Route::prefix('admin')->group(function () {
 
     Route::get('/', 'Admin\AdminHomeController@index');
