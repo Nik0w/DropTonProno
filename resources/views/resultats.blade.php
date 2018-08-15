@@ -21,7 +21,7 @@
             @if(session()->has('success'))
             <div class="col-12">
                 <div class="alert alert-success alert-dismissible show" role="alert">
-                  <strong>Félicitation !</strong>{{\Session::get('success')}}
+                  <strong>Félicitation ! </strong>{{\Session::get('success')}}
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -31,7 +31,7 @@
             @if(session()->has('error'))
             <div class="col-12">
                 <div class="alert alert-alert alert-dismissible show" role="alert">
-                  <strong>Erreur !</strong>{{\Session::get('error')}}
+                  <strong>Erreur ! </strong>{{\Session::get('error')}}
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -52,7 +52,7 @@
         </div>
 
         @if(count($journees)>0)
-        <div class="row journeesCarousel">
+        <div class="row journeesCarousel d-none d-md-block">
             <div class="col-12">
 
                 <div id="journeeCarouselControls" class="carousel slide" data-ride="carousel">
@@ -78,6 +78,15 @@
                 
             </div>
         </div>
+        <div class="row d-block d-md-none select_journee">
+            <div class="col-12">
+                <select class="d-block" name="journee" id="">
+                    @foreach($journees as $journee)
+                        <option value="{{$journee->id_journee}}">{{$journee->nom_journee}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
         @endif
 
         @if(count($matchs)>0)
@@ -88,11 +97,11 @@
                         <div class="col-4 col-md-2 text-center bg-white info-prono">
 
                             @if($match->date_debut_match > date("Y-m-d H:i:s"))
-                                <span class="color-orange">Match à venir</span>
+                                <span class="color-orange hansief">Match à venir</span>
                             @elseif($match->date_debut_match <= date("Y-m-d H:i:s") && $match->date_fin_match >= date("Y-m-d H:i:s"))
-                            Match en cours
+                            <span class="hansief">Match en cours</span>
                             @else
-                                Match fini
+                                <span class="hansief">Match fini</span>
                             @endif
 
                         </div>

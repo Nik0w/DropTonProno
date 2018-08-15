@@ -20,12 +20,18 @@
 
         <div class="col-12 col-sm-8 offset-sm-2 text-center zone-cta">
             <div class="row">
+                @if(Auth::check())
+                <div class="col-12 text-center">
+                    <a class="cta bg-orange" href="{{ url('/resultats/1') }}">Voirs les pronostics !</a>
+                </div>
+                @else
                 <div class="col-12 col-md-6">
                     <a class="cta bg-orange" href="{{ url('/register') }}">Je m'inscris ></a>
                 </div>
                 <div class="col-12 col-md-6">
                     <a class="cta bg-bleu" href="{{ url('/login') }}">Je me connecte ></a>
                 </div>
+                @endif
             </div>
         </div>
 

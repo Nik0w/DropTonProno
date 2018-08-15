@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-2 text-center">
                   <div class="lato">Points</div>
-                  <div class="value-classement">32</div>
+                  <div class="value-classement">{{$points_user}}</div>
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@
                     <td>{{$u->name}}</td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td>{{$points_user}}</td>
                   </tr>
                   <tr class="top2">
                     <th scope="row">2</th>

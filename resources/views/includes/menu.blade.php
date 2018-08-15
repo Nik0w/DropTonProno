@@ -20,7 +20,7 @@
                                 <a class="nav-link" href="" data-toggle="modal" data-target="#reglementModal">Reglement</a>
                             </div>
                             <div class="pronostics">
-                                <a class="nav-link" href="{{url('/resultats/1')}}">Pronoctics</a>
+                                <a class="nav-link" href="{{url('/resultats/1')}}">Pronostics</a>
                             </div>
                           </li>
                           <li class="nav-item col-md-6 d-none d-md-block">
