@@ -44,6 +44,35 @@ class Resultats extends Controller
         ]);
     }
 
+    public function UpdateScoreGeneral($score){
+
+        //check si l user a deja un score total
+        $score_general = DB::table('points_totaux')
+                            ->where('points_totaux.id_user','=',Auth::id())
+                            ->first();
+
+        // IL Y A DEJA UN SCORE TOTAL
+        if($score_general != NULL){
+
+            DB::table('points')
+                ->where('points.id_point','=',$score_general->id_point)
+                ->update([
+                    'nb_points' => $score,
+                ]);
+
+        }else{
+
+            $pointsInsertID = DB::table('points')->insertGetId([
+                'nb_points' => $score,
+            ]);
+
+            DB::table('points_totaux')->insert([
+                'id_user' => Auth::id(),
+                'id_point' => $pointsInsertID,
+            ]);
+        }
+    }
+
     public function checkPoints(){
     	$score = 0;
 
@@ -55,6 +84,7 @@ class Resultats extends Controller
                     ->where('matchs.date_fin_match','<',date("Y-m-d H:i:s"))
                     ->get();
 
+        // PRONOS PASSES ET ACTIFS
         foreach ($pronosTermines as $prono) {
         	//si equipe 1 gagne et prono equipe 1 gagnante
         	if($prono->score_equipe1 != NULL && $prono->score_equipe2 != NULL){
@@ -81,9 +111,11 @@ class Resultats extends Controller
 	        		$score+=30;
 	        	}
 
-	        	$pointsInsertID = DB::table('points')->insertGetId([
-		    		'nb_points' => $score,
-		        ]);
+                $this->UpdateScoreGeneral($score);
+
+                $pointsInsertID = DB::table('points')->insertGetId([
+                    'nb_points' => $score,
+                ]);
 
 		        DB::table('pronos')
 		            ->where('id_prono','=', $prono->id_prono)
