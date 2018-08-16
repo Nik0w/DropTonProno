@@ -60,35 +60,14 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($users as $u)
+                @foreach($users as $k=>$u)
                   <tr class="top1">
-                    <th scope="row">1</th>
+                    <th scope="row">{{$k+1}}</th>
                     <td>{{$u->name}}</td>
-                    <td></td>
-                    <td></td>
-                    <td>{{$points_user}}</td>
-                  </tr>
-                  <tr class="top2">
-                    <th scope="row">2</th>
-                    <td>Mark</td>
-                    <td>32</td>
-                    <td>32</td>
-                    <td>32</td>
-                  </tr>
-                  <tr class="top3">
-                    <th scope="row">3</th>
-                    <td>Mark</td>
-                    <td>32</td>
-                    <td>32</td>
-                    <td>32</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Mark</td>
-                    <td>32</td>
-                    <td>32</td>
-                    <td>32</td>
-                  </tr>
+                    <td>{{$u->nb_pts_pronos}}</td>
+                    <td>{{$u->nb_pts_scores}}</td>
+                    <td>{{$u->nb_pts_totaux}}</td>
+                  </tr> 
                 @endforeach
               </tbody>
             </table>

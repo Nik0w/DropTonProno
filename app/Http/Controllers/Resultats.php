@@ -56,9 +56,7 @@ class Resultats extends Controller
 
             DB::table('points')
                 ->where('points.id_point','=',$score_general->id_point)
-                ->update([
-                    'nb_points' => $score,
-                ]);
+                ->increment('nb_points', $score);
 
         }else{
 
@@ -73,8 +71,38 @@ class Resultats extends Controller
         }
     }
 
+    public function UpdateScoresExacts($score_pts_exacts){
+
+        //check si l user a deja un score total
+        $score_exacts = DB::table('points_scores')
+                            ->where('points_scores.id_user','=',Auth::id())
+                            ->first();
+
+        // IL Y A DEJA UN SCORE Exact
+        if($score_exacts != NULL){
+
+            DB::table('points')
+                ->where('points.id_point','=',$score_exacts->id_point)
+                ->increment('nb_points', $score_pts_exacts);
+
+        }else{
+
+            $pointsInsertID = DB::table('points')->insertGetId([
+                'nb_points' => $score_pts_exacts,
+            ]);
+
+            DB::table('points_scores')->insert([
+                'id_user' => Auth::id(),
+                'id_point' => $pointsInsertID,
+            ]);
+        }
+    }
+
+
     public function checkPoints(){
     	$score = 0;
+    	$score_pts_exacts = 0;
+    	$score_bon_prono = 0;
 
     	$pronosTermines = DB::table('pronos')
                     ->join('matchs', 'matchs.id_match', '=', 'pronos.id_match')
@@ -98,20 +126,19 @@ class Resultats extends Controller
 	        		&& $prono->score_equipe2 > $prono->score_equipe1){
 	    			$score+=5;
 	        	}
-	        	//si score exact equipe 1
-	        	if($prono->points_equipe1 == $prono->score_equipe1){
+	        	//si score exact equipe 1 ou equipe 2
+	        	if($prono->points_equipe1 == $prono->score_equipe1 xor $prono->points_equipe2 == $prono->score_equipe2){
 	        		$score+=20;
-	        	}
-	        	//si score exact equipe 2
-	        	if($prono->points_equipe2 == $prono->score_equipe2){
-	        		$score+=20;
+	        		$score_pts_exacts ++;
 	        	}
 	        	//si match nul et proo match nul
-	        	if($prono->points_equipe1 == $prono->score_equipe1 && $prono->points_equipe2 == $prono->score_equipe2 && $prono->points_equipe1 == $prono->score_equipe1){
+	        	else if($prono->points_equipe1 == $prono->score_equipe1 && $prono->points_equipe2 == $prono->score_equipe2 && $prono->points_equipe1 == $prono->score_equipe1){
 	        		$score+=30;
+	        		$score_pts_exacts += 2;
 	        	}
 
                 $this->UpdateScoreGeneral($score);
+                $this->UpdateScoresExacts($score_pts_exacts);
 
                 $pointsInsertID = DB::table('points')->insertGetId([
                     'nb_points' => $score,

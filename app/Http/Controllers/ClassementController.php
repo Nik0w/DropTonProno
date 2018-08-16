@@ -28,14 +28,30 @@ class ClassementController extends Controller
     public function index()
     {   
         $points_user = 0;
-        $users = DB::table('users')->get();
+        $id_user = Auth::id();
+
+        $users = DB::table('users')
+                ->leftJoin('points_totaux','points_totaux.id_user','=','users.id')
+                ->leftJoin('points as pts_totaux','pts_totaux.id_point','=','points_totaux.id_point')
+                ->leftJoin('points_scores','points_scores.id_user','=','users.id')
+                ->leftJoin('points as pts_scores','pts_scores.id_point','=','points_scores.id_point')
+                ->leftJoin('points_pronos','points_pronos.id_user','=','users.id')
+                ->leftJoin('points as pts_pronos','pts_pronos.id_point','=','points_pronos.id_point')
+                ->leftJoin('points_mois','points_mois.id_user','=','users.id')
+                ->leftJoin('points as pts_mois','pts_mois.id_point','=','points_mois.id_point')
+                ->select('name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
+                ->orderBy('nb_pts_totaux','ASC')
+                ->get();
+
         $user = DB::table('users')
-                ->where('users.id','=',Auth::id())
+                ->where('users.id','=',$id_user)
                 ->first();
+
+        //dd($users);
 
         $points_global_req = DB::table('points')
                             ->join('pronos','pronos.id_point','=','points.id_point')
-                            ->where('pronos.id_user','=',Auth::id())
+                            ->where('pronos.id_user','=',$id_user)
                             ->select('nb_points')
                             ->get();
 
