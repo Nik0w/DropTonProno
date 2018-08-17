@@ -43,10 +43,12 @@
         <div class="row resultats">
             <div class=".d-none .d-sm-block col-md-8 encartPub"></div>
 
-            <div class="col-12 text-resultats color-blue">
-                <p>Bienvenue à toi l'ami<br />
-                Viens faire tes pronos ! Victoire de l'UBB ? Défaite de Clermont ?<br />
-                Monte au classement pour <button class="small-cta bg-orange">gagner des cadeaux</button></p>
+            <div class="col-12 col-md-8 offset-md-2 text-resultats color-blue">
+                <h1>Vos pronostics</h1>
+                <p>Face aux perches, drop tes pronostics sur chaque rencontre du Top14 et tente de gagner des cadeaux, c’est gratuit ! <br />
+                Modifie tes pronos jusqu’à la dernière minute et profite de ta 3ème mi-temps pour chambrer tes amis. <br />
+                Et comme dirait un certain habitué...<i>Depuis le débuuut !</i>  <br />
+                </p>
             </div>
 
         </div>

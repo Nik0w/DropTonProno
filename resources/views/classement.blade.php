@@ -21,11 +21,10 @@
         <div class="row classement">
             <div class=".d-none .d-sm-block col-md-8 encartPub"></div>
 
-            <div class="col-12 text-resultats color-blue text-center">
-              <h1>Classement des joueurs</h1>
-              <p>Bienvenue à toi l'ami<br />
-              Viens faire tes pronos ! Victoire de l'UBB ? Défaite de Clermont ?<br />
-              Monte au classement pour <button class="small-cta bg-orange">gagner des cadeaux</button></p>
+            <div class="col-12 col-md-8 offset-md-2 text-classement color-blue text-center">
+              <h1>Le Classement</h1>
+              <p>Découvrez votre position après chaque journée de Top 14 avec un classement mensuel et général. <br />
+Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3er de la saison régulière.</p>
             </div>
 
             <div class="col-12 col-md-8 offset-md-2 bg-orange classement-user">

@@ -4,7 +4,7 @@
         <nav class="navbar navbar-expand-md navbar-light" id="navbar">
             
             <div class="logo text-center d-block d-md-none">
-                <a class="nav-link" href="{{url('/')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
+                <a class="nav-link" href="{{url('/resultats/1')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
             </div>
     
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
                           </li>
                           <li class="nav-item col-md-6 d-none d-md-block">
                             <div class="logo text-center">
-                                <a class="nav-link" href="{{url('/')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
+                                <a class="nav-link" href="{{url('/resultats/1')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
                             </div>
                           </li>
                           <li class="nav-item col-12 col-md-3 text-right">

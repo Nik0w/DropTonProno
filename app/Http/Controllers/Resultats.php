@@ -44,6 +44,8 @@ class Resultats extends Controller
         ]);
     }
 
+    // CREATION OU MISE A JOUR DU SCORE GENERAL
+
     public function UpdateScoreGeneral($score){
 
         //check si l user a deja un score total
@@ -71,6 +73,8 @@ class Resultats extends Controller
         }
     }
 
+    // CREATION OU MISE A JOUR DU SCORE DU NOMBRE DE SCORE EXACTS PRONOSTICES
+
     public function UpdateScoresExacts($score_pts_exacts){
 
         //check si l user a deja un score total
@@ -94,6 +98,68 @@ class Resultats extends Controller
             DB::table('points_scores')->insert([
                 'id_user' => Auth::id(),
                 'id_point' => $pointsInsertID,
+            ]);
+        }
+    }
+
+    // CREATION OU MISE A JOUR DU SCORE DU NOMBRE DE BON PRONO REALISE
+
+    public function UpdateScoresPronos($score_nb_pronos){
+
+        //check si l user a deja un score total
+        $score_pronos = DB::table('points_pronos')
+                            ->where('points_pronos.id_user','=',Auth::id())
+                            ->first();
+
+        // IL Y A DEJA UN SCORE Exact
+        if($score_pronos != NULL){
+
+            DB::table('points')
+                ->where('points.id_point','=',$score_pronos->id_point)
+                ->increment('nb_points', $score_nb_pronos);
+
+        }else{
+
+            $pointsInsertID = DB::table('points')->insertGetId([
+                'nb_points' => $score_nb_pronos,
+            ]);
+
+            DB::table('points_pronos')->insert([
+                'id_user' => Auth::id(),
+                'id_point' => $pointsInsertID,
+            ]);
+        }
+    }
+
+    // CREATION OU MISE A JOUR DU SCORE DU MOIS EN COURS
+
+    public function UpdateScoresMois($score){
+
+        $mois_en_cours = date('m');
+
+        //check si l user a deja un score total
+        $score_mois = DB::table('points_mois')
+                        ->where('points_mois.id_user','=',Auth::id())
+                        ->where('points_mois.num_mois','=',$mois_en_cours)
+                        ->first();
+
+        // IL Y A DEJA UN SCORE Exact
+        if($score_mois != NULL){
+
+            DB::table('points')
+                ->where('points.id_point','=',$score_mois->id_point)
+                ->increment('nb_points', $score);
+
+        }else{
+
+            $pointsInsertID = DB::table('points')->insertGetId([
+                'nb_points' => $score
+            ]);
+
+            DB::table('points_mois')->insert([
+                'id_user' => Auth::id(),
+                'num_mois' => $mois_en_cours,
+                'id_point' => $pointsInsertID
             ]);
         }
     }
@@ -137,8 +203,14 @@ class Resultats extends Controller
 	        		$score_pts_exacts += 2;
 	        	}
 
+                if($score > 0){
+                    $score_bon_prono ++;
+                }
+
                 $this->UpdateScoreGeneral($score);
                 $this->UpdateScoresExacts($score_pts_exacts);
+                $this->UpdateScoresPronos($score_bon_prono);
+                $this->UpdateScoresMois($score);
 
                 $pointsInsertID = DB::table('points')->insertGetId([
                     'nb_points' => $score,
