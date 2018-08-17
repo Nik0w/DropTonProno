@@ -35,15 +35,15 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3er de la saison r
                 <div class="offset-1"></div>
                 <div class="col-2 text-center">
                   <div class="lato">Bons pronos</div>
-                  <div class="value-classement">32</div>
+                  <div class="value-classement">{{$user->nb_pts_pronos}}</div>
                 </div>
                 <div class="col-2 text-center">
                   <div class="lato">Score exacts</div>
-                  <div class="value-classement">15</div>
+                  <div class="value-classement">{{$user->nb_pts_scores}}</div>
                 </div>
                 <div class="col-2 text-center">
                   <div class="lato">Points</div>
-                  <div class="value-classement">{{$points_user}}</div>
+                  <div class="value-classement">{{$user->nb_pts_totaux}}</div>
                 </div>
               </div>
             </div>
