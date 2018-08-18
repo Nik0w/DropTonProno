@@ -192,6 +192,17 @@ class Resultats extends Controller
 	        		&& $prono->score_equipe2 > $prono->score_equipe1){
 	    			$score+=5;
 	        	}
+	        	//ecart de 3
+	        	if($prono->points_equipe1 >= $prono->score_equipe1 - 3
+	        		&& $prono->points_equipe1 <= $prono->score_equipe1 + 3
+	        		&& $prono->points_equipe1 != $prono->score_equipe1){
+	        		$score += 3;
+	        	}
+	        	if($prono->points_equipe2 >= $prono->score_equipe2 - 3
+	        		&& $prono->points_equipe2 <= $prono->score_equipe2 + 3
+	        		&& $prono->points_equipe2 != $prono->score_equipe2){
+	        		$score += 3;
+	        	}
 	        	//si score exact equipe 1 ou equipe 2
 	        	if($prono->points_equipe1 == $prono->score_equipe1 xor $prono->points_equipe2 == $prono->score_equipe2){
 	        		$score+=20;
