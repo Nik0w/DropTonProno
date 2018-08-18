@@ -24,7 +24,7 @@
             <div class="col-12 col-md-8 offset-md-2 text-classement color-blue text-center">
               <h1>Le Classement</h1>
               <p>Découvrez votre position après chaque journée de Top 14 avec un classement mensuel et général. <br />
-Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3er de la saison régulière.</p>
+Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la saison régulière.</p>
             </div>
 
             <div class="col-12 col-md-8 offset-md-2 bg-orange classement-user">
@@ -60,7 +60,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3er de la saison r
               </thead>
               <tbody>
                 @foreach($users as $k=>$u)
-                  <tr class="top1">
+                  <tr class="top{{$k+1}}">
                     <th scope="row">{{$k+1}}</th>
                     <td>{{$u->name}}</td>
                     <td>{{$u->nb_pts_pronos}}</td>

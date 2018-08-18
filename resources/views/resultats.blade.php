@@ -84,7 +84,7 @@
             <div class="col-12">
                 <select class="d-block" name="journee" id="">
                     @foreach($journees as $journee)
-                        <option value="{{$journee->id_journee}}">{{$journee->nom_journee}}</option>
+                        <option data-link="{{url()->current()}}" value="{{$journee->id_journee}}">{{$journee->nom_journee}}</option>
                     @endforeach
                 </select>
             </div>

@@ -22,4 +22,10 @@ $(document).ready(function(){
 	  interval: false
 	});
 
+	//CHANGE PAGE ON SELECT CHANGE FOR MOBILE
+	$( ".select_journee" ).change(function() {
+		console.log(window.location.href);
+  		//window.location.href = "http://stackoverflow.com";
+	});
+
 });

@@ -38,6 +38,9 @@
             <div class="col-6">
               <h3>Ma photo de profil :</h3>
             </div>
+            <div class="col-12 text-right">
+              <a href="{{url('/logout')}}" class="btn btn-primary btn-fb"><i class="fas fa-sign-out-alt"></i>Se déconnecter</a>
+            </div>
           </div>
         </form>
       </div>

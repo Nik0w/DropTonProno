@@ -29,7 +29,7 @@ body{
 	padding: 12px 20px;
 	border:none;
 	color: white;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 
 .small-cta{
@@ -45,15 +45,33 @@ body{
 	font-size: 12px !important;
 }
 
-a.cta{
-	transition: opacity ease .3s;
+.cta:hover{
+	color: white;
 	text-decoration: none;
 }
 
-a.cta:hover{
-	color: white;
-	opacity: .8;
+.cta div{
+	display: inline-block;
+	margin-left: 10px;
 }
+
+.cta{
+	transition: background-color .3s ease;
+}
+
+.cta.bg-orange:hover{
+	background-color: #fdd064;
+}
+.cta.bg-bleu:hover{
+	background-color: #2d9fbb;
+}
+
+
+.cta:hover div{
+	transform: translateX(0px);
+	animation: animCta .3s ease alternate infinite;
+}
+
 
 .grey-bg{
 	background-color: #e0e0e0 !important;
@@ -107,7 +125,6 @@ a.cta:hover{
 h1{
 	color: #146d82;
     font-weight: 700;
-    text-transform: uppercase;
     text-align: center;
     margin-bottom: 40px;
     font-size: 3rem;
@@ -521,7 +538,7 @@ h1{
 
 .welcome .zone-cta a{
 	text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     padding: 20px 30px;
 }
 
@@ -530,9 +547,23 @@ h1{
 	padding-bottom: 150px;
 }
 
-.container-home .row div:nth-child(2){
-	margin: 50px 0;
+.container-home .infos>div{
+    min-height: 65px;
 }
+
+.container-home .infos h2{
+	text-transform: uppercase;
+ 	font-size: 25px;
+    letter-spacing: .5px;
+	margin: 13px 0 10px 0;
+}
+
+.container-home .infos h3{
+	font-size: 1.5rem;
+    line-height: 20px;
+}
+
+
 
 /******CLASSEMENT******/
 

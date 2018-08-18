@@ -72,7 +72,7 @@
                                     <div class="form-group">
                                         <div class="col-md-6 offset-md-4 text-right">
                                             <button type="submit" class="cta bg-orange">
-                                                Je me connecte
+                                                Je me connecte <div><i class="fas fa-long-arrow-alt-right"></i></div>
                                             </button>
                                         </div>
                                         <div class="col-md-6 offset-md-4 text-right">

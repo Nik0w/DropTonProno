@@ -86,7 +86,7 @@
                                         <div class="col-md-6 offset-md-4 text-right">
                                             <button type="submit" class="cta bg-orange">
                                                 Créer mon compte
-                                            </button>
+                                            <div><i class="fas fa-long-arrow-alt-right"></i></div></button>
                                         </div>
                                         <div class="col-md-6 offset-md-4 text-right">
                                             <a class="btn btn-link" href="{{ route('login') }}">J'ai déjà un compte</a>

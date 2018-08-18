@@ -14,7 +14,7 @@ foreach ($users as $user) {
 
     // CREATION OU MISE A JOUR DU SCORE GENERAL
 
-    function UpdateScoreGeneral($score){
+    public function UpdateScoreGeneral($score){
 
         //check si l user a deja un score total
         $score_general = DB::table('points_totaux')
@@ -43,7 +43,7 @@ foreach ($users as $user) {
 
     // CREATION OU MISE A JOUR DU SCORE DU NOMBRE DE SCORE EXACTS PRONOSTICES
 
-    function UpdateScoresExacts($score_pts_exacts){
+    public function UpdateScoresExacts($score_pts_exacts){
 
         //check si l user a deja un score total
         $score_exacts = DB::table('points_scores')
@@ -72,7 +72,7 @@ foreach ($users as $user) {
 
     // CREATION OU MISE A JOUR DU SCORE DU NOMBRE DE BON PRONO REALISE
 
-    function UpdateScoresPronos($score_nb_pronos){
+    public function UpdateScoresPronos($score_nb_pronos){
 
         //check si l user a deja un score total
         $score_pronos = DB::table('points_pronos')
@@ -101,7 +101,7 @@ foreach ($users as $user) {
 
     // CREATION OU MISE A JOUR DU SCORE DU MOIS EN COURS
 
-    function UpdateScoresMois($score){
+    public function UpdateScoresMois($score){
 
         $mois_en_cours = date('m');
 
@@ -133,7 +133,7 @@ foreach ($users as $user) {
     }
 
 
-    function checkPoints($id_user){
+    public function checkPoints($id_user){
     	$score = 0;
     	$score_pts_exacts = 0;
     	$score_bon_prono = 0;
