@@ -6,51 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-use Auth;
-
-class Resultats extends Controller
-{
-	public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    //
-    public function index($id)
-    {
-
-    	$this->checkPoints();
-
-        $matchs = DB::table('matchs')
-                    ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
-                    ->join('equipes as eq1', 'matchs.id_equipe1', '=', 'eq1.id_equipe')
-                    ->join('equipes as eq2', 'matchs.id_equipe2', '=', 'eq2.id_equipe')
-                    ->leftJoin('pronos', function($join){
-					        $join->on('pronos.id_match', '=', 'matchs.id_match')
-					        ->where('pronos.id_user', '=', Auth::id());
-					})
-                    ->leftJoin('points', 'points.id_point', '=', 'pronos.id_point')
-                    ->where('matchs.id_journee','=',$id)
-                    ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','matchs.score_equipe1','matchs.score_equipe2','eq1.nom_equipe as nom_equipe1','eq1.logo_equipe as logo_equipe1','eq2.nom_equipe as nom_equipe2','eq2.logo_equipe as logo_equipe2','journees.nom_journee','pronos.points_equipe1','pronos.points_equipe2','pronos.nb_essai_prono','points.nb_points'])
-                    ->orderBy('matchs.date_debut_match', 'asc')
-                    ->get();
-
-        $journees = DB::table('journees')
-                    ->get();
-        
-        //dd($matchs);
-        return view('resultats',[
-            'matchs' => $matchs,
-            'journees' => $journees
-        ]);
-    }
-
     // CREATION OU MISE A JOUR DU SCORE GENERAL
 
     public function UpdateScoreGeneral($score){
 
         //check si l user a deja un score total
         $score_general = DB::table('points_totaux')
-                            ->where('points_totaux.id_user','=',Auth::id())
+                            ->where('points_totaux.id_user','=',$id_user)
                             ->first();
 
         // IL Y A DEJA UN SCORE TOTAL
@@ -67,7 +29,7 @@ class Resultats extends Controller
             ]);
 
             DB::table('points_totaux')->insert([
-                'id_user' => Auth::id(),
+                'id_user' => $id_user,
                 'id_point' => $pointsInsertID,
             ]);
         }
@@ -79,7 +41,7 @@ class Resultats extends Controller
 
         //check si l user a deja un score total
         $score_exacts = DB::table('points_scores')
-                            ->where('points_scores.id_user','=',Auth::id())
+                            ->where('points_scores.id_user','=',$id_user)
                             ->first();
 
         // IL Y A DEJA UN SCORE Exact
@@ -96,7 +58,7 @@ class Resultats extends Controller
             ]);
 
             DB::table('points_scores')->insert([
-                'id_user' => Auth::id(),
+                'id_user' => $id_user,
                 'id_point' => $pointsInsertID,
             ]);
         }
@@ -108,7 +70,7 @@ class Resultats extends Controller
 
         //check si l user a deja un score total
         $score_pronos = DB::table('points_pronos')
-                            ->where('points_pronos.id_user','=',Auth::id())
+                            ->where('points_pronos.id_user','=',$id_user)
                             ->first();
 
         // IL Y A DEJA UN SCORE Exact
@@ -125,7 +87,7 @@ class Resultats extends Controller
             ]);
 
             DB::table('points_pronos')->insert([
-                'id_user' => Auth::id(),
+                'id_user' => $id_user,
                 'id_point' => $pointsInsertID,
             ]);
         }
@@ -139,7 +101,7 @@ class Resultats extends Controller
 
         //check si l user a deja un score total
         $score_mois = DB::table('points_mois')
-                        ->where('points_mois.id_user','=',Auth::id())
+                        ->where('points_mois.id_user','=',$id_user)
                         ->where('points_mois.num_mois','=',$mois_en_cours)
                         ->first();
 
@@ -157,7 +119,7 @@ class Resultats extends Controller
             ]);
 
             DB::table('points_mois')->insert([
-                'id_user' => Auth::id(),
+                'id_user' => $id_user,
                 'num_mois' => $mois_en_cours,
                 'id_point' => $pointsInsertID
             ]);
@@ -165,14 +127,14 @@ class Resultats extends Controller
     }
 
 
-    public function checkPoints(){
+    public function checkPoints($id_user){
     	$score = 0;
     	$score_pts_exacts = 0;
     	$score_bon_prono = 0;
 
     	$pronosTermines = DB::table('pronos')
                     ->join('matchs', 'matchs.id_match', '=', 'pronos.id_match')
-                    ->where('pronos.id_user','=',Auth::id())
+                    ->where('pronos.id_user','=',$id_user)
                     ->where('pronos.is_active','=','1')
                     ->where('pronos.id_point','=',NULL)
                     ->where('matchs.date_fin_match','<',date("Y-m-d H:i:s"))
@@ -227,60 +189,4 @@ class Resultats extends Controller
 	    	}
         }
 
-    }
-
-    public function createProno(Request $request, $id){
-
-    	$this->validate($request,[
-            'score_equipe1' => 'required',
-            'score_equipe2' => 'required',
-            'match' => 'required',
-        ]);
-
-        $id_equipe1 = $request->input('id_equipe1');
-        $id_equipe2 = $request->input('id_equipe2');
-        $id_match = $request->input('match');
-        $score_equipe1 = $request->input('score_equipe1');
-        $score_equipe2 = $request->input('score_equipe2');
-		$id_user = Auth::id();
-
-        $match = DB::table('matchs')
-                    ->where('matchs.id_match','=',$id_match)
-                    ->first();
-
-        if($match->date_fin_match < date("Y-m-d H:i:s")){
-            return redirect()->back()->with('error','Ce match est déjà fini !');
-        }else{
-
-            $prono = DB::table('pronos')
-                        ->join('users', 'pronos.id_user', '=', 'users.id')
-                        ->where('pronos.id_match','=',$request->input('match'))
-                        ->where('pronos.id_user','=',$id_user)
-                        ->first();
-
-            //dd($prono);
-            if($prono != NULL){
-            	// UN PRONO A DEJA ETAIT FAIT
-            	DB::table('pronos')
-                ->where('id_prono','=', $prono->id_prono)
-                ->update([
-                	'points_equipe1' => $score_equipe1,
-    	            'points_equipe2' => $score_equipe2,
-    	            'nb_essai_prono' => 0
-                ]);
-            }else{
-            	// PAS DE PRONO SUR CE MATCH
-    	    	DB::table('pronos')->insert([
-    	    		'id_match' => $id_match,
-    	            'points_equipe1' => $score_equipe1,
-    	            'points_equipe2' => $score_equipe2,
-    	            'id_user' => $id_user,
-    	            'nb_essai_prono' => 0,
-    	            'is_active' => 1
-    	        ]);
-            }
-            return redirect()->back()->with('success','Le pronostic a bien était crée/édité');
-
-        }
-    }
 }

@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 Route::get('/resultats/{id}','Resultats@index')->where('id', '[0-9]+')->name('resultats');
 
