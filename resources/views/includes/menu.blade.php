@@ -28,9 +28,9 @@
                                 <a class="nav-link" href="{{url('/resultats/1')}}"><img class="img-fluid" src="{{ asset('img/logo.png') }}"></a>
                             </div>
                           </li>
-                          <li class="nav-item col-12 col-md-3 text-right">
-                            <div class="classement"><a href="{{url('/classement')}}">Classement</a></div>
-                            <div class="vestiaire"><a href="{{url('/vestiaire')}}">Vestiaire</a></div>
+                          <li class="nav-item col-12 col-md-3 txt-md-right">
+                            <div class="classement"><a class="nav-link" href="{{url('/classement')}}">Classement</a></div>
+                            <div class="vestiaire"><a class="nav-link" href="{{url('/vestiaire')}}">Vestiaire</a></div>
                           </li>
                         </ul>
                     </div>

@@ -218,15 +218,13 @@ h1{
 	text-decoration: none;
 }
 
-.navbar .reglement, .navbar .pronostics{
+.navbar .reglement, .navbar .pronostics, .navbar .classement, .navbar .vestiaire{
 	display: inline-block;
 }
 
 .navbar .reglement a{
 	background: url("../img/icon-sifflet.png")no-repeat;
-	height: 60px;
-    padding: 60px 10px 0 6px;
-    display: inline-block;
+    padding: 24px 10px 30px 85px;
 }
 
 .navbar .reglement a:hover{
@@ -235,25 +233,17 @@ h1{
 
 .navbar .pronostics a{
 	background: url("../img/icon-prono.png")no-repeat;
-	height: 60px;
-    padding: 50px 10px 0 6px;
-    display: inline-block;
-    margin-left: 19px;
-
+    padding: 24px 10px 30px 85px;
+    background-position-x: 4px;
 }
 
 .navbar .pronostics a:hover{
 	background: url("../img/icon-prono-over.png")no-repeat;
+	background-position-x: 4px;
 }
-.navbar .classement, .navbar .vestiaire{
-	display: inline-block;
-}
-
 .navbar .classement a{
 	background: url("../img/icon-classement.png")no-repeat;
-	height: 60px;
-    padding: 60px 10px 0 0;
-    display: inline-block;
+    padding: 24px 10px 30px 85px;
 }
 
 .navbar .classement a:hover{
@@ -262,9 +252,7 @@ h1{
 
 .navbar .vestiaire a{
 	background: url("../img/icon-compte.png")no-repeat;
-	height: 60px;
-    padding: 60px 10px 0 7px;
-    display: inline-block;
+    padding: 24px 10px 30px 85px;
 
 }
 
@@ -278,6 +266,8 @@ h1{
 	background-color: white;
 	padding: 20px;
 	margin:30px 0 150px 0;
+	position: relative;
+	z-index: 9;
 }
 
 /*****REGISTER*****/
@@ -689,6 +679,31 @@ h1{
     font-size: 2rem;
  }
 
+ /*******CGU*******/
+
+ .container-cgu>div{
+ 	position: relative;
+ 	z-index: 9;
+ 	background-color: white;
+ 	padding: 15px 45px;
+ 	margin-bottom: 50px;
+ }
+
+ .container-cgu h2{
+ 	font-size: 2rem;
+ 	font-weight: 700;
+ 	margin:25px 0;
+ }
+
+ .container-cgu h3,.container-cgu h4{
+	font-weight: 700;
+ }
+
+ .container-cgu p{
+ 	font-size: 1.2rem;
+ 	padding-left: 25px;
+ }
+
 /******FOOTER******/
 
 .footer{
@@ -758,6 +773,64 @@ h1{
 	.tableau-res .point-small p{
 		margin-top: 4px;
 	}
+	.navbar .reglement, .navbar .pronostics{
+		display: inline-block;
+	}
+
+	.navbar .reglement a{
+		background: url("../img/icon-sifflet.png")no-repeat;
+		height: 60px;
+	    padding: 60px 10px 0 6px;
+	    display: inline-block;
+	}
+
+	.navbar .reglement a:hover{
+		background: url("../img/icon-sifflet-survol.png")no-repeat;
+	}
+
+	.navbar .pronostics a{
+		background: url("../img/icon-prono.png")no-repeat;
+		height: 60px;
+	    padding: 50px 10px 0 6px;
+	    display: inline-block;
+	    background-position-x: 4px;
+	}
+
+	.navbar .pronostics a:hover{
+		background: url("../img/icon-prono-over.png")no-repeat;
+		background-position-x: 4px;
+	}
+	.navbar .classement, .navbar .vestiaire{
+		display: inline-block;
+	}
+
+	.navbar .classement a{
+		background: url("../img/icon-classement.png")no-repeat;
+		height: 60px;
+	    padding: 60px 10px 0 0;
+	    display: inline-block;
+	    background-position-x: 8px;
+	}
+
+	.navbar .classement a:hover{
+		background: url("../img/icon-classement-survol.png")no-repeat;
+	}
+
+	.navbar .vestiaire a{
+		background: url("../img/icon-compte.png")no-repeat;
+		height: 60px;
+	    padding: 60px 10px 0 7px;
+	    display: inline-block;
+
+	}
+
+	.navbar .vestiaire a:hover{
+		background: url("../img/icon-compte-survol.png")no-repeat;
+	}
+	.txt-md-right{
+		text-align: right;
+	}
+
 }
 
 @media (min-width: 992px) { 
