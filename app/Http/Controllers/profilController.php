@@ -25,4 +25,22 @@ class profilController extends Controller
             'user' => $user,
         ]);
     }
+
+    public function updateInfos(Request $request){
+    	$this->validate($request,[
+            'mail' => 'required|max:255',
+            'name' => 'required'
+        ]);
+    	$user_id = Auth::id();
+        $name = $request->input('name');
+        $mail = $request->input('mail');
+    	
+    	DB::table('users')
+            ->where('id', $user_id)
+            ->update([
+            	'name' => $name,
+            	'email' => $mail
+            ]);
+        return redirect()->back()->with('success','Voter profil a bien était modifié');
+    }
 }

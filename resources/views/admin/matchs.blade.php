@@ -166,6 +166,106 @@
                                         {{ csrf_field() }}
                                         {{ method_field('PUT') }}
                                         
+                                        <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Equipe 1 :</label>
+                            <select class="form-control" name="id_equipe1">
+                                @foreach($equipes as $equipe)
+                                    @if($equipe->id_equipe == $match->id_equipe1)
+                                        <option selected value="{{$equipe->id_equipe}}">{{$equipe->nom_equipe}}</option>
+                                    @else
+                                        <option value="{{$equipe->id_equipe}}">{{$equipe->nom_equipe}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Equipe 2 :</label>
+                            <select class="form-control" name="id_equipe2">
+                                @foreach($equipes as $equipe)
+                                    @if($equipe->id_equipe == $match->id_equipe2)
+                                        <option selected value="{{$equipe->id_equipe}}">{{$equipe->nom_equipe}}</option>
+                                    @else
+                                        <option value="{{$equipe->id_equipe}}">{{$equipe->nom_equipe}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Score équipe 1 :</label>
+                            <input type="text" class="form-control" placeholder="score :" name="score_equipe1" value="{{$match->score_equipe1}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Score équipe 2 :</label>
+                            <input type="text" class="form-control" placeholder="score :" name="score_equipe2" value="{{$match->score_equipe2}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nombre d'essais :</label>
+                            <input type="text" class="form-control" placeholder="nombre d'essai :" name="nb_essai" value="{{$match->nb_essai_match}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date de début :</label>
+                            <input type="date" name="date_debut" class="form-control" value="{{date_format(new DateTime($match->date_debut_match), 'Y-m-d')}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Heure de début :</label>
+                            <input type="time" name="time_debut" class="form-control" value="{{date_format(new DateTime($match->date_debut_match), 'H:i')}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date de fin :</label>
+                            <input type="date" name="date_fin" class="form-control" value="{{date_format(new DateTime($match->date_fin_match), 'Y-m-d')}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Heure de fin :</label>
+                            <input type="time" name="time_fin" class="form-control" value="{{date_format(new DateTime($match->date_fin_match), 'H:i')}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Séléctionner la journée :</label>
+                            <select class="form-control" name="id_journee">
+                                @foreach($journees as $journee)
+                                    @if($journee->id_journee == $match->id_journee)
+                                        <option selected value="{{$journee->id_journee}}">{{$journee->nom_journee}}</option>
+                                    @else
+                                        <option value="{{$journee->id_journee}}">{{$journee->nom_journee}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
                                         <button type="submit" class="btn btn-info btn-fill pull-right">Modifier</button>
                                         <div class="clearfix"></div>

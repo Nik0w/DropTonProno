@@ -28,4 +28,8 @@ $(document).ready(function(){
   		window.location.href = $link;
 	});
 
+	$('.input-file').change(function(){
+		console.log($(this));
+	});
+
 });

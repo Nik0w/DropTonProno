@@ -263,13 +263,53 @@ h1{
 /******PROFIL*****/
 
 .containerProfil{
-	background-color: white;
 	padding: 20px;
 	margin:30px 0 150px 0;
 	position: relative;
 	z-index: 9;
 }
 
+.containerProfil .masque-photo{
+	width:125px;
+	height: 125px;
+	border-radius: 50%;
+	background-color: #aeaeae;
+	margin:0 auto 25px auto;
+	position: relative;
+	overflow: hidden;
+}
+
+.containerProfil .options{
+	font-size: 1.2rem;
+	
+}
+
+.containerProfil .options a{
+	color: #146d82 !important;
+	text-decoration: none;
+}
+
+.containerProfil input{
+    background-color: #f5f5f5;
+    border: none;
+    padding: 10px 20px;
+    height: 45px;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.containerProfil .cta{
+	font-size: 1.4rem;
+}
+
+.containerProfil .label-file {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.containerProfil .input-file {
+    display: none;
+}
 /*****REGISTER*****/
 
 .register .container-form{
@@ -736,7 +776,7 @@ h1{
 	.register .container-form, .login .container-form,.reset .panel {
 	    margin: 40px 0 250px 0;
 	}
-	.container-home{
+	.container-home,.containerProfil{
 		padding-bottom: 250px;
 	}
 	.classement table{
@@ -761,7 +801,7 @@ h1{
 	.welcome .zone-cta div.row div:first-child{
 	    margin-bottom: 0;
 	}
-	.container-home{
+	.container-home,.containerProfil{
 		padding-bottom: 350px;
 	}
 	.container-home .row div:nth-child(2){
@@ -814,6 +854,7 @@ h1{
 
 	.navbar .classement a:hover{
 		background: url("../img/icon-classement-survol.png")no-repeat;
+		background-position-x: 8px;
 	}
 
 	.navbar .vestiaire a{
@@ -821,11 +862,13 @@ h1{
 		height: 60px;
 	    padding: 60px 10px 0 7px;
 	    display: inline-block;
+        background-position-x: -3px;
 
 	}
 
 	.navbar .vestiaire a:hover{
 		background: url("../img/icon-compte-survol.png")no-repeat;
+	    background-position-x: -3px;
 	}
 	.txt-md-right{
 		text-align: right;
@@ -883,7 +926,7 @@ h1{
 	.register .container-form, .login .container-form,.reset .panel {
 	    margin: 40px 0 450px 0;
 	}
-	.container-home{
+	.container-home,.containerProfil{
 		padding-bottom: 450px;
 	}
 	.classement table{

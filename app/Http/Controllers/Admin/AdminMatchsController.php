@@ -29,7 +29,7 @@ class AdminMatchsController extends Controller
                     ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
                     ->join('equipes as eq1', 'matchs.id_equipe1', '=', 'eq1.id_equipe')
                     ->join('equipes as eq2', 'matchs.id_equipe2', '=', 'eq2.id_equipe')
-                    ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','eq1.nom_equipe as nom_equipe1','eq2.nom_equipe as nom_equipe2','journees.nom_journee'])
+                    ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','matchs.score_equipe1','matchs.score_equipe2','matchs.nb_essai_match','eq1.nom_equipe as nom_equipe1','eq2.nom_equipe as nom_equipe2','journees.nom_journee'])
                     ->get();
 
         $equipes = DB::table('equipes')->get();
@@ -60,6 +60,7 @@ class AdminMatchsController extends Controller
         $id_equipe2 = $request->input('id_equipe2');
         $score_equipe1 = $request->input('score_equipe1');
         $score_equipe2 = $request->input('score_equipe2');
+        $nb_essai_match = $request->input('nb_essai');
         $date_debut = $request->input('date_debut');
         $heure_debut = $request->input('time_debut');
         $date_fin = $request->input('date_fin');
@@ -76,6 +77,7 @@ class AdminMatchsController extends Controller
             'id_journee' => $id_journee,
             'score_equipe1' => $score_equipe1,
             'score_equipe2' => $score_equipe2,
+            'nb_essai_match' => $nb_essai_match,
             'date_debut_match' => $dateTime_debut,
             'date_fin_match' => $dateTime_fin
         ]);
@@ -90,7 +92,13 @@ class AdminMatchsController extends Controller
 
     public function update($id, Request $request){
 
-    	$nom_journee = $request->input('nom_journee');
+        //dd($request->input());
+
+    	$id_equipe1 = $request->input('id_equipe1');
+        $id_equipe2 = $request->input('id_equipe2');
+        $score_equipe1 = $request->input('score_equipe1');
+        $score_equipe2 = $request->input('score_equipe2');
+        $nb_essai_match = $request->input('nb_essai');
         $date_debut = $request->input('date_debut');
         $heure_debut = $request->input('time_debut');
         $date_fin = $request->input('date_fin');
@@ -99,15 +107,19 @@ class AdminMatchsController extends Controller
         $dateTime_debut = $date_debut.' '.$heure_debut.':00';
         $dateTime_fin = $date_fin.' '.$heure_fin.':00';
 
-        $id_championnat = $request->input('id_championnat');
+        $id_journee = $request->input('id_journee');
 
-    	DB::table('journees')
-            ->where('id_journee', $id)
+    	DB::table('matchs')
+            ->where('id_match', $id)
             ->update([
-            	'nom_journee' => $nom_journee,
-            	'date_debut_journee' => $dateTime_debut,
-            	'date_fin_journee' => $dateTime_fin,
-                'id_championnat_journee' => $id_championnat
+            	'id_equipe1' => $id_equipe1,
+                'id_equipe2' => $id_equipe2,
+                'id_journee' => $id_journee,
+                'score_equipe1' => $score_equipe1,
+                'score_equipe2' => $score_equipe2,
+                'nb_essai_match' => $nb_essai_match,
+                'date_debut_match' => $dateTime_debut,
+                'date_fin_match' => $dateTime_fin
             ]);
 
         return back();

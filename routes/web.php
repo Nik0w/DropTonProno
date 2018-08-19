@@ -28,10 +28,11 @@ Route::get('/classement', 'ClassementController@index')->name('classement');
 Route::get('/classement/mois', 'ClassementMoisController@index');
 
 Route::get('/vestiaire', 'profilController@index');
+Route::post('/vestiaire', 'profilController@updateInfos');
 
 Route::get('/cgu', 'cguController@index');
 
-Route::prefix('admin')->group(function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function(){
 
     Route::get('/', 'Admin\AdminHomeController@index');
     Route::get('/home', 'Admin\AdminHomeController@index');
