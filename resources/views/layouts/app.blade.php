@@ -35,6 +35,7 @@
         </div>
 
         <p>&copy; Drop Ton Prono 2018 - <a href="{{url('/cgu')}}">CGU</a></p>
+        <div class="text-center"><a href="mailto:contact@droptonprono.fr">Contactez-nous</a></div>
      </div>
    </div>
 

@@ -83,6 +83,16 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <div class="col-md-6 offset-md-4">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="remember" requiered> J'accepte les <a href="{{url('/cgu')}}">CGU</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <div class="col-md-6 offset-md-4 text-right">
                                             <button type="submit" class="cta bg-orange">
                                                 Créer mon compte

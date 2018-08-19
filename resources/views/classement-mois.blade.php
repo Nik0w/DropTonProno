@@ -40,7 +40,9 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
             <div class="col-12 col-md-8 offset-md-2 bg-orange classement-user">
               <div class="row">   
                 <div class="col-12 col-md-5 text-left">
-                  <img class="img_user" src="{{asset('img/fb.png')}}" alt="">
+                  <div class="masque-photo">
+                    <img class="img_user" src="{{asset('img/profils/'.$user->nom_img)}}" alt="">
+                  </div>
                   <div class="infos_user">
                     <div class="nameUser">
                       {{$user->name}}

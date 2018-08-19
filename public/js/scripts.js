@@ -29,7 +29,7 @@ $(document).ready(function(){
 	});
 
 	$('.input-file').change(function(){
-		console.log($(this));
+		$('#form-img-profil').submit();
 	});
 
 });

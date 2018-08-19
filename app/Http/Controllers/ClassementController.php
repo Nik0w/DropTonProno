@@ -61,7 +61,8 @@ class ClassementController extends Controller
                 ->leftJoin('points as pts_pronos','pts_pronos.id_point','=','points_pronos.id_point')
                 ->leftJoin('points_mois','points_mois.id_user','=','users.id')
                 ->leftJoin('points as pts_mois','pts_mois.id_point','=','points_mois.id_point')
-                ->select('name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
+                ->leftJoin('images_users','users.id','=','images_users.id_user')
+                ->select('name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois','images_users.nom_img')
                 ->where('id','=',$id_user)
                 ->first();
 
