@@ -24,10 +24,12 @@ Route::get('/resultats/{id}','Resultats@index')->where('id', '[0-9]+')->name('re
 
 Route::post('/resultats/{id}', 'Resultats@createProno')->where('id', '[0-9]+')->name('resultats');;
 
-Route::get('/classement', 'ClassementController@index');
+Route::get('/classement', 'ClassementController@index')->name('classement');
+Route::get('/classement/mois', 'ClassementMoisController@index');
 
 Route::get('/vestiaire', 'profilController@index');
 
+Route::get('/cgu', 'cguController@index');
 
 Route::prefix('admin')->group(function () {
 

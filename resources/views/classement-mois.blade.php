@@ -74,10 +74,10 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                   </div>
                 </div>
                 <div class="col-12 col-md-2 text-center title-scores">
-                  <div class="lato">Points</div>
+                  <div class="lato">Points Mois</div>
                   <div class="value-classement">
-                    @if($user->nb_pts_totaux != NULL)
-                      {{$user->nb_pts_totaux}}
+                    @if($user->nb_pts_mois != NULL)
+                      {{$user->nb_pts_mois}}
                     @else
                       0
                     @endif
@@ -93,7 +93,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                   <th scope="col">Prénom</th>
                   <th scope="col">Bons pronos</th>
                   <th scope="col">Scores exacts</th>
-                  <th scope="col">Points</th>
+                  <th scope="col">Points Mois</th>
                 </tr>
               </thead>
               <tbody>
@@ -103,7 +103,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                     <td>{{$u->name}}</td>
                     <td>@if($u->nb_pts_pronos != NULL){{$u->nb_pts_pronos}}@else 0 @endif</td>
                     <td>@if($u->nb_pts_scores!=NULL){{$u->nb_pts_scores}}@else 0 @endif</td>
-                    <td>@if($u->nb_pts_totaux!=NULL){{$u->nb_pts_totaux}}@else 0 @endif</td>
+                    <td>@if($u->nb_pts_mois!=NULL){{$u->nb_pts_mois}}@else 0 @endif</td>
                   </tr> 
                 @endforeach
               </tbody>

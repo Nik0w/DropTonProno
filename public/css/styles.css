@@ -127,7 +127,9 @@ h1{
     font-weight: 700;
     text-align: center;
     margin-bottom: 40px;
-    font-size: 3rem;
+    font-size: 4rem;
+    text-transform: uppercase;
+    font-family: 'hansiefregular';
 }
 
 /****NOTIFS****/
@@ -587,8 +589,29 @@ h1{
 
 /******CLASSEMENT******/
 
+.classement .links-classements .select-classement{
+	display: inline-block;
+    padding: 3px 12px;
+    border: 2px solid #146d82;
+    font-size: 2rem;
+    color: #146d82;
+    text-transform: uppercase;
+    font-family: 'hansiefregular';
+    margin: 0 10px 10px 10px;
+    text-decoration: none;
+}
+
+.classement .links-classements .select-classement.active{
+    border: 2px solid #ffb400;
+    color: #ffb400;
+}
+
 .classement thead{
 	color: white;
+}
+
+.classement thead tr th{
+    vertical-align: middle;
 }
 
 .classement table{
@@ -624,13 +647,47 @@ h1{
     color: white;
 }
 
+.classement-user .img_user{
+	height: 75px;
+	vertical-align: initial;
+	margin-right: 10px;
+}
+
+.classement-user .infos_user{
+	display: inline-block;
+}
+
+.classement .infos_user .nameUser{
+	font-size: 2rem;
+}
+
 .classement .classement-user>div{
 	padding: 15px 20px;
+}
+
+.classement .classement-user .title-scores{
+	font-size: 1.2rem;
 }
 
 .classement .classement-user .value-classement{
 	font-size: 40px;
 }
+
+.classement .infos_user .rank .rank-val{
+    font-size: 7rem;
+    line-height: 5.2rem;
+    letter-spacing: -6px;
+}
+
+.classement .infos_user .rank .indice{
+	position: absolute;
+    font-size: 3rem;
+    line-height: 18px;
+}
+
+.classement .infos_user .rank .slash,.classement .infos_user .rank .nb-users {
+    font-size: 2rem;
+ }
 
 /******FOOTER******/
 

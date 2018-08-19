@@ -34,7 +34,7 @@
           <a href="https://twitter.com/Droptonprono" target="blank"><img src="{{asset('img/twitter.png')}}" alt=""></a>
         </div>
 
-        <p>&copy; Drop Ton Prono 2018</p>
+        <p>&copy; Drop Ton Prono 2018 - <a href="{{url('/cgu')}}">CGU</a></p>
      </div>
    </div>
 

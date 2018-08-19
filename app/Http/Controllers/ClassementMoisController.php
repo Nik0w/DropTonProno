@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use Auth;
 
-class ClassementController extends Controller
+class ClassementMoisController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -41,7 +41,7 @@ class ClassementController extends Controller
                 ->leftJoin('points_mois','points_mois.id_user','=','users.id')
                 ->leftJoin('points as pts_mois','pts_mois.id_point','=','points_mois.id_point')
                 ->select('id','name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
-                ->orderBy('nb_pts_totaux','DESC')
+                ->orderBy('nb_pts_mois','DESC')
                 ->get();
 
         $nb_users = $users->count();
@@ -59,7 +59,10 @@ class ClassementController extends Controller
                 ->leftJoin('points as pts_scores','pts_scores.id_point','=','points_scores.id_point')
                 ->leftJoin('points_pronos','points_pronos.id_user','=','users.id')
                 ->leftJoin('points as pts_pronos','pts_pronos.id_point','=','points_pronos.id_point')
-                ->leftJoin('points_mois','points_mois.id_user','=','users.id')
+                ->leftJoin('points_mois', function($join){
+                    $join->on('points_mois.id_user','=','users.id')
+                    ->where('num_mois', '=', date('m'));
+                })
                 ->leftJoin('points as pts_mois','pts_mois.id_point','=','points_mois.id_point')
                 ->select('name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
                 ->where('id','=',$id_user)
@@ -67,7 +70,7 @@ class ClassementController extends Controller
 
         //dd($users);
 
-        return view('classement',[
+        return view('classement-mois',[
             'users' => $users,
             'user' => $user,
             'rank_user' => $rank_user,
