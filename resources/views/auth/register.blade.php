@@ -86,7 +86,7 @@
                                         <div class="col-md-6 offset-md-4">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="remember" requiered> J'accepte les <a href="{{url('/cgu')}}">CGU</a>
+                                                    <input type="checkbox" name="remember" required> J'accepte les <a href="{{url('/cgu')}}">CGU</a>
                                                 </label>
                                             </div>
                                         </div>

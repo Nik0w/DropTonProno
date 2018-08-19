@@ -595,6 +595,12 @@ h1{
     margin-bottom: 60px;
 }
 
+.welcome .title-welcome{
+    font-size: 2.5rem;
+    text-transform: inherit;
+    font-family: 'Lato', sans-serif;
+}
+
 .welcome .zone-cta a{
 	text-transform: uppercase;
     letter-spacing: 2px;
@@ -692,6 +698,7 @@ h1{
 	height: 75px;
 	border-radius: 50%;
 	background-color: white;
+    margin-right: 15px;
 }
 
 .classement-user .img_user{

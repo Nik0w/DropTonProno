@@ -120,14 +120,6 @@
                             </a>
                         </li>
                     </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               Account
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </nav>

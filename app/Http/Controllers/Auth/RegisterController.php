@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -62,10 +63,46 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        $user_id = $user->id;
+        $score = 10;
+
+        $pre_inscris = DB::table('pre_inscription')
+                        ->where('pre_inscription.email_user','=',$user->email)
+                        ->first();
+        if($pre_inscris != null){
+             //check si l user a deja un score total
+            $score_general = DB::table('points_totaux')
+                                ->where('points_totaux.id_user','=',$user_id)
+                                ->first();
+
+            // IL Y A DEJA UN SCORE TOTAL
+            if($score_general != NULL){
+
+                DB::table('points')
+                    ->where('points.id_point','=',$score_general->id_point)
+                    ->increment('nb_points', $score);
+
+            }else{
+
+                $pointsInsertID = DB::table('points')->insertGetId([
+                    'nb_points' => $score,
+                ]);
+
+                DB::table('points_totaux')->insert([
+                    'id_user' => $user_id,
+                    'id_point' => $pointsInsertID,
+                ]);
+            }
+        }
+
+        return $user;
+
+
     }
 }
