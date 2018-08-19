@@ -45,7 +45,7 @@
 
             <div class="col-12 col-md-8 offset-md-2 text-resultats color-blue">
                 <h1>Vos pronostics</h1>
-                <p>Face aux perches, drop tes pronostics sur chaque rencontre du Top14 et tente de gagner des cadeaux, c’est gratuit ! <br />
+                <p>Face aux perches, drop tes pronostics sur chaque rencontre du Top14 et tente de gagner des cadeaux,<br /> c’est gratuit ! <br />
                 Modifie tes pronos jusqu’à la dernière minute et profite de ta 3ème mi-temps pour chambrer tes amis. <br />
                 Et comme dirait un certain habitué...<i>Depuis le débuuut !</i>  <br />
                 </p>
@@ -63,17 +63,21 @@
                     <div class="carousel-item active">
                       <div class="row">
                         @foreach($journees as $journee)
-                            <div class="col-2"><a class="active-journee" href="{{route('resultats', $journee->id_journee)}}">{{$journee->nom_journee}}</a></div>
+                            @if(url()->current() == route('resultats', $journee->id_journee))
+                                <div class="col-2"><a class="active-journee" href="{{route('resultats', $journee->id_journee)}}">{{$journee->nom_journee}}</a></div>
+                            @else
+                                <div class="col-2"><a class="" href="{{route('resultats', $journee->id_journee)}}">{{$journee->nom_journee}}</a></div>
+                            @endif
                         @endforeach
                       </div>
                     </div>
                   </div>
                   <a class="carousel-control-prev" href="#journeeCarouselControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <i class="fas fa-arrow-left"></i>
                     <span class="sr-only">Previous</span>
                   </a>
                   <a class="carousel-control-next" href="#journeeCarouselControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <i class="fas fa-arrow-right"></i>
                     <span class="sr-only">Next</span>
                   </a>
                 </div>
@@ -84,7 +88,11 @@
             <div class="col-12">
                 <select class="d-block" name="journee" id="">
                     @foreach($journees as $journee)
-                        <option data-link="{{url()->current()}}" value="{{$journee->id_journee}}">{{$journee->nom_journee}}</option>
+                        @if(url()->current() == route('resultats', $journee->id_journee))
+                            <option selected data-link="{{route('resultats', $journee->id_journee)}}" value="{{$journee->id_journee}}">{{$journee->nom_journee}}</option>
+                        @else
+                            <option data-link="{{route('resultats', $journee->id_journee)}}" value="{{$journee->id_journee}}">{{$journee->nom_journee}}</option> 
+                        @endif
                     @endforeach
                 </select>
             </div>
@@ -133,7 +141,7 @@
                                                 @if($match->date_debut_match > date("Y-m-d H:i:s"))
                                                     <input type="text" class="form-control" id="score_equipe1" name="score_equipe1" aria-describedby="score equipe 1" @if($match->points_equipe1 != null) placeholder="{{$match->points_equipe1}}"@else placeholder="--" @endif>
                                                 @else
-                                                    <input type="text" readonly class="form-control-plaintext score-input-disabled" id="staticEmail" @if($match->points_equipe1 != null) placeholder="{{$match->points_equipe1}}"@else placeholder="--" @endif>
+                                                    <input type="text" readonly class="form-control-plaintext score-input-disabled" id="" @if($match->points_equipe1 != null) placeholder="{{$match->points_equipe1}}"@else placeholder="--" @endif>
                                                 @endif
                                             </div>
                                         </div>
@@ -163,7 +171,11 @@
 
                                 <div class="col-12 text-center nb-essai">
                                     Nombre d'essai dans le match :
-                                    <input type="text">
+                                    @if($match->date_debut_match > date("Y-m-d H:i:s"))
+                                        <input type="text" name="score_essais" @if($match->nb_essai_prono != null) placeholder="{{$match->nb_essai_prono}}"@else placeholder="-" @endif>
+                                    @else
+                                        <input readonly type="text" name="score_essais" class="score-essai-disabled" @if($match->nb_essai_prono != null) placeholder="{{$match->nb_essai_prono}}"@else placeholder="-" @endif>
+                                    @endif
                                 </div>
 
                             </div>
@@ -177,9 +189,8 @@
                                         __-__
                                         @endif
                                     </div>
-                                    <div class="col-4 col-md-12"><span>Essais</span> _</div>
+                                    <div class="col-4 col-md-12"><span>Essais : </span>@if($match->nb_essai_match != NULL){{$match->nb_essai_match}}@else-@endif</div>
                                     <div class="col-4 col-md-12 d-lg-none d-block">
-                                        <span>Points : </span>
                                         @if($match->date_debut_match > date("Y-m-d H:i:s"))
                                         <div class="point d-block d-lg-none grey-bg ">
                                             <p><span class="small-txt">Match pas encore joué</span></p>
@@ -189,8 +200,18 @@
                                             <p><span>Match en cours</p>
                                         </div>
                                         @else
-                                        <div class="point d-block d-lg-none">
-                                            <p><span>{{$match->nb_points}}</span>POINTS</p>
+                                        <div class="point-small d-block d-lg-none">
+                                            <p>
+                                                @if($match->nb_points != NULL)
+                                                    <span>{{$match->nb_points}}</span> POINTS
+                                                @else
+                                                    @if($match->points_equipe1 == NULL && $match->points_equipe2 == NULL)
+                                                        <span>0</span> POINTS
+                                                    @else
+                                                        <span>Calcul en cours</span>
+                                                    @endif
+                                                @endif
+                                            </p>
                                         </div>
                                         @endif
                                     </div>
@@ -206,13 +227,17 @@
                             </div>
                             @else
                             <div class="point d-none d-lg-block bg-orange">
-                                <p><span>
+                                <p>
                                     @if($match->nb_points != NULL)
-                                        {{$match->nb_points}}
+                                        <span>{{$match->nb_points}}</span><br />POINTS
                                     @else
-                                        0
+                                        @if($match->points_equipe1 == NULL && $match->points_equipe2 == NULL)
+                                            <span>0</span><br />POINTS
+                                        @else
+                                            <span>Calcul en cours</span>
+                                        @endif
                                     @endif
-                                </span><br />POINTS</p>
+                                </p>
                             </div>
                             @endif
                             

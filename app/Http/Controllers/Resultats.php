@@ -30,10 +30,10 @@ class Resultats extends Controller
 					})
                     ->leftJoin('points', 'points.id_point', '=', 'pronos.id_point')
                     ->where('matchs.id_journee','=',$id)
-                    ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','matchs.score_equipe1','matchs.score_equipe2','eq1.nom_equipe as nom_equipe1','eq1.logo_equipe as logo_equipe1','eq2.nom_equipe as nom_equipe2','eq2.logo_equipe as logo_equipe2','journees.nom_journee','pronos.points_equipe1','pronos.points_equipe2','pronos.nb_essai_prono','points.nb_points'])
+                    ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','matchs.score_equipe1','matchs.score_equipe2','matchs.nb_essai_match','eq1.nom_equipe as nom_equipe1','eq1.logo_equipe as logo_equipe1','eq2.nom_equipe as nom_equipe2','eq2.logo_equipe as logo_equipe2','journees.nom_journee','pronos.points_equipe1','pronos.points_equipe2','pronos.nb_essai_prono','points.nb_points'])
                     ->orderBy('matchs.date_debut_match', 'asc')
                     ->get();
-
+        //dd($matchs);
         $journees = DB::table('journees')
                     ->get();
         
@@ -192,25 +192,35 @@ class Resultats extends Controller
 	        		&& $prono->score_equipe2 > $prono->score_equipe1){
 	    			$score+=5;
 	        	}
-	        	//ecart de 3
+	        	//ecart de 3 score equipe 1
 	        	if($prono->points_equipe1 >= $prono->score_equipe1 - 3
 	        		&& $prono->points_equipe1 <= $prono->score_equipe1 + 3
 	        		&& $prono->points_equipe1 != $prono->score_equipe1){
 	        		$score += 3;
 	        	}
+	        	// ecart de 3 score equipe 2
 	        	if($prono->points_equipe2 >= $prono->score_equipe2 - 3
 	        		&& $prono->points_equipe2 <= $prono->score_equipe2 + 3
 	        		&& $prono->points_equipe2 != $prono->score_equipe2){
 	        		$score += 3;
+	        	}
+	        	//si score nombre d essai est bon
+	        	if($prono->nb_essai_prono == $prono->nb_essai_match){
+	        		$score += 10;
 	        	}
 	        	//si score exact equipe 1 ou equipe 2
 	        	if($prono->points_equipe1 == $prono->score_equipe1 xor $prono->points_equipe2 == $prono->score_equipe2){
 	        		$score+=20;
 	        		$score_pts_exacts ++;
 	        	}
-	        	//si match nul et prono match nul
-	        	else if($prono->points_equipe1 == $prono->score_equipe1 && $prono->points_equipe2 == $prono->score_equipe2 && $prono->points_equipe1 == $prono->score_equipe1){
-	        		$score+=30;
+	        	//si score exact equipe 1 et equipe 2 mais pas match nul
+	        	else if($prono->points_equipe1 == $prono->score_equipe1 && $prono->points_equipe2 == $prono->score_equipe2 && $prono->points_equipe1 != $prono->points_equipe2){
+	        		$score+=40;
+	        		$score_pts_exacts += 2;
+	        	}
+	        	//si match nul
+	        	else if($prono->points_equipe1 == $prono->score_equipe1 && $prono->points_equipe2 == $prono->score_equipe2 && $prono->points_equipe1 == $prono->points_equipe2){
+	        		$score+=70;
 	        		$score_pts_exacts += 2;
 	        	}
 
@@ -248,11 +258,15 @@ class Resultats extends Controller
             'match' => 'required',
         ]);
 
+    	// SI PAS DIE PRONO SUR LE NOMBRE D ESSAI : ENREGISTRE 0 EN VALEUR PAR DEFAUT
+        $score_essais = 0;
+
         $id_equipe1 = $request->input('id_equipe1');
         $id_equipe2 = $request->input('id_equipe2');
         $id_match = $request->input('match');
         $score_equipe1 = $request->input('score_equipe1');
         $score_equipe2 = $request->input('score_equipe2');
+		$score_essais = $request->input('score_essais');
 		$id_user = Auth::id();
 
         $match = DB::table('matchs')
@@ -277,7 +291,7 @@ class Resultats extends Controller
                 ->update([
                 	'points_equipe1' => $score_equipe1,
     	            'points_equipe2' => $score_equipe2,
-    	            'nb_essai_prono' => 0
+    	            'nb_essai_prono' => $score_essais
                 ]);
             }else{
             	// PAS DE PRONO SUR CE MATCH
@@ -286,7 +300,7 @@ class Resultats extends Controller
     	            'points_equipe1' => $score_equipe1,
     	            'points_equipe2' => $score_equipe2,
     	            'id_user' => $id_user,
-    	            'nb_essai_prono' => 0,
+    	            'nb_essai_prono' => $score_essais,
     	            'is_active' => 1
     	        ]);
             }

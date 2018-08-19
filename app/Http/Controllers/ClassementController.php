@@ -40,7 +40,8 @@ class ClassementController extends Controller
                 ->leftJoin('points_mois','points_mois.id_user','=','users.id')
                 ->leftJoin('points as pts_mois','pts_mois.id_point','=','points_mois.id_point')
                 ->select('name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
-                ->orderBy('nb_pts_totaux','ASC')
+                ->limit(30)
+                ->orderBy('nb_pts_totaux','DESC')
                 ->get();
 
         $user = DB::table('users')

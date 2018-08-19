@@ -369,6 +369,11 @@ h1{
 	width: 8%;
 }
 
+.carousel-control-next i, .carousel-control-prev i{
+	font-size: 20px;
+    color: #146d82;
+}
+
 .select_journee select{
 	width: 100%;
     height: 50px;
@@ -434,6 +439,7 @@ h1{
     right: -4px;
     font-family: "hansiefregular";
     font-size: 24px;
+    color: #146d82;
 }
 
 .tableau-res .logo-equipe{
@@ -466,12 +472,20 @@ h1{
 	font-family: 'hansiefregular';
 }
 
+.tableau-res .nb-essai{
+	padding: 10px 0;
+}
+
 .tableau-res .nb-essai input{
 	width: 50px;
 }
 
+.tableau-res .score-essai-disabled{
+	background-color: white;
+}
+
 .tableau-res .essai-point{
-	font-size: 1rem;
+	font-size: 1.2rem;
 	font-weight: 700;
 	padding: 10px 0;
     background-color: #e0e0e0;
@@ -481,6 +495,12 @@ h1{
 .tableau-res .essai-point span{
 	text-transform: uppercase;
 	font-size: 1em;
+}
+
+.tableau-res .point-small p{
+	font-size: 17px;
+    margin-bottom: 0;
+    color: #146d82;
 }
 
 .tableau-res:last-child{
@@ -678,6 +698,9 @@ h1{
 	.classement table{
 		margin-bottom: 350px;
 	}
+	.tableau-res .point-small p{
+		margin-top: 4px;
+	}
 }
 
 @media (min-width: 992px) { 
@@ -718,7 +741,6 @@ h1{
 	.tableau-res .point p span{
 		font-size: 3.6rem;
 		line-height: 0;
-	    padding-left: 7px;
 	}
 
 	.tableau-res .point.point-noPoints p span{

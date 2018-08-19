@@ -23,9 +23,9 @@ $(document).ready(function(){
 	});
 
 	//CHANGE PAGE ON SELECT CHANGE FOR MOBILE
-	$( ".select_journee" ).change(function() {
-		console.log(window.location.href);
-  		//window.location.href = "http://stackoverflow.com";
+	$(".select_journee").change(function() {
+		var $link = $(this).find('option:selected').data('link');
+  		window.location.href = $link;
 	});
 
 });
