@@ -15,7 +15,7 @@
         <div class=".d-none .d-sm-block col-md-8 encartPub"></div>
 
         <div class="col-12 col-md-8 offset-md-2 text-center">
-            <h1 class="title-welcome">Rejoins nous sur le premier site de pronostics gratuits dédié au rugby et au Top 14 !</h1>
+            <h1 class="title-welcome">Rejoins-nous sur le premier site de pronostics gratuits dédié au rugby et au Top 14 !</h1>
         </div>
 
         <div class="col-12 col-sm-8 offset-sm-2 text-center zone-cta">
@@ -53,19 +53,19 @@
                 <div class="col-12 col-sm-6 col-md-3 text-center infos">
                     <div><img src="{{asset('img/picto-prono.png')}}" alt=""></div>
                     <h2 class="hansief">Fais tes pronostics</h2>
-                    <h3>Résultats, scores, nombres d'essais, joue la comme Wilko et tente le drop <b>gagnant !</b></h3>
+                    <h3>Résultats, scores, nombres d'essais, joue-la comme Wilko et tente le drop <b>gagnant !</b></h3>
                 </div>
 
                 <div class="col-12 col-sm-6 col-md-3 text-center infos">
                     <div><img src="{{asset('img/picto-coupe.png')}}" alt=""></div>
                     <h2 class="hansief">Grimpe au classement</h2>
-                    <h3>Cumule tes points après chaque journée du <b>Top14</b>... Attention à la relégation !</h3>
+                    <h3>Cumule tes points après chaque journée du <b>Top 14</b>... Attention à la relégation !</h3>
                 </div>
 
                 <div class="col-12 col-sm-6 col-md-3 text-center infos">
                     <div><img src="{{asset('img/picto-maillot.png')}}" alt=""></div>
                     <h2 class="hansief">Gagne des lots !</h2>
-                    <h3>Un <b>gagnant</b> par mois, et un classement à l'année pour les plus entrainés !</h3>
+                    <h3>Un <b>gagnant</b> par mois, et un classement à l'année pour les plus entraînés !</h3>
                 </div>
 
                 

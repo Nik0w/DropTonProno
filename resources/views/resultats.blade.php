@@ -21,7 +21,7 @@
             @if(session()->has('success'))
             <div class="col-12">
                 <div class="alert alert-success alert-dismissible show" role="alert">
-                  <strong>Félicitation ! </strong>{{\Session::get('success')}}
+                  <strong>Félicitations ! </strong>{{\Session::get('success')}}
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -45,9 +45,9 @@
 
             <div class="col-12 col-md-8 offset-md-2 text-resultats color-blue">
                 <h1>Vos pronostics</h1>
-                <p>Face aux perches, drop tes pronostics sur chaque rencontre du Top14 et tente de gagner des cadeaux,<br /> c’est gratuit ! <br />
+                <p>Face aux perches, drop tes pronostics sur chaque rencontre du Top 14 et tente de gagner des cadeaux,<br /> c’est gratuit ! <br />
                 Modifie tes pronos jusqu’à la dernière minute et profite de ta 3ème mi-temps pour chambrer tes amis. <br />
-                Et comme dirait un certain habitué...<i>Depuis le débuuut !</i>  <br />
+                Et comme dirait un certain habitué...<i> Depuis le débuuut !</i>  <br />
                 </p>
             </div>
 
@@ -170,7 +170,7 @@
                                 </div>
 
                                 <div class="col-12 text-center nb-essai">
-                                    Nombre d'essai dans le match :
+                                    Nombre d'essais dans le match :
                                     @if($match->date_debut_match > date("Y-m-d H:i:s"))
                                         <input required type="text" name="score_essais" id="score_essais" @if($match->nb_essai_prono != null) placeholder="{{$match->nb_essai_prono}}"@else placeholder="-" @endif>
                                     @else

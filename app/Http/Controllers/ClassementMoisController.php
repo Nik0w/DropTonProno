@@ -42,6 +42,7 @@ class ClassementMoisController extends Controller
                 ->leftJoin('points as pts_mois','pts_mois.id_point','=','points_mois.id_point')
                 ->select('id','name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
                 ->orderBy('nb_pts_mois','DESC')
+                ->orderBy('id','ASC')
                 ->get();
 
         $nb_users = $users->count();

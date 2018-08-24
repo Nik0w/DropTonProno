@@ -35,7 +35,7 @@
           <p>
           Pour les personnes morales :
           Le site http://droptonprono.fr est édité par la marque Drop Ton Prono, marque déposée à l’INPI sous
-          le numéro XXXXX
+          le numéro 4477608
           La marque est représentée par Mr. Thibaut Sage et Mr. Thomas Pons.
           Pour les personnes physiques :
           Le site Drop Ton Prono est édité par Thomas Pons, domicilié au 2 rue Jean Deney, 33430 Bazas et
@@ -70,16 +70,16 @@
           En cas de conflit entre ces Conditions Générales et tout autre document qui y est visé, les présentes
           Conditions Générales prévalent. En outre, dans le cadre des offres promotionnelles et des bonus qui
           sont soumis à des conditions spéciales, ces dernières prévaudront sur les Conditions Générales en cas
-          de contradiction ;
+          de contradiction.
           Dans le cas où l'une des dispositions des présentes Conditions Générales viendrait à être déclarée nulle
           ou inapplicable, elle devra alors être considérée comme étant remplacée par une disposition valable
           reflétant le plus fidèlement possible l'objectif poursuivi par la disposition initiale. Les autres dispositions
-          n'en seront pas affectées et produiront leurs pleins effets ;
+          n'en seront pas affectées et produiront leurs pleins effets.
           Les présentes Conditions Générales constituent l'intégralité de l'accord conclu entre l’utilisateur et
-          l’éditeur au sujet de votre utilisation du site droptonprono.fr et se substituent, le cas échéant, à tout accord
-          antérieur ;
-          3.Responsabilité de l’Utilisateur
-          L'Utilisateur est responsable des risques liés à l’utilisation de son identifiant de connexion et de son
+          l’éditeur au sujet de votre utilisation du site droptonprono.fr et se substituent, le cas échéant, à tout accord antérieur.</p>
+          
+          <h4>3.Responsabilité de l’Utilisateur</h4>
+          <p>L'Utilisateur est responsable des risques liés à l’utilisation de son identifiant de connexion et de son
           mot de passe.
           Le mot de passe de l’Utilisateur doit rester secret. En cas de divulgation de mot de passe, l’Éditeur
           décline toute responsabilité.

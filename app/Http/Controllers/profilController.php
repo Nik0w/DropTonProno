@@ -50,7 +50,7 @@ class profilController extends Controller
 	        return redirect()->back()->with('success','Votre profil a bien était modifié');
     	}else{
 
-    		$validator = $this->validate($request,[
+    		$this->validate($request,[
 	            'img_user' => 'required|image|max:1200'
 	        ]);
 
@@ -87,7 +87,7 @@ class profilController extends Controller
 			}
 
 
-            return redirect()->back()->with('success','Votre image de profil a était modifiée');
+            return redirect()->back()->with('success','Votre image de profil a été modifiée');
     	}
     }
 }

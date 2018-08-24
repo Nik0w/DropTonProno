@@ -32,6 +32,10 @@ Route::post('/vestiaire', 'profilController@updateInfos');
 
 Route::get('/cgu', 'cguController@index');
 
+//test CROM
+Route::get('/CRON', function () {
+    return view('cron');
+});
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function(){
 
     Route::get('/', 'Admin\AdminHomeController@index');
