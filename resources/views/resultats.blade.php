@@ -196,9 +196,9 @@
                                             <p><span class="small-txt">Match pas encore joué</span></p>
                                         </div>
                                         @elseif($match->date_debut_match <= date("Y-m-d H:i:s") && $match->date_fin_match >= date("Y-m-d H:i:s"))
-                                        <div class="point d-block d-lg-none">
-                                            <p><span>Match en cours</p>
-                                        </div>
+                                            <div class="point d-block d-lg-none">
+                                                <p><span>Match en cours</span></p>
+                                            </div>
                                         @else
                                         <div class="point-small d-block d-lg-none">
                                             <p>
@@ -228,7 +228,7 @@
                             @else
                             <div class="point d-none d-lg-block bg-orange">
                                 <p>
-                                    @if($match->nb_points != NULL)
+                                    @if($match->nb_points !== NULL)
                                         <span>{{$match->nb_points}}</span><br />POINTS
                                     @else
                                         @if($match->points_equipe1 == NULL && $match->points_equipe2 == NULL)

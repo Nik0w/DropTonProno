@@ -177,7 +177,6 @@ class Resultats extends Controller
                     ->where('pronos.id_point','=',NULL)
                     ->where('matchs.date_fin_match','<',date("Y-m-d H:i:s"))
                     ->get();
-
         // PRONOS PASSES ET ACTIFS
         foreach ($pronosTermines as $prono) {
         	//si equipe 1 gagne et prono equipe 1 gagnante
@@ -218,8 +217,11 @@ class Resultats extends Controller
 	        		$score+=40;
 	        		$score_pts_exacts += 2;
 	        	}
-	        	//si match nul
-	        	else if($prono->points_equipe1 == $prono->score_equipe1 && $prono->points_equipe2 == $prono->score_equipe2 && $prono->points_equipe1 == $prono->points_equipe2){
+	        	//si nul prono et nul match
+	        	else if($prono->points_equipe1 == $prono->points_equipe2 && $prono->score_equipe1 == $prono->score_equipe2 && $prono->points_equipe1 != $prono->score_equipe1){
+	        		$score+=30;
+	        	}
+	        	else if($prono->points_equipe1 == $prono->points_equipe2 && $prono->score_equipe1 == $prono->score_equipe2 && $prono->points_equipe1 == $prono->score_equipe1){
 	        		$score+=70;
 	        		$score_pts_exacts += 2;
 	        	}

@@ -591,6 +591,10 @@ h1{
 	background-color: white;
 }
 
+.tableau-res .pts_calcul{
+	font-size: 15px !important;
+}
+
 .tableau-res .info-prono{
 	font-size: 12px;
     padding: 8px 0;
