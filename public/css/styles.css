@@ -744,14 +744,11 @@ h1{
 
 .classement table tr td, .classement table tr th{
 	text-align:center;
+	border: none;
 }
 
 .classement table tr{
     font-size: 12px;
-}
-
-.classement table tr td{
-
 }
 
 .classement .top1{
