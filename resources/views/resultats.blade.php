@@ -116,7 +116,7 @@
 
                         </div>
                     </div>
-                    <form action="" method="POST">
+                    <form class="form-resultats" action="" method="POST">
                         {{csrf_field()}}
                         <input type="hidden" name="match" value="{{$match->id_match}}">
                         <div class="bg-white padding-top">
@@ -139,7 +139,7 @@
                                         <div class="col-12 col-md-3 score-equipe-1">
                                             <div class="form-group">
                                                 @if($match->date_debut_match > date("Y-m-d H:i:s"))
-                                                    <input type="text" class="form-control" id="score_equipe1" name="score_equipe1" aria-describedby="score equipe 1" @if($match->points_equipe1 != null) placeholder="{{$match->points_equipe1}}"@else placeholder="--" @endif>
+                                                    <input required type="text" class="form-control" id="score_equipe1" name="score_equipe1" aria-describedby="score equipe 1" @if($match->points_equipe1 != null) placeholder="{{$match->points_equipe1}}"@else placeholder="--" @endif>
                                                 @else
                                                     <input type="text" readonly class="form-control-plaintext score-input-disabled" id="" @if($match->points_equipe1 != null) placeholder="{{$match->points_equipe1}}"@else placeholder="--" @endif>
                                                 @endif
@@ -160,7 +160,7 @@
                                         <div class="col-12 col-md-3 col-sm-pull-9">
                                             <div class="form-group">
                                                  @if($match->date_debut_match > date("Y-m-d H:i:s"))
-                                                <input type="text" class="form-control" id="score_equipe2" name="score_equipe2" aria-describedby="score equipe 1" @if($match->points_equipe2 != null) placeholder="{{$match->points_equipe2}}"@else placeholder="--" @endif>
+                                                <input required type="text" class="form-control" id="score_equipe2" name="score_equipe2" aria-describedby="score equipe 1" @if($match->points_equipe2 != null) placeholder="{{$match->points_equipe2}}"@else placeholder="--" @endif>
                                                 @else
                                                 <input type="text" readonly class="form-control-plaintext score-input-disabled" id="staticEmail" @if($match->points_equipe2 != null) placeholder="{{$match->points_equipe2}}"@else placeholder="--" @endif>
                                                 @endif
@@ -172,9 +172,9 @@
                                 <div class="col-12 text-center nb-essai">
                                     Nombre d'essai dans le match :
                                     @if($match->date_debut_match > date("Y-m-d H:i:s"))
-                                        <input type="text" name="score_essais" @if($match->nb_essai_prono != null) placeholder="{{$match->nb_essai_prono}}"@else placeholder="-" @endif>
+                                        <input required type="text" name="score_essais" id="score_essais" @if($match->nb_essai_prono != null) placeholder="{{$match->nb_essai_prono}}"@else placeholder="-" @endif>
                                     @else
-                                        <input readonly type="text" name="score_essais" class="score-essai-disabled" @if($match->nb_essai_prono != null) placeholder="{{$match->nb_essai_prono}}"@else placeholder="-" @endif>
+                                        <input readonly type="text" name="score_essais" id="score_essais" class="score-essai-disabled" @if($match->nb_essai_prono != null) placeholder="{{$match->nb_essai_prono}}"@else placeholder="-" @endif>
                                     @endif
                                 </div>
 
@@ -208,7 +208,7 @@
                                                     @if($match->points_equipe1 == NULL && $match->points_equipe2 == NULL)
                                                         <span>0</span> POINTS
                                                     @else
-                                                        <span>Calcul en cours</span>
+                                                        <span class="pts_calcul">Calcul en cours</span>
                                                     @endif
                                                 @endif
                                             </p>
@@ -234,7 +234,7 @@
                                         @if($match->points_equipe1 == NULL && $match->points_equipe2 == NULL)
                                             <span>0</span><br />POINTS
                                         @else
-                                            <span>Calcul en cours</span>
+                                            <span class="pts_calcul">Calcul en cours</span>
                                         @endif
                                     @endif
                                 </p>
@@ -250,7 +250,7 @@
                                     @if($match->date_debut_match < date("Y-m-d H:i:s"))
 
                                     @else
-                                        <button class="cta bg-orange" type="submit">Je valide mon prono <div>></div></button>
+                                        <button id="submitProno" class="submitProno cta bg-orange" type="submit">Je valide mon prono <div>></div></button>
                                     @endif
                                     
                                 </div>

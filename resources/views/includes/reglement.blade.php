@@ -15,12 +15,12 @@ Le premier au classement de chaque mois se verra remettre un cadeau ainsi que le
 
 Si je pronostique,<br /><br />
 
-La victoire, 5 points
-Score +/- de 3 points d'un équipe, 3 points
-Score +/- de 5 points des deux équipes, 6 points
-Le nul, 30 points
-Le score excat d’une équipe, 20 points
-Le score excat des deux équipes, 40 points 
+La victoire, 5 points<br />
+Score +/- de 3 points d'un équipe, 3 points<br />
+Score +/- de 5 points des deux équipes, 6 points<br />
+Le nul, 30 points<br />
+Le score excat d’une équipe, 20 points<br />
+Le score excat des deux équipes, 40 points <br />
 Le nombre d’essais inscrits dans le match, 10 points.<br /><br />
 
 Bonne chance à tous ! <br /><br />

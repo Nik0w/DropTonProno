@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <title>Drop Ton Prono - Le site de pronostics rugby en ligne 100% gratuit</title>
+    <meta name="description" content="LE site de pronostics sportifs dédié au rugby 100% gratuit ! Venez gagner des cadeaux et participer aux pronostics du Top 14">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -34,6 +35,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	  (adsbygoogle = window.adsbygoogle || []).push({
+	    google_ad_client: "ca-pub-2321115655760938",
+	    enable_page_level_ads: true
+	  });
+	</script>
 </head>
 <body>
 
@@ -69,7 +78,7 @@
         e=o.createElement(i);r=o.getElementsByTagName(i)[0];
         e.src='//www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        ga('create','UA-122977680-1','auto');ga('send','pageview');
     </script>
 </body>
 </html>

@@ -21,7 +21,7 @@
                     <div class="row">
 
                         <div class="col-12 text-center">
-                            <a href="{{url('/redirect')}}" class="btn btn-primary btn-fb"><i class="fab fa-facebook-f"></i> Connection avec Facebook</a>
+                            <a href="{{url('/redirect')}}" class="btn btn-primary btn-fb"><i class="fab fa-facebook-f"></i> Connexion avec Facebook</a>
                         </div>
 
                         <div class="col-12 text-center">ou</div>

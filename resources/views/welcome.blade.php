@@ -15,14 +15,14 @@
         <div class=".d-none .d-sm-block col-md-8 encartPub"></div>
 
         <div class="col-12 col-md-8 offset-md-2 text-center">
-            <h1 class="title-welcome">Rejoins nous sur le premier site de pronostics gratuits dédié au rugby, essaye de grimper au classement pour gagner des lots !</h1>
+            <h1 class="title-welcome">Rejoins nous sur le premier site de pronostics gratuits dédié au rugby et au Top 14 !</h1>
         </div>
 
         <div class="col-12 col-sm-8 offset-sm-2 text-center zone-cta">
             <div class="row">
                 @if(Auth::check())
                 <div class="col-12 text-center">
-                    <a class="cta bg-orange" href="{{ url('/resultats/1') }}">Voirs les pronostics !</a>
+                    <a class="cta bg-orange" href="{{ url('/resultats/1') }}">Voir les pronostics !</a>
                 </div>
                 @else
                 <div class="col-12 col-md-6">
