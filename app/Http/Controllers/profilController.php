@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use File;
 
 use Auth;
 
@@ -49,15 +50,42 @@ class profilController extends Controller
 	        return redirect()->back()->with('success','Votre profil a bien était modifié');
     	}else{
 
-    		$image = $request->file('img_user');
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/img/profils');
-            $image->move($destinationPath, $name);
+    		$validator = $this->validate($request,[
+	            'img_user' => 'required|image|max:1200'
+	        ]);
 
-            DB::table('images_users')->insert([
-                'id_user' => $user_id,
-                'nom_img' => $name
-            ]);
+	        $img_user = DB::table('images_users')
+        					->where('images_users.id_user','=',$user_id)
+        					->first();
+
+			if($img_user == null){
+
+	    		$image = $request->file('img_user');
+	            $name = time().'.'.$image->getClientOriginalExtension();
+	            $destinationPath = public_path('/img/profils');
+	            $image->move($destinationPath, $name);
+
+	            DB::table('images_users')->insert([
+	                'id_user' => $user_id,
+	                'nom_img' => $name
+	            ]);
+
+			}else{
+
+				$file = public_path('img/profils/').$img_user->nom_img;
+				File::delete($file);
+
+				$image = $request->file('img_user');
+	            $name = time().'.'.$image->getClientOriginalExtension();
+	            $destinationPath = public_path('/img/profils');
+	            $image->move($destinationPath, $name);
+
+	            DB::table('images_users')
+		            ->where('images_users.id_user', $user_id)
+		            ->update(['nom_img' => $name]);
+						
+			}
+
 
             return redirect()->back()->with('success','Votre image de profil a était modifiée');
     	}
