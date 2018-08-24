@@ -731,8 +731,15 @@ h1{
 }
 
 .classement table{
-	margin-bottom: 150px;
 	z-index: 9;
+}
+
+.paginator{
+	margin-bottom: 150px;
+}
+
+.paginator .pagination{
+	display: inline-block;
 }
 
 .classement table tr td, .classement table tr th{
@@ -884,7 +891,7 @@ h1{
 	.container-home,.containerProfil{
 		padding-bottom: 250px;
 	}
-	.classement table{
+	.paginator{
 		margin-bottom: 270px;
 	}
 	
@@ -912,7 +919,7 @@ h1{
 	.container-home .row div:nth-child(2){
 		margin: 0;
 	}
-	.classement table{
+	.paginator{
 		margin-bottom: 350px;
 	}
 	.tableau-res .point-small p{
@@ -1036,7 +1043,7 @@ h1{
 	.container-home,.containerProfil{
 		padding-bottom: 450px;
 	}
-	.classement table{
+	.paginator{
 		margin-bottom: 500px;
 	}
 
@@ -1054,7 +1061,7 @@ h1{
 	.container-home{
 		padding-bottom: 550px;
 	}
-	.classement table{
+	.paginator{
 		margin-bottom: 650px;
 	}
 }
