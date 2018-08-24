@@ -107,7 +107,7 @@
                         <div class="col-4 col-md-2 text-center bg-white info-prono">
 
                             @if($match->date_debut_match > date("Y-m-d H:i:s"))
-                                <span class="color-orange hansief">Match à venir</span>
+                                <span class="color-orange hansief">{{date_format(new DateTime($match->date_debut_match), 'd-m-Y')}} <i class="date_arrow fas fa-arrow-right"></i> {{date_format(new DateTime($match->date_debut_match), 'H:i')}}</span>
                             @elseif($match->date_debut_match <= date("Y-m-d H:i:s") && $match->date_fin_match >= date("Y-m-d H:i:s"))
                             <span class="hansief">Match en cours</span>
                             @else

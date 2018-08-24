@@ -452,6 +452,10 @@ h1{
 	margin-bottom: 50px;
 }
 
+.tableau-res .date_arrow{
+	margin:0 5px;
+}
+
 .tableau-res .nom-equipe{
 	min-height: 60px;
 	display: flex; /* contexte sur le parent */

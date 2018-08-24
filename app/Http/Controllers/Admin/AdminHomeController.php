@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+use Auth;
 
 class AdminHomeController extends Controller
 {
@@ -24,7 +27,13 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $nb_users = DB::table('users')->count();
+        $nb_pronos = DB::table('pronos')->count();
+
+        return view('admin.home',[
+            'nb_users' => $nb_users,
+            'nb_pronos' => $nb_pronos
+        ]);
     }
 
 }
