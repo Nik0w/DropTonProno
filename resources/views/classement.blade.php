@@ -117,10 +117,10 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
         </div>
 
         <div class="row paginator">
-              <div class="col-12 col-md-8 offset-md-2 text-right">
-                {{ $users->links() }}
-              </div>
-          </div>
+            <div class="col-12 col-md-8 offset-md-2 text-right">
+              {{ $users->links() }}
+            </div>
+        </div>
 
     </div>
 

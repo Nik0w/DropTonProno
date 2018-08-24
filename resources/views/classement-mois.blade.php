@@ -88,29 +88,38 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
               </div>
             </div>
 
-            <table class="table table-striped bg-white col-md-8 offset-md-2">
-              <thead class="bg-bleu lato">
-                <tr>
-                  <th scope="col">Rang</th>
-                  <th scope="col">Prénom</th>
-                  <th scope="col">Bons pronos</th>
-                  <th scope="col">Scores exacts</th>
-                  <th scope="col">Points Mois</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach($users as $k=>$u)
-                  <tr class="top{{$k+1}}">
-                    <th scope="row">{{$k+1}}</th>
-                    <td>{{$u->name}}</td>
-                    <td>@if($u->nb_pts_pronos != NULL){{$u->nb_pts_pronos}}@else 0 @endif</td>
-                    <td>@if($u->nb_pts_scores!=NULL){{$u->nb_pts_scores}}@else 0 @endif</td>
-                    <td>@if($u->nb_pts_mois!=NULL){{$u->nb_pts_mois}}@else 0 @endif</td>
-                  </tr> 
-                @endforeach
-              </tbody>
-            </table>
+            <div class="col-12 col-md-8 offset-md-2" style="padding:0;">
 
+              <table class="table table-striped bg-white">
+                <thead class="bg-bleu lato">
+                  <tr>
+                    <th scope="col">Rang</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Bons pronos</th>
+                    <th scope="col">Scores exacts</th>
+                    <th scope="col">Points Mois</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($users as $k=>$u)
+                    <tr class="top{{$k+(($users->currentPage()-1)*$nb_par_page)+1}}">
+                      <th scope="row">{{$k+(($users->currentPage()-1)*$nb_par_page)+1}}</th>
+                      <td>{{$u->name}}</td>
+                      <td>@if($u->nb_pts_pronos != NULL){{$u->nb_pts_pronos}}@else 0 @endif</td>
+                      <td>@if($u->nb_pts_scores!=NULL){{$u->nb_pts_scores}}@else 0 @endif</td>
+                      <td>@if($u->nb_pts_mois!=NULL){{$u->nb_pts_mois}}@else 0 @endif</td>
+                    </tr> 
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+
+        </div>
+
+        <div class="row paginator">
+            <div class="col-12 col-md-8 offset-md-2 text-right">
+              {{ $users->links() }}
+            </div>
         </div>
 
     </div>
