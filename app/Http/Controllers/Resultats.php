@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 use Auth;
+use Response;
 
 class Resultats extends Controller
 {
@@ -137,7 +138,7 @@ class Resultats extends Controller
 
         $mois_en_cours = date('m');
 
-        //check si l user a deja un score total
+        //check si l user a deja un score mois
         $score_mois = DB::table('points_mois')
                         ->where('points_mois.id_user','=',Auth::id())
                         ->where('points_mois.num_mois','=',$mois_en_cours)
@@ -275,8 +276,9 @@ class Resultats extends Controller
                     ->where('matchs.id_match','=',$id_match)
                     ->first();
 
-        if($match->date_fin_match < date("Y-m-d H:i:s")){
-            return redirect()->back()->with('error','Ce match est déjà fini !');
+        if(date("Y-m-d H:i:s") >= $match->date_debut_match){
+        	return Response::json(array('success'=>false,'message'=>'Ce match est déjà commencé'));
+            //return redirect()->back()->with('error','Ce match est déjà commencé !');
         }else{
 
             $prono = DB::table('pronos')
@@ -306,7 +308,8 @@ class Resultats extends Controller
     	            'is_active' => 1
     	        ]);
             }
-            return redirect()->back()->with('success','Le pronostic a bien était crée/édité');
+            return Response::json(array('success'=>true,'message'=>'Pronostic à jour !'));
+            //return redirect()->back()->with('success','Le pronostic a bien était crée/édité');
 
         }
     }

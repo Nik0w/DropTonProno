@@ -65,14 +65,19 @@ $(document).ready(function(){
 	           	score_essais:score_essais,
 	           	match:match
 	           },
-	           success:function(data){
-	              console.log(data.success);
-	              $btn.html('Pronostic à jour !');
+	           success:function(message){
+	              console.log(message);
+	              if(!message.success){
+	              	$btn.html(message.message);
+	           		$btn.css({'background-color':'#dc6868'});
+	           	}else{
+	              $btn.html(message.message);
 	              $btn.css({'background-color':'#68dc86'});
+	           	}
 	           },
-	           error:function(data){
-	           		console.log(data);
-	           		$btn.html('Erreur...');
+	           error:function(e){
+	           		console.log(e);
+	           		$btn.html(message.message);
 	           		$btn.css({'background-color':'#dc6868'});
 	           }
 	        });
