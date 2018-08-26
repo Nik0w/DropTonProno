@@ -191,6 +191,7 @@
                                     </div>
                                     <div class="col-4 col-md-12"><span>Essais : </span>@if($match->nb_essai_match != NULL){{$match->nb_essai_match}}@else-@endif</div>
                                     <div class="col-4 col-md-12 d-lg-none d-block">
+
                                         @if($match->date_debut_match > date("Y-m-d H:i:s"))
                                         <div class="point d-block d-lg-none grey-bg ">
                                             <p><span class="small-txt">Match pas encore joué</span></p>
@@ -202,7 +203,7 @@
                                         @else
                                         <div class="point-small d-block d-lg-none">
                                             <p>
-                                                @if($match->nb_points != NULL)
+                                                @if($match->nb_points !== NULL)
                                                     <span>{{$match->nb_points}}</span> POINTS
                                                 @else
                                                     @if($match->points_equipe1 == NULL && $match->points_equipe2 == NULL)
@@ -214,9 +215,11 @@
                                             </p>
                                         </div>
                                         @endif
+
                                     </div>
                                 </div>
                             </div>
+
                             @if($match->date_debut_match > date("Y-m-d H:i:s"))
                             <div class="point d-none d-lg-block bg-bleu point-noPoints">
                                 <p><span class="small-txt">Match pas encore joué</span></p>
@@ -240,7 +243,6 @@
                                 </p>
                             </div>
                             @endif
-                            
 
                         </div>
 

@@ -248,6 +248,8 @@ class Resultats extends Controller
 		            ]);
 
 		        $score = 0;
+    			$score_pts_exacts = 0;
+    			$score_bon_prono = 0;
 	    	}
         }
 

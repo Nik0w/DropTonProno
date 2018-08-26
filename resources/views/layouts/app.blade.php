@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drop Ton Prono - Le site de pronostics rugby en ligne 100% gratuit</title>
-    <meta name="description" content="LE site de pronostics sportifs dédié au rugby 100% gratuit ! Venez gagner des cadeaux et participer aux pronostics du Top 14">
+    <meta name="description" content="Le site de pronostics sportifs dédié au rugby 100% gratuit ! Venez gagner des cadeaux et participer aux pronostics du Top 14">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
