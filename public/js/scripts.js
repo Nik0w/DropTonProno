@@ -39,10 +39,9 @@ $(document).ready(function(){
     });
 
 	//AJAX RESULTATS
-	$(".submitProno").click(function(e){
-
+	$(".submitProno").on('click',function(e){
 		var $form = $(this).parent().parent().parent().parent();
-		$form.on('submit',function(e){
+		$form.off('submit').on('submit',function(e){
 			e.preventDefault();	        
 	        var $form = $(this);
 
@@ -66,17 +65,15 @@ $(document).ready(function(){
 	           	match:match
 	           },
 	           success:function(message){
-	              console.log(message);
-	              if(!message.success){
-	              	$btn.html(message.message);
-	           		$btn.css({'background-color':'#dc6868'});
-	           	}else{
-	              $btn.html(message.message);
-	              $btn.css({'background-color':'#68dc86'});
-	           	}
+              		if(!message.success){
+	              		$btn.html(message.message);
+	           			$btn.css({'background-color':'#dc6868'});
+           			}else{
+	              		$btn.html(message.message);
+	              		$btn.css({'background-color':'#68dc86'});
+	           		}
 	           },
 	           error:function(e){
-	           		console.log(e);
 	           		$btn.html(message.message);
 	           		$btn.css({'background-color':'#dc6868'});
 	           }
