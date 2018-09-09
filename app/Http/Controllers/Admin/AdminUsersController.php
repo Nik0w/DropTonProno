@@ -9,6 +9,7 @@ use DB;
 
 class AdminUsersController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -53,6 +54,7 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         $user = DB::table('users')
@@ -63,10 +65,8 @@ class AdminUsersController extends Controller
                     ->join('journees', 'journees.id_journee', '=', 'matchs.id_journee')
                     ->join('equipes as eq1', 'matchs.id_equipe1', '=', 'eq1.id_equipe')
                     ->join('equipes as eq2', 'matchs.id_equipe2', '=', 'eq2.id_equipe')
-                    ->leftJoin('pronos', function($join){
-                            $join->on('pronos.id_match', '=', 'matchs.id_match')
-                            ->where('pronos.id_user', '=', 1);
-                    })
+                    ->leftJoin('pronos', 'pronos.id_match', '=', 'matchs.id_match')
+                    ->where('pronos.id_user', '=', $id)
                     ->leftJoin('points', 'points.id_point', '=', 'pronos.id_point')
                     ->select(['matchs.id_match','matchs.id_equipe1','matchs.id_equipe2','matchs.date_debut_match','matchs.date_fin_match','matchs.id_journee','matchs.score_equipe1','matchs.score_equipe2','matchs.nb_essai_match','eq1.nom_equipe as nom_equipe1','eq1.logo_equipe as logo_equipe1','eq2.nom_equipe as nom_equipe2','eq2.logo_equipe as logo_equipe2','journees.nom_journee','pronos.points_equipe1','pronos.points_equipe2','pronos.nb_essai_prono','points.nb_points','pronos.id_prono'])
                     ->orderBy('matchs.date_debut_match', 'asc')
@@ -77,6 +77,16 @@ class AdminUsersController extends Controller
             'user' => $user,
             'pronos' => $pronos
         ]);
+    }
+
+    public function search(Request $request){
+        $name_user = $request->input('user_name');
+
+        $users = DB::table('users')
+                ->where('users.name','like','%'.$name_user.'%')
+                ->get();
+
+         return $users;
     }
 
     /**

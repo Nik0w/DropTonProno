@@ -145,7 +145,7 @@ class Resultats extends Controller
                         ->where('points_mois.num_mois','=',$mois_en_cours)
                         ->first();
 
-        // IL Y A DEJA UN SCORE Exact
+        // IL Y A DEJA UN SCORE mois
         if($score_mois != NULL){
 
             DB::table('points')

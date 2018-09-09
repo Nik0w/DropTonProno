@@ -4,43 +4,13 @@
 
 <div class="col-md-12">
     <p>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addChampCollapse" aria-expanded="false" aria-controls="addChampCollapse">
-        <i class="pe-7s-plus"></i>
-        Créer une équipe
-      </button>
+        <form action="{{url()->current()}}/search">
+           <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1"><i class="pe-7s-search"></i></span>
+              <input id="searchUsers" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="user_name">
+            </div>
+        </form>
     </p>
-    <div class="collapse" id="addChampCollapse">
-      <div class="card">
-        <div class="header">
-            <h4 class="title">Créer une équipe</h4>
-        </div>
-        <div class="content">
-            <form action="" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Nom de l'équipe :</label>
-                            <input type="text" class="form-control" placeholder="nom :" name="nom_equipe" value="">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                        <label for="fileInput">Example file input</label>
-                        <input type="file" name="logo_equipe" class="form-control-file" id="fileInput">
-                      </div>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-info btn-fill pull-right">Créer</button>
-                <div class="clearfix"></div>
-            </form>
-        </div>
-    </div>
-</div>
 </div>
 
  <div class="col-md-12">

@@ -30,7 +30,7 @@ class ClassementController extends Controller
         $rank_user = 0;
         $points_user = 0;
         $id_user = Auth::id();
-        $nb_par_page = 5;
+        $nb_par_page = 30;
 
         $users = DB::table('users')
                 ->leftJoin('points_totaux','points_totaux.id_user','=','users.id')
@@ -41,10 +41,13 @@ class ClassementController extends Controller
                 ->leftJoin('points as pts_pronos','pts_pronos.id_point','=','points_pronos.id_point')
                 ->leftJoin('points_mois','points_mois.id_user','=','users.id')
                 ->leftJoin('points as pts_mois','pts_mois.id_point','=','points_mois.id_point')
-                ->select('id','name','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
+                ->select('id','name','email','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
                 ->orderBy('nb_pts_totaux','DESC')
                 ->orderBy('id','ASC')
+                ->groupBy('email')
+                ->distinct()
                 ->get();
+        
 
         $nb_users = $users->count();
 
@@ -63,10 +66,13 @@ class ClassementController extends Controller
                 ->leftJoin('points as pts_pronos','pts_pronos.id_point','=','points_pronos.id_point')
                 ->leftJoin('points_mois','points_mois.id_user','=','users.id')
                 ->leftJoin('points as pts_mois','pts_mois.id_point','=','points_mois.id_point')
-                ->select('id','name','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
+                ->select('id','name','email','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
                 ->orderBy('nb_pts_totaux','DESC')
                 ->orderBy('id','ASC')
+                ->groupBy('email')
+                ->distinct()
                 ->paginate($nb_par_page);
+
 
         $user = DB::table('users')
                 ->leftJoin('points_totaux','points_totaux.id_user','=','users.id')

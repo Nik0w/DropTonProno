@@ -41,6 +41,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function
     Route::get('/', 'Admin\AdminHomeController@index');
     Route::get('/home', 'Admin\AdminHomeController@index');
     Route::resource('/users', 'Admin\AdminUsersController');
+    Route::post('/users/search', 'Admin\AdminUsersController@search');
+
 
     Route::resource('/championnats','Admin\AdminChampionnatsController');
     Route::resource('/journees','Admin\AdminJourneeController');
