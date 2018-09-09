@@ -8,7 +8,7 @@ $(document).ready(function(){
         }
     });
 
-	//AJAX RESULTATS
+	//AJAX RESULTATS SEARCH USERS
 	$("#searchUsers").on('keyup',function(e){
 		var $form = $(this).parent().parent();
         var $url = $form.attr('action');

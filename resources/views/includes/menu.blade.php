@@ -17,7 +17,7 @@
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 col-12">
                           <li class="nav-item col-12 col-md-3">
                             <div class="reglement">
-                                <a class="nav-link" href="" data-toggle="modal" data-target="#reglementModal">Règlement</a>
+                                <a class="nav-link no-loader" href="" data-toggle="modal" data-target="#reglementModal">Règlement</a>
                             </div>
                             <div class="pronostics">
                                 <a class="nav-link" href="{{url('/resultats/1')}}">Pronostics</a>

@@ -32,6 +32,8 @@ $(document).ready(function(){
 		$('#form-img-profil').submit();
 	});
 
+	// AJAX HEADER
+
 	 $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -79,6 +81,19 @@ $(document).ready(function(){
 	           }
 	        });
 	    });
+
+	});
+
+	//_______________________________
+	//
+	//            UX
+	//_______________________________
+
+	//Page switching loader
+
+	$('a').not('.no-loader').on('click',function(ev){
+		//ev.preventDefault();
+		$('body').prepend('<div class="pageLoader"><i class="fas fa-spinner"></i></div>');
 
 	});
 

@@ -55,13 +55,13 @@
 
      <div class="container-fluid footer text-center">
         <div class="socials">
-          <a href="https://www.facebook.com/droptonprono/" target="blank"><img src="{{asset('img/fb.png')}}" alt=""></a>
-          <a href="https://www.instagram.com/droptonprono/" target="blank"><img src="{{asset('img/insta.png')}}" alt=""></a>
-          <a href="https://twitter.com/Droptonprono" target="blank"><img src="{{asset('img/twitter.png')}}" alt=""></a>
+          <a class="no-loader" href="https://www.facebook.com/droptonprono/" target="blank"><img src="{{asset('img/fb.png')}}" alt=""></a>
+          <a class="no-loader" href="https://www.instagram.com/droptonprono/" target="blank"><img src="{{asset('img/insta.png')}}" alt=""></a>
+          <a class="no-loader" href="https://twitter.com/Droptonprono" target="blank"><img src="{{asset('img/twitter.png')}}" alt=""></a>
         </div>
 
         <p>&copy; Drop Ton Prono 2018 - <a href="{{url('/cgu')}}">CGU</a></p>
-        <div class="text-center"><a href="mailto:contact@droptonprono.fr">Contactez-nous</a></div>
+        <div class="text-center"><a class="no-loader" href="mailto:contact@droptonprono.fr">Contactez-nous</a></div>
      </div>
    </div>
 
