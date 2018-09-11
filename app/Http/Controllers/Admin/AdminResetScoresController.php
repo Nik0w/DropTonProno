@@ -58,9 +58,7 @@ class AdminResetScoresController extends Controller
 
     public function hardReset()
     {
-
-        $users = DB::table('users')->get();
-
+        
         // On vide toutes les tables en relation avec les scores
         DB::table('points')->truncate();
         DB::table('points_mois')->truncate();
@@ -73,11 +71,6 @@ class AdminResetScoresController extends Controller
             'is_active' => 1,
             'id_point' => NULL
         ]);
-
-        foreach ($users as $user) {
-
-            $this->checkPoints($user->id);
-        }
 
     }
 

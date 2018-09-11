@@ -47,7 +47,8 @@ class ClassementMoisController extends Controller
                 ->select('id','name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
                 ->orderBy('nb_pts_mois','DESC')
                 ->orderBy('id','ASC')
-                ->groupBy('id','name','email','password','pts_totaux.nb_points','pts_scores.nb_points','pts_pronos.nb_points','pts_mois.nb_points')
+                ->groupBy('email')
+                ->distinct()
                 ->get();
 
         $nb_users = $users->count();
@@ -73,7 +74,8 @@ class ClassementMoisController extends Controller
                 ->select('id','name','email','password','pts_totaux.nb_points as nb_pts_totaux','pts_scores.nb_points as nb_pts_scores','pts_pronos.nb_points as nb_pts_pronos','pts_mois.nb_points as nb_pts_mois')
                 ->orderBy('nb_pts_mois','DESC')
                 ->orderBy('id','ASC')
-                ->groupBy('id','name','email','password','pts_totaux.nb_points','pts_scores.nb_points','pts_pronos.nb_points','pts_mois.nb_points')
+                ->groupBy('email')
+                ->distinct()
                 ->paginate($nb_par_page);
 
         $user = DB::table('users')

@@ -228,7 +228,7 @@ class Resultats extends Controller
 	        	}
 
                 if($score > 0){
-                    $score_bon_prono ++;
+                    $score_bon_prono =1;
                 }
 
                 $mois = date_format(new DateTime($prono->date_fin_match), 'm');
