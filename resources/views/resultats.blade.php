@@ -72,11 +72,11 @@
                       </div>
                     </div>
                   </div>
-                  <a class="carousel-control-prev" href="#journeeCarouselControls" role="button" data-slide="prev">
+                  <a class="carousel-control-prev no-loader" href="#journeeCarouselControls" role="button" data-slide="prev">
                     <i class="fas fa-arrow-left"></i>
                     <span class="sr-only">Previous</span>
                   </a>
-                  <a class="carousel-control-next" href="#journeeCarouselControls" role="button" data-slide="next">
+                  <a class="carousel-control-next no-loader" href="#journeeCarouselControls" role="button" data-slide="next">
                     <i class="fas fa-arrow-right"></i>
                     <span class="sr-only">Next</span>
                   </a>

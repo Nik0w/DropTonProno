@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use Auth;
 use Response;
+use DateTime;
 
 class Resultats extends Controller
 {
@@ -16,8 +17,7 @@ class Resultats extends Controller
         $this->middleware('auth');
     }
     //
-    public function index($id)
-    {
+    public function index($id){
 
     	$this->checkPoints();
 
@@ -135,14 +135,12 @@ class Resultats extends Controller
 
     // CREATION OU MISE A JOUR DU SCORE DU MOIS EN COURS
 
-    public function UpdateScoresMois($score){
-
-        $mois_en_cours = date('m');
+    public function UpdateScoresMois($mois,$score){
 
         //check si l user a deja un score mois
         $score_mois = DB::table('points_mois')
                         ->where('points_mois.id_user','=',Auth::id())
-                        ->where('points_mois.num_mois','=',$mois_en_cours)
+                        ->where('points_mois.num_mois','=',$mois)
                         ->first();
 
         // IL Y A DEJA UN SCORE mois
@@ -160,7 +158,7 @@ class Resultats extends Controller
 
             DB::table('points_mois')->insert([
                 'id_user' => Auth::id(),
-                'num_mois' => $mois_en_cours,
+                'num_mois' => $mois,
                 'id_point' => $pointsInsertID
             ]);
         }
@@ -179,6 +177,7 @@ class Resultats extends Controller
                     ->where('pronos.id_point','=',NULL)
                     ->where('matchs.date_fin_match','<',date("Y-m-d H:i:s"))
                     ->get();
+        //dd($pronosTermines);
         // PRONOS PASSES ET ACTIFS
         foreach ($pronosTermines as $prono) {
         	//si equipe 1 gagne et prono equipe 1 gagnante
@@ -232,10 +231,12 @@ class Resultats extends Controller
                     $score_bon_prono ++;
                 }
 
+                $mois = date_format(new DateTime($prono->date_fin_match), 'm');
+
                 $this->UpdateScoreGeneral($score);
                 $this->UpdateScoresExacts($score_pts_exacts);
                 $this->UpdateScoresPronos($score_bon_prono);
-                $this->UpdateScoresMois($score);
+                $this->UpdateScoresMois($mois,$score);
 
                 $pointsInsertID = DB::table('points')->insertGetId([
                     'nb_points' => $score,
@@ -251,8 +252,11 @@ class Resultats extends Controller
 		        $score = 0;
     			$score_pts_exacts = 0;
     			$score_bon_prono = 0;
+                
 	    	}
         }
+
+        $score_mois = [];
 
     }
 
