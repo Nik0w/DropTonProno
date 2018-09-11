@@ -48,7 +48,7 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="#" class="simple-text">
                     Drop Ton Prono
                 </a>
             </div>
@@ -93,6 +93,15 @@
                     <a href="{{url('/admin/equipes')}}">
                         <i class="pe-7s-speaker"></i>
                         <p>Equipes</p>
+                    </a>
+                </li>
+
+                <hr>
+
+                <li>
+                    <a href="{{url('/admin/scores')}}">
+                        <i class="pe-7s-flag"></i>
+                        <p>Gestion des scores</p>
                     </a>
                 </li>
 

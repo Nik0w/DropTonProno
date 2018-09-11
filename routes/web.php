@@ -43,7 +43,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function
     Route::resource('/users', 'Admin\AdminUsersController');
     Route::post('/users/search', 'Admin\AdminUsersController@search');
 
-    Route::get('/resetScores', 'Admin\AdminResetScoresController@index');
+    Route::get('/scores', 'Admin\AdminResetScoresController@index');
+    Route::post('/scores','Admin\AdminResetScoresController@post');
+
 
 
     Route::resource('/championnats','Admin\AdminChampionnatsController');

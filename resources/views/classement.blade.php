@@ -55,7 +55,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-2 offset-md-1 text-center title-scores">
+                <div class="col-4 col-md-2 offset-md-1 text-center title-scores">
                   <div class="lato">Bons pronos</div>
                   <div class="value-classement">
                     @if($user->nb_pts_pronos != NULL)
@@ -65,7 +65,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                     @endif
                   </div>
                 </div>
-                <div class="col-12 col-md-2 text-center title-scores">
+                <div class="col-4 col-md-2 text-center title-scores">
                   <div class="lato">Score exacts</div>
                   <div class="value-classement">
                     @if($user->nb_pts_scores != NULL)
@@ -75,7 +75,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                     @endif
                   </div>
                 </div>
-                <div class="col-12 col-md-2 text-center title-scores">
+                <div class="col-4 col-md-2 text-center title-scores">
                   <div class="lato">Points</div>
                   <div class="value-classement">
                     @if($user->nb_pts_totaux != NULL)

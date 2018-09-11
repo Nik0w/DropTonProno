@@ -28,6 +28,37 @@ class AdminResetScoresController extends Controller
      */
     public function index()
     {
+        return view('admin.scores');
+    }
+
+    public function post(Request $request){
+
+        //dd($request);
+        if($request->calcul){
+            $this->calculPoints();
+        }
+        elseif($request->reset){
+            $this->hardReset();
+        }
+        
+        return back();
+        
+    }
+
+    public function calculPoints(){
+
+        $users = DB::table('users')->get();
+
+        foreach ($users as $user) {
+
+            $this->checkPoints($user->id);
+        }
+
+    }
+
+    public function hardReset()
+    {
+
         $users = DB::table('users')->get();
 
         // On vide toutes les tables en relation avec les scores
