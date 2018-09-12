@@ -22,7 +22,7 @@ Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 Route::get('/resultats/{id}','Resultats@index')->where('id', '[0-9]+')->name('resultats');
 
-Route::post('/resultats/{id}', 'Resultats@createProno')->where('id', '[0-9]+')->name('resultats');;
+Route::post('/resultats/{id}', 'Resultats@createProno')->where('id', '[0-9]+')->name('resultats');
 
 Route::get('/classement', 'ClassementController@index')->name('classement');
 Route::get('/classement/mois', 'ClassementMoisController@index');
@@ -42,11 +42,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','isAdmin']], function
     Route::get('/home', 'Admin\AdminHomeController@index');
     Route::resource('/users', 'Admin\AdminUsersController');
     Route::post('/users/search', 'Admin\AdminUsersController@search');
+    Route::post('/users/{id_user}/{id_prono}', 'Admin\AdminUsersController@deleteProno')->where('id_user,id_prono', '[0-9]+');
 
     Route::get('/scores', 'Admin\AdminResetScoresController@index');
     Route::post('/scores','Admin\AdminResetScoresController@post');
-
-
 
     Route::resource('/championnats','Admin\AdminChampionnatsController');
     Route::resource('/journees','Admin\AdminJourneeController');
