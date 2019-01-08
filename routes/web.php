@@ -25,7 +25,11 @@ Route::get('/resultats/{id}','Resultats@index')->where('id', '[0-9]+')->name('re
 Route::post('/resultats/{id}', 'Resultats@createProno')->where('id', '[0-9]+')->name('resultats');
 
 Route::get('/classement', 'ClassementController@index')->name('classement');
-Route::get('/classement/mois', 'ClassementMoisController@index');
+Route::post('/classement', 'ClassementController@updateFavoris');
+Route::get('/classement/mois', 'ClassementMoisController@index')->name('mois');
+Route::post('/classement/mois', 'ClassementMoisController@updateFavoris');
+Route::get('/classement/favoris', 'ClassementFavorisController@index');
+Route::post('/classement/favoris', 'ClassementFavorisController@updateFavoris');
 
 Route::get('/vestiaire', 'profilController@index');
 Route::post('/vestiaire', 'profilController@updateInfos');

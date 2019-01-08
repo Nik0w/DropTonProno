@@ -31,9 +31,15 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
               @if(url()->current() == route('classement'))
                 <a class="active select-classement" href="{{url('classement/')}}">Général</a>
                 <a class="select-classement" href="{{url('classement/mois')}}">Mois</a>
-              @else
+                <a class="select-classement" href="{{url('classement/favoris')}}">Favoris</a>
+              @elseif(url()->current() == route('mois'))
                 <a class="select-classement" href="{{url('classement/')}}">Général</a>
                 <a class="active select-classement" href="{{url('classement/mois')}}">Mois</a>
+                <a class="select-classement" href="{{url('classement/favoris')}}">Favoris</a>
+              @else
+                <a class="select-classement" href="{{url('classement/')}}">Général</a>
+                <a class="select-classement" href="{{url('classement/mois')}}">Mois</a>
+                <a class="active select-classement" href="{{url('classement/favoris')}}">Favoris</a>
               @endif
             </div>
 
@@ -85,6 +91,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                     @endif
                   </div>
                 </div>
+
               </div>
             </div>
 
@@ -98,6 +105,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                     <th scope="col">Bons pronos</th>
                     <th scope="col">Scores exacts</th>
                     <th scope="col">Points</th>
+                    <th scope="col">Favoris</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -108,6 +116,12 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                       <td>@if($u->nb_pts_pronos != NULL){{$u->nb_pts_pronos}}@else 0 @endif</td>
                       <td>@if($u->nb_pts_scores!=NULL){{$u->nb_pts_scores}}@else 0 @endif</td>
                       <td>@if($u->nb_pts_totaux!=NULL){{$u->nb_pts_totaux}}@else 0 @endif</td>
+                      <td>
+                        <form class="form-favoris" action="" method="POST">
+                          <input type="hidden" name="id_user" value="{{$u->id}}">
+                          <button type="submit" class="submitFavoris"><i class="far fa-star"></i></button>
+                        </form>
+                      </td>
                     </tr> 
                   @endforeach
                 </tbody>

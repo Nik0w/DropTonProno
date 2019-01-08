@@ -28,12 +28,13 @@ $(document).ready(function(){
   		window.location.href = $link;
 	});
 
+
+	//PHOTO DE PROFIL 
 	$('.input-file').change(function(){
 		$('#form-img-profil').submit();
 	});
 
 	// AJAX HEADER
-
 	 $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -78,6 +79,36 @@ $(document).ready(function(){
 	           error:function(e){
 	           		$btn.html(message.message);
 	           		$btn.css({'background-color':'#dc6868'});
+	           }
+	        });
+	    });
+
+	});
+
+	//AJAX FAVORIS
+	$(".submitFavoris").on('click',function(e){
+		var $form = $(this).parent();
+
+		$form.off('submit').on('submit',function(e){
+			e.preventDefault();	        
+	        var $form = $(this);
+
+	        var $url = document.location.href;
+	        var $btn = $(this).find('.submitFavoris');
+
+	        var id = $form.find("input[name=id_user]").val();
+
+	        $.ajax({
+	           type:'POST',
+	           url:$url,
+	           data:{
+	           	id_user:id,
+	           },
+	           success:function(message){
+           			$btn.html('<i class="fas fa-star"></i>');
+	           },
+	           error:function(e){
+	           		
 	           }
 	        });
 	    });

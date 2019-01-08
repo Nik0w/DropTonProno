@@ -103,7 +103,7 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                     <th scope="col">Prénom</th>
                     <th scope="col">Bons pronos</th>
                     <th scope="col">Scores exacts</th>
-                    <th scope="col">Points Mois</th>
+                    <th scope="col">Points</th>
                     <th scope="col">Favoris</th>
                   </tr>
                 </thead>

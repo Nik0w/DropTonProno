@@ -98,4 +98,36 @@ class ClassementController extends Controller
             'nb_par_page' => $nb_par_page
         ]);
     }
+
+    public function updateFavoris(Request $request){
+
+        $id_user = Auth::id();
+        $id_favoris = $request->id_user;
+
+        //check si l user a deja unu table favoris
+        $favoris_table = DB::table('favoris')
+                        ->where('id_user','=',$id_user)
+                        ->first();
+
+        if($favoris_table != NULL){
+
+            //dd($favoris_table->favoris_ids);
+
+            $ids = $favoris_table->favoris_ids.','.$id_favoris;
+
+            //dd($ids);
+
+            DB::table('favoris')
+                ->where('id_user','=',$id_user)
+                ->update(['favoris_ids'=> $ids]);
+        }else{
+
+            DB::table('favoris')->insert([
+                'id_user' => $id_user,
+                'favoris_ids' => $id_favoris
+            ]);
+
+        }
+
+    }
 }

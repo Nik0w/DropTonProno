@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use Auth;
 
-class ClassementMoisController extends Controller
+class ClassementFavorisController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,7 +26,7 @@ class ClassementMoisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $rank_user = 0;
         $points_user = 0;
         $id_user = Auth::id();
@@ -97,7 +97,7 @@ class ClassementMoisController extends Controller
 
         //dd($users);
 
-        return view('classement-mois',[
+        return view('classement-favoris',[
             'users' => $users,
             'user' => $user,
             'rank_user' => $rank_user,
@@ -108,7 +108,7 @@ class ClassementMoisController extends Controller
 
     public function updateFavoris($id_user){
 
-        dd($id);
+    	dd($id);
 
     }
 }
