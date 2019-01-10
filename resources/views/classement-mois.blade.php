@@ -115,7 +115,15 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                       <td>@if($u->nb_pts_pronos != NULL){{$u->nb_pts_pronos}}@else 0 @endif</td>
                       <td>@if($u->nb_pts_scores!=NULL){{$u->nb_pts_scores}}@else 0 @endif</td>
                       <td>@if($u->nb_pts_mois!=NULL){{$u->nb_pts_mois}}@else 0 @endif</td>
-                      <td><i class="far fa-star"></i></td>
+                      <td>
+                        <button type="submit" class="submitFavoris">
+                          @if(!in_array($u->id,$favoris))
+                            <i class="far fa-star"></i>
+                          @else
+                            <i class="fas fa-star color-orange"></i>
+                          @endif
+                        </button>
+                      </td>
                     </tr> 
                   @endforeach
                 </tbody>

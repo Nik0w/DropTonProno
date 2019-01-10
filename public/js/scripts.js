@@ -105,13 +105,53 @@ $(document).ready(function(){
 	           	id_user:id,
 	           },
 	           success:function(message){
-           			$btn.html('<i class="fas fa-star"></i>');
+	           		if($btn.find('i').hasClass('fas')){
+           				$btn.html('<i class="far fa-star"></i>');
+	           		}else{
+	           			$btn.html('<i class="fas fa-star color-orange"></i>');
+	           		}
 	           },
 	           error:function(e){
 	           		
 	           }
 	        });
 	    });
+
+	});
+
+	// AJAX SEARCH FRIENDS
+	$("#searchFriends").on('keyup',function(e){
+		var $form = $(this).parent().parent();
+        var $url = $form.attr('action');
+        var user_name = $form.find("input[name=searchFriends]").val();
+
+        $.ajax({
+           type:'POST',
+           url:$url,
+           data:{
+           	user_name:user_name
+           },
+           success:function(data){
+           		//console.log(data);
+           		var $users_list = $('#searchFriendsResults');
+           		var html ="";
+           		$url = window.location.href;
+
+           		$users_list.empty();
+           		
+           		for(var i = 0 ; i < data.length ; i++){
+           			//console.log(data[i]);
+           			html += "<tr>";
+           			html += "<td>"+data[i].name+"</td>";
+           			html += "</td";
+           			html += "</tr>";
+           		}
+
+           		$users_list.html(html);
+           },
+           error:function(data){
+           }
+        });
 
 	});
 

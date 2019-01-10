@@ -26,7 +26,7 @@ class ClassementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $rank_user = 0;
         $points_user = 0;
         $id_user = Auth::id();
@@ -90,13 +90,40 @@ class ClassementController extends Controller
 
         //dd($users);
 
+        $favoris = DB::table('favoris')
+                    ->where('id_user','=',$id_user)
+                    ->select('favoris_ids')
+                    ->first();
+
+        if($favoris != NULL){
+
+            $favoris = $favoris->favoris_ids;
+
+            $favoris_array = explode(',',$favoris);
+
+        }else{
+            $favoris_array = [];
+        }
+
         return view('classement',[
             'users' => $users,
             'user' => $user,
             'rank_user' => $rank_user,
             'nb_users' => $nb_users,
-            'nb_par_page' => $nb_par_page
+            'nb_par_page' => $nb_par_page,
+            'favoris' => $favoris_array
         ]);
+    }
+
+    public function search(Request $request){
+        $name_user = $request->input('searchFriends');
+
+        $users = DB::table('users')
+                        ->where('users.name','like','%'.$name_user.'%')
+                        ->select('users.name')
+                        ->get();
+
+        return $users;
     }
 
     public function updateFavoris(Request $request){
@@ -111,11 +138,18 @@ class ClassementController extends Controller
 
         if($favoris_table != NULL){
 
-            //dd($favoris_table->favoris_ids);
+            $favoris = $favoris_table->favoris_ids;
+            $favoris_array = explode(',',$favoris);
 
-            $ids = $favoris_table->favoris_ids.','.$id_favoris;
+            if(in_array(strval($id_favoris),$favoris_array)){
 
-            //dd($ids);
+                $favoris_array = array_merge(array_diff($favoris_array, array($id_favoris)));
+                $ids = implode(',',$favoris_array);
+
+            }else{
+
+                $ids = $favoris_table->favoris_ids.','.$id_favoris;
+            }
 
             DB::table('favoris')
                 ->where('id_user','=',$id_user)

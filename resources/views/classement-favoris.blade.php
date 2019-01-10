@@ -109,25 +109,27 @@ Des cadeaux seront remis au 1er de chaque mois ainsi qu’aux 3 premiers de la s
                 </thead>
                 <tbody>
                   @foreach($users as $k=>$u)
-                    <tr class="top{{$k+(($users->currentPage()-1)*$nb_par_page)+1}}">
-                      <th scope="row">{{$k+(($users->currentPage()-1)*$nb_par_page)+1}}</th>
+                    <tr class="top{{$k+1}}">
+                      <th scope="row">{{$k+1}}</th>
                       <td>{{$u->name}}</td>
                       <td>@if($u->nb_pts_pronos != NULL){{$u->nb_pts_pronos}}@else 0 @endif</td>
                       <td>@if($u->nb_pts_scores!=NULL){{$u->nb_pts_scores}}@else 0 @endif</td>
                       <td>@if($u->nb_pts_mois!=NULL){{$u->nb_pts_mois}}@else 0 @endif</td>
-                      <td><i class="far fa-star"></i></td>
+                      <td>
+                        <button type="submit" class="submitFavoris">
+                          @if(!in_array($u->id,$favoris))
+                            <i class="far fa-star"></i>
+                          @else
+                            <i class="fas fa-star color-orange"></i>
+                          @endif
+                        </button>
+                      </td>
                     </tr> 
                   @endforeach
                 </tbody>
               </table>
             </div>
 
-        </div>
-
-        <div class="row paginator">
-            <div class="col-12 col-md-8 offset-md-2 text-right">
-              {{ $users->links() }}
-            </div>
         </div>
 
     </div>

@@ -26,6 +26,7 @@ Route::post('/resultats/{id}', 'Resultats@createProno')->where('id', '[0-9]+')->
 
 Route::get('/classement', 'ClassementController@index')->name('classement');
 Route::post('/classement', 'ClassementController@updateFavoris');
+Route::post('/classement/search', 'ClassementController@search');
 Route::get('/classement/mois', 'ClassementMoisController@index')->name('mois');
 Route::post('/classement/mois', 'ClassementMoisController@updateFavoris');
 Route::get('/classement/favoris', 'ClassementFavorisController@index');

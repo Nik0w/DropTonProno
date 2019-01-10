@@ -97,18 +97,67 @@ class ClassementMoisController extends Controller
 
         //dd($users);
 
-        return view('classement-mois',[
+         $favoris = DB::table('favoris')
+                    ->where('id_user','=',$id_user)
+                    ->select('favoris_ids')
+                    ->first();
+
+        if($favoris != NULL){
+
+            $favoris = $favoris->favoris_ids;
+
+            $favoris_array = explode(',',$favoris);
+
+        }else{
+            $favoris_array = [];
+        }
+
+        return view('classement',[
             'users' => $users,
             'user' => $user,
             'rank_user' => $rank_user,
             'nb_users' => $nb_users,
-            'nb_par_page' => $nb_par_page
+            'nb_par_page' => $nb_par_page,
+            'favoris' => $favoris_array
         ]);
     }
 
-    public function updateFavoris($id_user){
+    public function updateFavoris(Request $request){
 
-        dd($id);
+        $id_user = Auth::id();
+        $id_favoris = $request->id_user;
+
+        //check si l user a deja unu table favoris
+        $favoris_table = DB::table('favoris')
+                        ->where('id_user','=',$id_user)
+                        ->first();
+
+        if($favoris_table != NULL){
+
+            $favoris = $favoris_table->favoris_ids;
+            $favoris_array = explode(',',$favoris);
+
+            if(in_array(strval($id_favoris),$favoris_array)){
+
+                $favoris_array = array_merge(array_diff($favoris_array, array($id_favoris)));
+                $ids = implode(',',$favoris_array);
+
+            }else{
+
+                $ids = $favoris_table->favoris_ids.','.$id_favoris;
+            }
+
+            DB::table('favoris')
+                ->where('id_user','=',$id_user)
+                ->update(['favoris_ids'=> $ids]);
+        }else{
+
+            DB::table('favoris')->insert([
+                'id_user' => $id_user,
+                'favoris_ids' => $id_favoris
+            ]);
+
+        }
 
     }
 }

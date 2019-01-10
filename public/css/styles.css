@@ -864,6 +864,55 @@ h1{
     font-size: 2rem;
  }
 
+ .classement #searchAddon{
+ 	background-color: transparent;
+    border: none;
+    margin-bottom: 20px;
+    transition: color .3s ease;
+    font-size: 16px;
+    color: #1b6d81;
+ }
+
+.classement #searchFriends{
+    background-color: transparent;
+    border: navajowhite;
+    box-shadow: none;
+    border-bottom: 2px solid #1b6d81;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: border-bottom .3s ease;
+}
+
+.classement #searchFriends:focus{
+    border-bottom: 2px solid #ffb400;
+}
+.classement #searchFriends:focus #searchAddon{
+    color: #ffb400;
+}
+
+.classement #searchFriendsResults{
+	background-color: white;
+	max-height: 120px;
+	overflow-y: scroll;
+	position: absolute;
+	z-index: 9999;
+	width: 100%;
+	top: 34px;
+	border-left: 2px solid #146e83;
+	border-bottom: 2px solid #146e83;
+	border-right: 2px solid #146e83;
+	padding-left: 10px;
+}
+
+ .classement .submitFavoris{
+    border-radius: 50%;
+    border: none;
+    background-color: #1b6d81;
+    height: 26px;
+    width: 26px;
+    color: white;
+ }
+
  /*******CGU*******/
 
  .container-cgu>div{
