@@ -125,6 +125,8 @@ $(document).ready(function(){
         var $url = $form.attr('action');
         var user_name = $form.find("input[name=searchFriends]").val();
 
+        
+
         $.ajax({
            type:'POST',
            url:$url,

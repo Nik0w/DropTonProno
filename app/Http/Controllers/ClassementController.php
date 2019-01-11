@@ -116,7 +116,7 @@ class ClassementController extends Controller
     }
 
     public function search(Request $request){
-        $name_user = $request->input('searchFriends');
+        $name_user = $request->input('user_name');
 
         $users = DB::table('users')
                         ->where('users.name','like','%'.$name_user.'%')
