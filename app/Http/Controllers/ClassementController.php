@@ -118,12 +118,19 @@ class ClassementController extends Controller
     public function search(Request $request){
         $name_user = $request->input('user_name');
 
-        $users = DB::table('users')
-                        ->where('users.name','like','%'.$name_user.'%')
-                        ->select('users.name')
-                        ->get();
+        $favoris = DB::table('favoris')
+                    ->where('id_user','=', Auth::id())
+                    ->select('favoris_ids')
+                    ->first();
 
-        return $users;
+        $users = DB::table('users')
+                    ->where('users.name','like','%'.$name_user.'%')
+                    ->select('users.id','users.name')
+                    ->get();
+
+        //dd($results);
+
+        return array($users,$favoris);
     }
 
     public function updateFavoris(Request $request){

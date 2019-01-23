@@ -29,8 +29,10 @@ Route::post('/classement', 'ClassementController@updateFavoris');
 Route::post('/classement/search', 'ClassementController@search');
 Route::get('/classement/mois', 'ClassementMoisController@index')->name('mois');
 Route::post('/classement/mois', 'ClassementMoisController@updateFavoris');
+Route::post('/classement/mois/search', 'ClassementController@search');
 Route::get('/classement/favoris', 'ClassementFavorisController@index');
 Route::post('/classement/favoris', 'ClassementFavorisController@updateFavoris');
+Route::post('/classement/favoris/search', 'ClassementController@search');
 
 Route::get('/vestiaire', 'profilController@index');
 Route::post('/vestiaire', 'profilController@updateInfos');

@@ -193,6 +193,10 @@ h1{
 	max-width: 760px;
 }
 
+.margAuto{
+	margin: 0 auto;
+}
+
 /****NOTIFS****/
 
 #notificationsZone{
@@ -891,18 +895,26 @@ h1{
 }
 
 .classement #searchFriendsResults{
-	background-color: white;
-	max-height: 120px;
-	overflow-y: scroll;
-	position: absolute;
-	z-index: 9999;
-	width: 100%;
-	top: 34px;
-	border-left: 2px solid #146e83;
-	border-bottom: 2px solid #146e83;
-	border-right: 2px solid #146e83;
-	padding-left: 10px;
+	background-color: rgba(255,255,255,.95);
+	    max-height: 120px;
+	    width: 60%;
+	    border-radius: 10px;
+	    margin-left: 70px;
+	    position: absolute;
+	    margin-left: 28px;
+	    z-index: 9;
+	    /* width: 100%; */
+	    top: 44px;
+	    /* border-left: 2px solid #146e83; */
+	    /* border-bottom: 2px solid #146e83; */
+	    /* border-right: 2px solid #146e83; */
+	    padding-left: 10px;
+	    box-shadow: 0px 13px 30px rgba(0,0,0,.2);
 }
+
+ .classement #searchFriends .searchResultsList{
+
+ }
 
  .classement .submitFavoris{
     border-radius: 50%;
@@ -912,6 +924,7 @@ h1{
     width: 26px;
     color: white;
  }
+
 
  /*******CGU*******/
 

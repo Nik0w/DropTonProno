@@ -86,7 +86,8 @@ $(document).ready(function(){
 	});
 
 	//AJAX FAVORIS
-	$(".submitFavoris").on('click',function(e){
+	$(document).on('click', '.submitFavoris', function(e){
+
 		var $form = $(this).parent();
 
 		$form.off('submit').on('submit',function(e){
@@ -125,35 +126,57 @@ $(document).ready(function(){
         var $url = $form.attr('action');
         var user_name = $form.find("input[name=searchFriends]").val();
 
-        
+        if(user_name.length > 2){
 
-        $.ajax({
-           type:'POST',
-           url:$url,
-           data:{
-           	user_name:user_name
-           },
-           success:function(data){
-           		//console.log(data);
-           		var $users_list = $('#searchFriendsResults');
-           		var html ="";
-           		$url = window.location.href;
+	        $.ajax({
+	           type:'POST',
+	           url:$url,
+	           data:{
+	           	user_name:user_name
+	           },
+	           success:function(data){
+	           		//console.log(data);
+	           		var $users_list = $('#searchFriendsResults');
+	           		var html ="";
+	           		var csrf = $('meta[name="csrf-token"]').attr('content');
+	           		$url = window.location.href;
 
-           		$users_list.empty();
-           		
-           		for(var i = 0 ; i < data.length ; i++){
-           			//console.log(data[i]);
-           			html += "<tr>";
-           			html += "<td>"+data[i].name+"</td>";
-           			html += "</td";
-           			html += "</tr>";
-           		}
+           			var users = data[0];
+           			var favoris = data[1].favoris_ids.split(",");
 
-           		$users_list.html(html);
-           },
-           error:function(data){
-           }
-        });
+	           		$users_list.empty();
+	           		
+	           		for(var i = 0 ; i < users.length ; i++){
+	           			//console.log(data[i]);
+	           			html += "<tr class='searchResultsList'>";
+	           			html += "<td style='padding:5px; width:100%;'>"+users[i].name+"</td>";
+           				html += "<td style='padding:5px;'>";
+           				html += "<form class='form-favoris' action='' method='POST'>";
+           				html += "<input type='hidden' name='_token' value='"+csrf+"'>";
+           				html += "<input type='hidden' name='id_user' value='"+users[i].id+"'>";
+           				html += "<button type='submit' name='submitFavoris' class='submitFavoris'>";
+	           			if(favoris.includes(users[i].id.toString())){
+	           				html += "<i class='fas fa-star color-orange'></i>";
+	           			}else{
+           					html += "<i class='fas fa-star'></i>";
+	           			}
+	           			html += "</button>";
+	           			html += "</form>";
+           				html += "</td>";
+           				html += "</tr>";
+	           		}
+
+	           		$users_list.html(html);
+
+	           		// ON INIT LA BARRE DE SCROLL PERSO
+	           		var el = new SimpleBar(document.getElementById('searchFriendsResults'));
+	           },
+	           error:function(data){
+	           }
+	        });
+
+        }
+
 
 	});
 
@@ -169,5 +192,14 @@ $(document).ready(function(){
 		$('body').prepend('<div class="pageLoader"><i class="fas fa-spinner"></i></div>');
 
 	});
+
+	//Gestion de l'affichage ou non du la searchBox
+	$( "#searchFriends" )
+		.focus(function() {
+			$('#searchFriendsResults').show();
+		})
+		.focusout(function() {
+			$('#searchFriendsResults').hide();
+		});
 
 });

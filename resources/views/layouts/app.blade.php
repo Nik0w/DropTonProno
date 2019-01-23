@@ -26,6 +26,8 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
+<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.js"></script>
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -58,10 +60,10 @@
         <div id="partenairesCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block" src="{{asset('img/partenaires/berugbe.png')}}" alt="First slide">
+              <img class="d-block margAuto" src="{{asset('img/partenaires/berugbe.png')}}" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block" src="{{asset('img/partenaires/rugbyshop.png')}}" alt="First slide">
+              <img class="d-block margAuto" src="{{asset('img/partenaires/rugbyshop.png')}}" alt="First slide">
             </div>
           </div>
           <a class="carousel-control-prev no-loader" href="#partenairesCarousel" role="button" data-slide="prev">
