@@ -57,6 +57,8 @@
 
      <div class="container-fluid footer text-center">
 
+      <h2>Nos partenaires :</h2>
+
         <div id="partenairesCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">

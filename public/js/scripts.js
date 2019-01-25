@@ -1,22 +1,5 @@
 $(document).ready(function(){
 
-	// GESTION DE LA BARRE DE MENU
-	var $navbar = $('#navbar');
-	var $spacer = $('#menuSpacer');
-	var navHeight = $('#navbar').height();
-
-	var sticky = navbar[0].offsetTop;
-
-	$(window).on('scroll',function(){
-		if (window.pageYOffset >= sticky + navHeight) {
-		    $navbar.addClass("sticky");
-		    $spacer.css({'height':navHeight+'px'});
-	  	} else if(window.pageYOffset == 0){
-		    $navbar.removeClass("sticky");
-		    $spacer.css({'height':+'0'});
-	  	}
-	})
-
 	//GESTION DU CAROUSEL
 	$('.carousel').carousel({
 	  interval: false
@@ -136,7 +119,7 @@ $(document).ready(function(){
 	           },
 	           success:function(data){
 	           		//console.log(data);
-	           		var $users_list = $('#searchFriendsResults');
+	           		var $users_list = $('#searchFriendsResults').find('#results');
 	           		var html ="";
 	           		var csrf = $('meta[name="csrf-token"]').attr('content');
 	           		$url = window.location.href;
@@ -158,7 +141,7 @@ $(document).ready(function(){
 	           			if(favoris.includes(users[i].id.toString())){
 	           				html += "<i class='fas fa-star color-orange'></i>";
 	           			}else{
-           					html += "<i class='fas fa-star'></i>";
+           					html += "<i class='far fa-star'></i>";
 	           			}
 	           			html += "</button>";
 	           			html += "</form>";
@@ -185,8 +168,40 @@ $(document).ready(function(){
 	//            UX
 	//_______________________________
 
-	//Page switching loader
+	// GESTION DE LA BARRE DE MENU
+	var $navbar = $('#navbar');
+	var $spacer = $('#menuSpacer');
+	var navHeight = $('#navbar').height();
 
+	var sticky = $navbar[0].offsetTop;
+
+	$(window).on('scroll',function(){
+		if (window.pageYOffset >= sticky + navHeight) {
+		    $navbar.addClass("sticky");
+		    $spacer.css({'height':navHeight+'px'});
+		    $navbar.css({'top':'-'+navHeight+'px'});
+		    $navbar.css({
+		    	"-webkit-transform" : "translateY("+navHeight+"px)",
+				"-ms-transform" : "translateY("+navHeight+"px)",
+				"-o-transform" : "translateY("+navHeight+"px)",
+				"-moz-transform" : "translateY("+navHeight+"px)",
+				"transform" : "translateY("+navHeight+"px)",
+			});
+	  	} else if(window.pageYOffset == 0){
+		    $navbar.removeClass("sticky");
+		    $spacer.css({'height':+'0'});
+		    $navbar.css({'top':'0px'});
+		    $navbar.css({
+		    	"-webkit-transform" : "translateY(0px)",
+				"-ms-transform" : "translateY(0px)",
+				"-o-transform" : "translateY(0px)",
+				"-moz-transform" : "translateY(0px)",
+				"transform" : "translateY(0px)",
+			});
+	  	}
+	})
+
+	//Page switching loader
 	$('a').not('.no-loader').on('click',function(ev){
 		//ev.preventDefault();
 		$('body').prepend('<div class="pageLoader"><i class="fas fa-spinner"></i></div>');
@@ -197,8 +212,9 @@ $(document).ready(function(){
 	$( "#searchFriends" )
 		.focus(function() {
 			$('#searchFriendsResults').show();
-		})
-		.focusout(function() {
+		});
+
+	$('#closeSearchArea').click(function(){
 			$('#searchFriendsResults').hide();
 		});
 
